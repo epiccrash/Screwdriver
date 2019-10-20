@@ -12,18 +12,28 @@ public class Pour : MonoBehaviour
     void Start()
     {
         spout = transform.GetChild(0).gameObject;
+        StartCoroutine(pour());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = spout.transform.position - transform.position;
-        direction.Normalize();
+        
+    }
 
-        if (spout.transform.position.y < transform.position.y) {
-            GameObject newDrop = Instantiate(water);
-            newDrop.transform.position = spout.transform.position;
-            newDrop.GetComponent<Rigidbody>().AddForce(direction*force);
+    IEnumerator pour() {
+        while (true) {
+            Vector3 direction = spout.transform.position - transform.position;
+            direction.Normalize();
+
+            if (spout.transform.position.y < transform.position.y)
+            {
+                GameObject newDrop = Instantiate(water);
+                newDrop.transform.position = spout.transform.position;
+                newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
+            }
+
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }

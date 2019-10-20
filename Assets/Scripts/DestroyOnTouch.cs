@@ -18,7 +18,7 @@ public class DestroyOnTouch : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("i hit a "+collision.transform.tag);
+       
         if (collision.transform.tag == "floor")
         {
             Debug.Log("im in");
