@@ -37,9 +37,9 @@ public class WaterInGlass : MonoBehaviour
             //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             
 
-            gameObject.layer = LayerMask.NameToLayer("Water2MoreWet");
+            //gameObject.layer = LayerMask.NameToLayer("Water2MoreWet");
         }
-
+        /*
         if (collision.transform.tag == "Water")
         {
             Debug.Log("i hit a "+collision.transform.tag);
@@ -51,20 +51,8 @@ public class WaterInGlass : MonoBehaviour
 
 
             gameObject.layer = LayerMask.NameToLayer("Water2MoreWet");
-        }
+        }*/
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "water") {
-            this.gameObject.GetComponent<TrailRenderer>().time = 3;
-
-            jitter = true;
-
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-
-
-            gameObject.layer = LayerMask.NameToLayer("Water2MoreWet");
-        }
-    }
+   
 }
