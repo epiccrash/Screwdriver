@@ -18,20 +18,20 @@ public class DestroyOnTouch : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("i hit a "+collision.transform.tag);
+       
         if (collision.transform.tag == "floor")
         {
-            Debug.Log("im in");
+
             Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("i hit a " + other.transform.tag);
+        
         if (other.transform.tag == "floor")
         {
-            Debug.Log("im in");
+            
             Destroy(this.gameObject);
         }
     }
