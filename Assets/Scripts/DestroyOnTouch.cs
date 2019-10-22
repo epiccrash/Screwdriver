@@ -27,11 +27,9 @@ public class DestroyOnTouch : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        
+    {  
         if (other.transform.tag == "floor")
         {
-            
             Destroy(this.gameObject);
         }
     }
