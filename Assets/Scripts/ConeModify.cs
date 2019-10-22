@@ -28,7 +28,10 @@ public class ConeModify : MonoBehaviour
     private float midHeight;
     private float midHeightIncrease;
     private float increasesSoFar;
-    
+
+    public float maxAlpha=.8f;
+    public float alphaStep=.05f;
+
     private Material scriptedMaterial;
 
     private MeshRenderer rend;
@@ -46,7 +49,7 @@ public class ConeModify : MonoBehaviour
         rend.material.DisableKeyword("_ALPHATEST_ON");
         rend.material.DisableKeyword("_ALPHABLEND_ON");
         rend.material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
-        rend.material.renderQueue = 3000;
+        rend.material.renderQueue = 2999;
     }
 
     private void Update()
@@ -276,5 +279,13 @@ public class ConeModify : MonoBehaviour
             print(rend.material.color);
             rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 150);
         }*/
+    }
+
+    public void MakeOpaque() {
+        Color oldColor = rend.material.color;
+        if (oldColor.a < maxAlpha) {
+            Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a + alphaStep);
+            rend.material.color = newColor;
+        }
     }
 }
