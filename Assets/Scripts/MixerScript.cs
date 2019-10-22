@@ -45,5 +45,12 @@ public class MixerScript : MonoBehaviour
         shakes = 0;
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "IceCube") {
+            other.transform.parent = this.gameObject.transform;
+            // other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+            // other.gameObject.GetComponent<Interactable>().enabled = false;
+        }
+    }
     
 }
