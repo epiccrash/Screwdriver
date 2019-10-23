@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - floor
-  - Container
   - Water
-  - TopOfGlass
+  - Scoop
+  - IceCube
   - CustomerSlot
   layers:
   - Default

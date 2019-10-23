@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8456098812410592160}
   - component: {fileID: 5447573948053919164}
   m_Layer: 4
-  m_Name: Water Drop
+  m_Name: Gatorade Drop
   m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d47b9947c5cc904cbce58c860dfcd53, type: 2}
+  - {fileID: 2100000, guid: 9b575ded8a2c6554382f4ccbfe51794a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

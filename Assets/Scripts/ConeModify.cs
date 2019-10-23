@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class ConeModify : MonoBehaviour
 {
-    public float bottomRadiusSize = .16f;
-    public float topRadiusSize = .2f;
-    public float coneHeight = .65f;
-    // damp instead of drastic increase
-    public long numIncreases = 100000000000000000;
+
+#pragma warning
+    [Header("Fill Settings")]
+    [SerializeField]
+    private float bottomRadiusSize = .16f;
+    [SerializeField]
+    private float topRadiusSize = .2f;
+    [SerializeField]
+    private float coneHeight = .65f;
+    [SerializeField]
+    private int numIncreases = 1000;
+    [SerializeField]
+    private Shader shader;
+    [SerializeField]
+    private int alphaSetting = 150;
+
+    private Texture texture;
+    private Color color;
 
     private float midRadiusSize;
     private float midRadiusIncrease;
@@ -16,9 +29,32 @@ public class ConeModify : MonoBehaviour
     private float midHeightIncrease;
     private float increasesSoFar;
 
+    public float maxAlpha=.8f;
+    public float alphaStep=.05f;
+
+    private Material scriptedMaterial;
+
+    private MeshRenderer rend;
+
     private void Start()
     {
         midRadiusSize = bottomRadiusSize;
+        rend = GetComponent<MeshRenderer>();
+        rend.material = new Material(shader);
+        rend.material.color = new Color(0, 0, 0, alphaSetting);
+        rend.material.SetFloat("_Mode", 3);
+        rend.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        rend.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        rend.material.SetInt("_ZWrite", 0);
+        rend.material.DisableKeyword("_ALPHATEST_ON");
+        rend.material.DisableKeyword("_ALPHABLEND_ON");
+        rend.material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
+        rend.material.renderQueue = 2999;
+    }
+
+    private void Update()
+    {
+        rend.material.SetFloat("_Mode", 3);
     }
 
     private void ModifyCone()
@@ -26,8 +62,6 @@ public class ConeModify : MonoBehaviour
         midRadiusIncrease = topRadiusSize / numIncreases;
         midHeightIncrease = coneHeight / numIncreases;
 
-        // GameObject fill = new GameObject("Fill");
-        // fill.AddComponent<MeshRenderer>();
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         Mesh mesh = filter.mesh;
         mesh.Clear();
@@ -220,12 +254,38 @@ public class ConeModify : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.name.Substring(0, 10));
-        if (other.gameObject.name.Substring(0, 10) == "Water Drop" && increasesSoFar < numIncreases)
+        if (other.gameObject.tag == "Water")
         {
-            increasesSoFar += 1;
+            if (increasesSoFar < numIncreases)
+            {
+                Color otherColor = other.gameObject.GetComponent<TrailRenderer>().material.color;
+                if (increasesSoFar == 0)
+                {
+                    rend.material.color = otherColor;
+                }
+                else if (rend.material.color != otherColor)
+                {
+                    rend.material.color += new Color(otherColor.r, otherColor.g, otherColor.b, 0) / 256;
+                }
+
+                increasesSoFar += 1;
+                ModifyCone();
+            }
             Destroy(other.gameObject);
-            ModifyCone();
+        }
+           
+        /*else
+        {
+            print(rend.material.color);
+            rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 150);
+        }*/
+    }
+
+    public void MakeOpaque() {
+        Color oldColor = rend.material.color;
+        if (oldColor.a < maxAlpha) {
+            Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a + alphaStep);
+            rend.material.color = newColor;
         }
     }
 }

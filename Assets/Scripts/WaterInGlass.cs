@@ -36,7 +36,6 @@ public class WaterInGlass : MonoBehaviour
 
             //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             
-
             //gameObject.layer = LayerMask.NameToLayer("Water2MoreWet");
         }
         /*
@@ -54,5 +53,5 @@ public class WaterInGlass : MonoBehaviour
         }*/
     }
 
-   
+    
 }
