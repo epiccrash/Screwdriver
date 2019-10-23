@@ -265,7 +265,7 @@ public class ConeModify : MonoBehaviour
                 }
                 else if (rend.material.color != otherColor)
                 {
-                    rend.material.color += otherColor / 256;
+                    rend.material.color += new Color(otherColor.r, otherColor.g, otherColor.b, 0) / 256;
                 }
 
                 increasesSoFar += 1;

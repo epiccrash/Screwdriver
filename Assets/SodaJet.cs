@@ -6,7 +6,7 @@ using Valve.VR;
 public class SodaJet : MonoBehaviour
 {
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.LeftHand;
-    public SteamVR_Input_Sources inputSource2 = SteamVR_Input_Sources.RightHand;
+    public SteamVR_Input_Sources inputSource2 = SteamVR_Input_Sources.Any;
 
     private Vector2 joystickL;
     private Vector2 joystickR;
@@ -28,7 +28,6 @@ public class SodaJet : MonoBehaviour
 
         leftHand = GameObject.Find("LeftHand");
         rightHand = GameObject.Find("RightHand");
-        joystickL = SteamVR_Actions._default.Joystick.GetAxis(inputSource);
     }
 
     // Update is called once per frame
@@ -44,21 +43,22 @@ public class SodaJet : MonoBehaviour
     {
         while (true)
         {
-            Vector3 direction = spout.transform.position - transform.position;
+            Vector3 direction = transform.forward;
             direction.Normalize();
 
             if (transform.parent != null)
             {
                 print(transform.parent);
-                if ((transform.parent == leftHand && joystickL.y >= 0.1f) ||
-                    (transform.parent == rightHand && joystickR.y >= 0.1f))
+                if ((joystickL.y >= 0.1f) ||
+                    (joystickR.y >= 0.1f))
                 {
+                    print("loo");
                     GameObject newDrop = Instantiate(liquidPrefab);
                     newDrop.transform.position = spout.transform.position;
                     newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 }
-                else if ((transform.parent == leftHand && joystickL.y <= -0.1f) ||
-                         (transform.parent == rightHand && joystickR.y <= -0.1f))
+                else if ((joystickL.y <= -0.1f) ||
+                         (joystickR.y <= -0.1f))
                 {
                     GameObject newDrop = Instantiate(liquidPrefab2);
                     newDrop.transform.position = spout.transform.position;
