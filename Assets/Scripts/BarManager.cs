@@ -25,7 +25,7 @@ public class BarManager : Singleton<BarManager>
         }
     }
 
-    public CustomerSlot GetAndLockAvailableSlot()
+    public CustomerSlot GetAvailableSlot()
     {
         List<CustomerSlot> availableSeats = new List<CustomerSlot>();
 
@@ -45,7 +45,7 @@ public class BarManager : Singleton<BarManager>
         // Get a random seat from the free seats.
         int randomIndx = UnityEngine.Random.Range(0, availableSeats.Count);
 
-        availableSeats[randomIndx].Lock();
+        // availableSeats[randomIndx].Lock();
         return availableSeats[randomIndx];
     }
 }
