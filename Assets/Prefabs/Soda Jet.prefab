@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d118682f43d9cae4f8d20c86ab684ae9, type: 2}
+  - {fileID: 2100002, guid: 36ed72df9b6f5de45819a1f02a1f034b, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a997ea89b47b2478f03cd686f53d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSource: 0
-  joystick: {x: 0, y: 0}
+  inputSource: 1
+  inputSource2: 2
   liquidPrefab: {fileID: 9091402819211779215, guid: e0e5c9a7a0268d64995715031a424221,
     type: 3}
   liquidPrefab2: {fileID: 1350462474774450189, guid: 7e8bcf82af98da94285f0efc848070e9,
