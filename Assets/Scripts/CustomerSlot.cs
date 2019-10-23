@@ -14,7 +14,7 @@ public class CustomerSlot : MonoBehaviour
 
     private void Start()
     {
-        _isFree = true;
+        Unlock();
     }
 
     public void Lock()

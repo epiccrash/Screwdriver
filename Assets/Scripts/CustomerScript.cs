@@ -53,6 +53,10 @@ public class CustomerScript : MonoBehaviour
             _state = CustomerState.ReadyToOrder;
             BarManager.Instance.EnterCustomerQueue(this);
         }
+        else if (_state == CustomerState.WalkingToSlot && _agent.remainingDistance <= 0.1f)
+        {
+            _state = CustomerState.WaitingForDrink;
+        }
     }
 
     public void AssignSlot(CustomerSlot slot)
@@ -61,5 +65,15 @@ public class CustomerScript : MonoBehaviour
         _state = CustomerState.WalkingToSlot;
 
         _agent.destination = slot.StandLocation.position;
+    }
+
+    public void OnDrinkReceived()
+    {
+        // Test if we got the right drink.
+
+        // Give tips if we want/
+
+        _timeUntilNextDrink = UnityEngine.Random.Range(_minTimeBetweenDrinks, _maxTimeBetweenDrinks);
+        _state = CustomerState.Idle;
     }
 }
