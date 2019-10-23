@@ -7,19 +7,23 @@ public class CustomerSlot : MonoBehaviour
     [SerializeField]
     private Transform _standLocation;
 
-    private bool _isFree = true;
+    private bool _isFree;
 
     public bool IsFree { get { return _isFree; } }
+    public Transform StandLocation { get { return _standLocation; } }
 
     private void Start()
     {
-        CustomerSlot slot = BarManager.Instance.GetAndLockAvailableSlot();
-        slot.Lock();
-        Debug.Log(slot);
+        _isFree = true;
     }
 
     public void Lock()
     {
         _isFree = false;
+    }
+
+    public void Unlock()
+    {
+        _isFree = true;
     }
 }

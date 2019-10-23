@@ -6,6 +6,7 @@ using UnityEngine;
 public class BarManager : Singleton<BarManager>
 {
     private List<CustomerSlot> _customerSlots;
+    private Queue<CustomerScript> _customerQueue;
 
     protected override void Awake()
     {
@@ -15,6 +16,7 @@ public class BarManager : Singleton<BarManager>
     public override void Initialize()
     {
         _customerSlots = new List<CustomerSlot>();
+        _customerQueue = new Queue<CustomerScript>();
 
         // Find all slots in the scene.
         GameObject[] slotObjs = GameObject.FindGameObjectsWithTag("CustomerSlot");
@@ -25,7 +27,23 @@ public class BarManager : Singleton<BarManager>
         }
     }
 
-    public CustomerSlot GetAvailableSlot()
+    private void Update()
+    {
+        CustomerSlot freeSlot = GetRandomAvailableSlot();
+
+        if (freeSlot != null)
+        {
+            CustomerScript nextCustomer = GetCustomerFromQueue();
+
+            if (nextCustomer != null)
+            {
+                freeSlot.Lock();
+                nextCustomer.AssignSlot(freeSlot);
+            }
+        }
+    }
+
+    private CustomerSlot GetRandomAvailableSlot()
     {
         List<CustomerSlot> availableSeats = new List<CustomerSlot>();
 
@@ -37,15 +55,29 @@ public class BarManager : Singleton<BarManager>
             }
         }
 
-        if (availableSeats.Count <= 0)
+        if (availableSeats.Count > 0)
         {
-            return null;
+            // Get a random seat from the free seats.
+            int randomIndx = UnityEngine.Random.Range(0, availableSeats.Count);
+
+            return availableSeats[randomIndx];
         }
 
-        // Get a random seat from the free seats.
-        int randomIndx = UnityEngine.Random.Range(0, availableSeats.Count);
+        return null;
+    }
 
-        // availableSeats[randomIndx].Lock();
-        return availableSeats[randomIndx];
+    private CustomerScript GetCustomerFromQueue()
+    {
+        if (_customerQueue.Count > 0)
+        {
+            return _customerQueue.Dequeue();
+        }
+
+        return null;
+    }
+
+    public void EnterCustomerQueue(CustomerScript customer)
+    {
+        _customerQueue.Enqueue(customer);
     }
 }
