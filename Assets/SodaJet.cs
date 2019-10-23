@@ -6,13 +6,13 @@ using Valve.VR;
 public class SodaJet : MonoBehaviour
 {
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.LeftHand;
-    public SteamVR_Input_Sources inputSource2 = SteamVR_Input_Sources.Any;
+    public SteamVR_Input_Sources inputSource2 = SteamVR_Input_Sources.RightHand;
 
     private Vector2 joystickL;
     private Vector2 joystickR;
 
-    private GameObject leftHand;
-    private GameObject rightHand;
+    private Transform leftHand;
+    private Transform rightHand;
 
     [SerializeField] private GameObject liquidPrefab;
     [SerializeField] private GameObject liquidPrefab2;
@@ -26,8 +26,8 @@ public class SodaJet : MonoBehaviour
         spout = transform.GetChild(0).gameObject;
         StartCoroutine(Squirt());
 
-        leftHand = GameObject.Find("LeftHand");
-        rightHand = GameObject.Find("RightHand");
+        leftHand = GameObject.Find("LeftHand").transform;
+        rightHand = GameObject.Find("RightHand").transform;
     }
 
     // Update is called once per frame
@@ -43,22 +43,21 @@ public class SodaJet : MonoBehaviour
     {
         while (true)
         {
-            Vector3 direction = transform.forward;
+            Vector3 direction = spout.transform.up + new Vector3(0, 0.5f, 0);
             direction.Normalize();
 
             if (transform.parent != null)
             {
-                print(transform.parent);
-                if ((joystickL.y >= 0.1f) ||
-                    (joystickR.y >= 0.1f))
+                print(transform.parent == rightHand);
+                if ((transform.parent == leftHand && joystickL.y >= 0.1f) ||
+                    (transform.parent == rightHand && joystickR.y >= 0.1f))
                 {
-                    print("loo");
                     GameObject newDrop = Instantiate(liquidPrefab);
                     newDrop.transform.position = spout.transform.position;
                     newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 }
-                else if ((joystickL.y <= -0.1f) ||
-                         (joystickR.y <= -0.1f))
+                else if ((transform.parent == leftHand && joystickL.y <= -0.1f) ||
+                         (transform.parent == rightHand && joystickR.y <= -0.1f))
                 {
                     GameObject newDrop = Instantiate(liquidPrefab2);
                     newDrop.transform.position = spout.transform.position;
