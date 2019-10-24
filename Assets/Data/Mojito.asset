@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mojito
   m_EditorClassIdentifier: 
   drinkName: Mojito
+  alcoholContent: 2
   needsShaker: 0
   recipe:
   - ingredient: 8

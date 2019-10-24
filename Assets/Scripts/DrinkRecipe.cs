@@ -15,6 +15,7 @@ public class DrinkRecipe : ScriptableObject
 {
     [Header("Basic Info")]
     public string drinkName;
+    public int alcoholContent;
 
     [Header("Special Steps")]
     public bool needsShaker;
