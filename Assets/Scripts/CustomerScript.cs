@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public enum CustomerState
 {
@@ -13,6 +14,9 @@ public enum CustomerState
 
 public class CustomerScript : MonoBehaviour
 {
+    [SerializeField]
+    private TextMeshPro _drinkOrderText;
+
     [SerializeField]
     private List<DrinkRecipe> _orderableDrinks;
 
@@ -28,6 +32,7 @@ public class CustomerScript : MonoBehaviour
     private float _maxTimeBetweenDrinks;
 
     private CustomerSlot _currentSlot;
+    private DrinkRecipe _currentDrinkOrder;
 
     private int _alchoholLevel;
     private float _timeUntilNextDrink;
@@ -38,11 +43,11 @@ public class CustomerScript : MonoBehaviour
     private void Start()
     {
         _alchoholLevel = 0;
-        RandomizeDrinkTimer();
+
+        _drinkOrderText.enabled = false;
 
         _movementController = GetComponent<CustomerMovementController>();
 
-        // We'll manually set state this first time, since we don't want to apply special changes.
         ChangeState(CustomerState.Idle);
     }
 
@@ -56,7 +61,7 @@ public class CustomerScript : MonoBehaviour
             // If it's time to order, get in the queue for a slot.
             if (_timeUntilNextDrink <= 0)
             {
-                _state = CustomerState.ReadyToOrder;
+                ChangeState(CustomerState.ReadyToOrder);
                 BarManager.Instance.EnterCustomerQueue(this);
             }
         }
@@ -69,10 +74,19 @@ public class CustomerScript : MonoBehaviour
 
     private void ChangeState(CustomerState newState)
     {
-        // If we're transitioning to idle, we should start wandering again.
-        if (newState == CustomerState.Idle)
+        switch (newState)
         {
-            _movementController.StartRandomWanderBehavior();
+            case CustomerState.Idle:
+                _drinkOrderText.enabled = false;
+                RandomizeDrinkTimer();
+                _movementController.StartRandomWanderBehavior();
+                break;
+            case CustomerState.WaitingForDrink:
+                _drinkOrderText.text = _currentDrinkOrder.drinkName;
+                _drinkOrderText.enabled = true;
+                break;
+            default:
+                break;
         }
 
         _state = newState;
@@ -82,16 +96,27 @@ public class CustomerScript : MonoBehaviour
     {
         if (_state == CustomerState.WalkingToSlot)
         {
-            ChangeState(CustomerState.WaitingForDrink);
+            if (_orderableDrinks.Count > 0)
+            {
+                int idx = UnityEngine.Random.Range(0, _orderableDrinks.Count);
+                _currentDrinkOrder = _orderableDrinks[idx];
+
+                ChangeState(CustomerState.WaitingForDrink);
+            }
+            else
+            {
+                // We can't order any drinks!
+                ChangeState(CustomerState.Idle);
+            }
         }
     }
 
     public void AssignSlot(CustomerSlot slot)
     {
         _currentSlot = slot;
-        ChangeState(CustomerState.WalkingToSlot);
 
         _movementController.MoveTo(slot.StandLocation, OnArrivedAtDest);
+        ChangeState(CustomerState.WalkingToSlot);
     }
 
     public void OnDrinkReceived()
@@ -103,7 +128,6 @@ public class CustomerScript : MonoBehaviour
         // Give tips if we want.
 
         // Go back to partying before our next drink.
-        RandomizeDrinkTimer();
         ChangeState(CustomerState.Idle);
     }
 }

@@ -109,7 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a74285c592f448e2a795259437e44ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _orderableDrinks: []
+  _drinkOrderText: {fileID: 1250740832611958177}
+  _orderableDrinks:
+  - {fileID: 11400000, guid: 3da473343aa4d4d0f8e1d42c19171c6a, type: 2}
+  - {fileID: 11400000, guid: b4ac06dead3fe420abb2d5feafdcbe51, type: 2}
   _drunkThreshhold: 0
   _minTimeBetweenDrinks: 1
   _maxTimeBetweenDrinks: 10
@@ -163,7 +166,7 @@ GameObject:
   - component: {fileID: 8767534334513207418}
   - component: {fileID: 1250740832611958177}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: DrinkOrder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

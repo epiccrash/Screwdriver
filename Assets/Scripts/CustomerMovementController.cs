@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CustomerMovementController : MonoBehaviour
 {
     private const float DestTolerance = 0.5f;
-    private const float WanderRadius = 3f;
+    private const float WanderRadius = 6f;
     private const float MaxTimeToWanderPos = 5f;
 
     [Header("Wander Wait Timing")]
