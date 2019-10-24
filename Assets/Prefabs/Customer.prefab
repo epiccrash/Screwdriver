@@ -111,6 +111,8 @@ MonoBehaviour:
   _drunkThreshhold: 0
   _minTimeBetweenDrinks: 1
   _maxTimeBetweenDrinks: 10
+  _minWanderPosWaitTime: 2
+  _maxWanderPosWaitTime: 6
 --- !u!195 &8664149913782941785
 NavMeshAgent:
   m_ObjectHideFlags: 0
