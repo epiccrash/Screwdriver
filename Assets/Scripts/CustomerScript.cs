@@ -13,8 +13,9 @@ public enum CustomerState
 
 public class CustomerScript : MonoBehaviour
 {
-    public const float DestTolerance = 0.1f;
-    public const float WanderRadius = 3f;
+    private const float DestTolerance = 0.5f;
+    private const float WanderRadius = 3f;
+    private const float MaxTimeToWanderPos = 5f;
 
     [SerializeField]
     private List<DrinkRecipe> _orderableDrinks;
@@ -42,7 +43,7 @@ public class CustomerScript : MonoBehaviour
 
     private Transform _currentWanderLocation;
     private float _wanderPauseTimer;
-    private bool _isWaitingAtWanderPos;
+    private float _currWanderTimer;
 
     private int _alchoholLevel;
     private float _timeUntilNextDrink;
@@ -80,19 +81,24 @@ public class CustomerScript : MonoBehaviour
         // Randomly wander around the room.
         if (_state == CustomerState.Idle || _state == CustomerState.ReadyToOrder)
         {
-            // Have we reached our position?
-            // If yes, lets count down our timer
-            // Is our timer below 0?
-            // Lets get a new position and restart the time
-            // Have we reached our random wander position?
             if (_agent.remainingDistance <= DestTolerance)
             {
                 _wanderPauseTimer -= Time.deltaTime;
 
                 if (_wanderPauseTimer <= 0)
                 {
-                    RandomizeWanderWaitTimer();
-                    _agent.destination = GetRandomWanderPosition();
+                    MoveToRandomWanderPosition();
+                }
+            }
+            else
+            {
+                _currWanderTimer += Time.deltaTime;
+
+                // Have we spent too long trying to wander to our current position?
+                // If yes, we might be stuck and should pick another.
+                if (_currWanderTimer > _maxWanderPosWaitTime)
+                {
+                    MoveToRandomWanderPosition();
                 }
             }
         }
@@ -125,7 +131,7 @@ public class CustomerScript : MonoBehaviour
         _state = newState;
     }
 
-    private Vector3 GetRandomWanderPosition()
+    private void MoveToRandomWanderPosition()
     {
         Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * WanderRadius;
         randomDirection += transform.position;
@@ -135,9 +141,11 @@ public class CustomerScript : MonoBehaviour
 
         Vector3 newWanderPos = navHit.position;
 
-        newWanderPos.x = Mathf.Max(newWanderPos.x, -3.5f);
+        newWanderPos.z = Mathf.Max(newWanderPos.z, BarManager.Instance.CustomerZWanderLimit);
 
-        return newWanderPos;
+        RandomizeWanderWaitTimer();
+        _agent.destination = newWanderPos;
+        _currWanderTimer = 0;
     }
 
     public void AssignSlot(CustomerSlot slot)

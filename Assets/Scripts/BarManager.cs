@@ -5,8 +5,13 @@ using UnityEngine;
 [Singleton(SingletonAttribute.Type.LoadedFromResources, true, "BarManager")]
 public class BarManager : Singleton<BarManager>
 {
+    [SerializeField]
+    private float _customerWanderZLimit;
+
     private List<CustomerSlot> _customerSlots;
     private Queue<CustomerScript> _customerQueue;
+
+    public float CustomerZWanderLimit { get { return _customerWanderZLimit; } }
 
     protected override void Awake()
     {
