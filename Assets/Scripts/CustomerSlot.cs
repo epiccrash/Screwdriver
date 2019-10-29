@@ -7,10 +7,20 @@ public class CustomerSlot : MonoBehaviour
     [SerializeField]
     private Transform _standLocation;
 
+    [SerializeField]
+    private DrinkSlot _drinkSlot;
+
     private bool _isFree;
 
     public bool IsFree { get { return _isFree; } }
     public Transform StandLocation { get { return _standLocation; } }
+
+    private void OnDrawGizmos()
+    {
+        // Draw the sphere to indicate the stand location.
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(_standLocation.position, 0.5f);
+    }
 
     private void Start()
     {
