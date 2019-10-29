@@ -39,7 +39,6 @@ public class CustomerMovementController : MonoBehaviour
         _didArriveAtDest = false;
 
         _agent = GetComponent<NavMeshAgent>();
-        RandomizeWanderWaitTimer();
     }
 
     // Update is called once per frame
@@ -111,6 +110,7 @@ public class CustomerMovementController : MonoBehaviour
     public void StartRandomWanderBehavior()
     {
         _isWandering = true;
+        RandomizeWanderWaitTimer();
     }
 
     public void StopRandomWanderBehavior()
