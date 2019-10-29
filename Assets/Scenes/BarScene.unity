@@ -2810,6 +2810,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soda Jet
       objectReference: {fileID: 0}
+    - target: {fileID: 3313882704424056479, guid: ec689b448bbbf204fa37ce508eb6c159,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3313882704424056455, guid: ec689b448bbbf204fa37ce508eb6c159,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2868,7 +2873,12 @@ PrefabInstance:
     - target: {fileID: 3313882704424056478, guid: ec689b448bbbf204fa37ce508eb6c159,
         type: 3}
       propertyPath: force
-      value: 200
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313882706247800753, guid: ec689b448bbbf204fa37ce508eb6c159,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec689b448bbbf204fa37ce508eb6c159, type: 3}
