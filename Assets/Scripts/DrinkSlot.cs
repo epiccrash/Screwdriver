@@ -12,13 +12,6 @@ public class DrinkSlot : MonoBehaviour
 
     private GameObject _drinkInSlot;
 
-    private void OnDrawGizmos()
-    {
-        // Draw the drink zone collider.
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawCube(transform.position, new Vector3(1, 1, 1));
-    }
-
     private void Start()
     {
         _onDrinkDetachedFromHand += OnDrinkPutDown;

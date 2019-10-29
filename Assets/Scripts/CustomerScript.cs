@@ -12,6 +12,7 @@ public enum CustomerState
     WaitingForDrink
 }
 
+[RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
     [SerializeField]
@@ -96,6 +97,8 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
+        Debug.Log("Arrvbied at slot");
+
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
