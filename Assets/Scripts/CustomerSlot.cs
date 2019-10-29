@@ -36,4 +36,9 @@ public class CustomerSlot : MonoBehaviour
     {
         _isFree = true;
     }
+
+    public void SetOnDrinkServed(Delegates.onDrinkServedDel onServedFunc)
+    {
+        _drinkSlot.onDrinkServed = onServedFunc;
+    }
 }

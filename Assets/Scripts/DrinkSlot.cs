@@ -5,9 +5,7 @@ using UnityEngine.Events;
 
 public class DrinkSlot : MonoBehaviour
 {
-    // Delegate to call when the drink is served.
-    private delegate void OnDrinkServed(GameObject drink);
-    private OnDrinkServed _onDrinkServed;
+    public Delegates.onDrinkServedDel onDrinkServed;
 
     // Action for when the drink is put down.
     private UnityAction _onDrinkDetachedFromHand;
@@ -62,7 +60,6 @@ public class DrinkSlot : MonoBehaviour
 
     private void OnDrinkPutDown()
     {
-        Debug.Log("Drink put down");
-        _onDrinkServed?.Invoke(_drinkInSlot);
+        onDrinkServed?.Invoke(_drinkInSlot);
     }
 }
