@@ -5,11 +5,12 @@ using UnityEngine;
 public class WinePour : MonoBehaviour
 {
     public GameObject spout;
-    public GameObject wineLiquid;
+    public GameObject wine;
     private bool pour;
     // Start is called before the first frame update
     void Start()
     {
+        pour = false;
         StartCoroutine(PourWine());
     }
 
@@ -21,11 +22,13 @@ public class WinePour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //print(collision.gameObject.name);
         pour = true;
     }
 
     private void OnCollisionExit(Collision collision)
     {
+        //print(collision.gameObject.name);
         pour = false;
     }
 
@@ -33,9 +36,10 @@ public class WinePour : MonoBehaviour
     {
         while (true)
         {
+            
             if (pour)
             {
-                GameObject newDrop = Instantiate(wineLiquid);
+                GameObject newDrop = Instantiate(wine);
                 newDrop.transform.position = spout.transform.position;
             }
             yield return new WaitForSeconds(0.005f);
