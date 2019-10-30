@@ -31,6 +31,9 @@ public class DestroyOnTouch : MonoBehaviour
         if (other.transform.tag == "floor")
         {
             Destroy(this.gameObject);
+        } else if (other.transform.tag == "Fill")
+        {
+            other.GetComponent<ConeModify>().ChangeFill(this.gameObject);
         }
     }
 }

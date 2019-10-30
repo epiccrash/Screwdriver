@@ -252,7 +252,7 @@ public class ConeModify : MonoBehaviour
         midHeight = height;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ChangeFill(GameObject other)
     {
         if (other.gameObject.tag == "Water")
         {
