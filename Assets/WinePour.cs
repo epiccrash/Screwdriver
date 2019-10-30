@@ -38,6 +38,7 @@ public class WinePour : MonoBehaviour
                 GameObject newDrop = Instantiate(wineLiquid);
                 newDrop.transform.position = spout.transform.position;
             }
+            yield return new WaitForSeconds(0.005f);
         }
     }
 }
