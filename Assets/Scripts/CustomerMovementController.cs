@@ -26,8 +26,7 @@ public class CustomerMovementController : MonoBehaviour
     // MoveTo Variables
     private Transform _currentDest;
     private bool _didArriveAtDest;
-    public delegate void Del();
-    private Del _onArrived;
+    private Delegates.onArrivedAtDestDel _onArrived;
     private bool _isRotating;
     private float _rotateTimeCount;
 
@@ -39,6 +38,8 @@ public class CustomerMovementController : MonoBehaviour
         _didArriveAtDest = false;
 
         _agent = GetComponent<NavMeshAgent>();
+
+        StartRandomWanderBehavior();
     }
 
     // Update is called once per frame
@@ -91,7 +92,7 @@ public class CustomerMovementController : MonoBehaviour
         }
     }
 
-    public void MoveTo(Transform newDest, Del onArrived)
+    public void MoveTo(Transform newDest, Delegates.onArrivedAtDestDel onArrived)
     {
         _onArrived = onArrived;
         _currentDest = newDest;
@@ -110,6 +111,7 @@ public class CustomerMovementController : MonoBehaviour
     public void StartRandomWanderBehavior()
     {
         _isWandering = true;
+        MoveToRandomWanderPosition();
         RandomizeWanderWaitTimer();
     }
 

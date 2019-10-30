@@ -12,6 +12,7 @@ public enum CustomerState
     WaitingForDrink
 }
 
+[RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
     [SerializeField]
@@ -48,7 +49,9 @@ public class CustomerScript : MonoBehaviour
 
         _movementController = GetComponent<CustomerMovementController>();
 
-        ChangeState(CustomerState.Idle);
+        // Setting the state this time is a special case, so we'll do it without ChangeState().
+        RandomizeDrinkTimer();
+        _state = CustomerState.Idle;
     }
 
     private void Update()
@@ -94,6 +97,8 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
+        Debug.Log("Arrvbied at slot");
+
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
@@ -114,12 +119,13 @@ public class CustomerScript : MonoBehaviour
     public void AssignSlot(CustomerSlot slot)
     {
         _currentSlot = slot;
+        _currentSlot.SetOnDrinkServed(OnDrinkReceived);
 
         _movementController.MoveTo(slot.StandLocation, OnArrivedAtDest);
         ChangeState(CustomerState.WalkingToSlot);
     }
 
-    public void OnDrinkReceived()
+    public void OnDrinkReceived(GameObject drink)
     {
         // Test if we got the right drink.
 
@@ -128,6 +134,8 @@ public class CustomerScript : MonoBehaviour
         // Give tips if we want.
 
         // Go back to partying before our next drink.
+        _currentSlot.Unlock();
+        _currentSlot = null;
         ChangeState(CustomerState.Idle);
     }
 }
