@@ -97,8 +97,6 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-        Debug.Log("Arrvbied at slot");
-
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
@@ -137,5 +135,15 @@ public class CustomerScript : MonoBehaviour
         _currentSlot.Unlock();
         _currentSlot = null;
         ChangeState(CustomerState.Idle);
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Water")
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 }

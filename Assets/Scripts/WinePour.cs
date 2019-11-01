@@ -45,4 +45,12 @@ public class WinePour : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
     }
+
+    public void StartPour() {
+        pour = true;
+    }
+
+    public void StopPour() {
+        pour = false;
+    }
 }
