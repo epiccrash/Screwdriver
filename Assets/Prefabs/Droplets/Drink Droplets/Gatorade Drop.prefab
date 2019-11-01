@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7563135684652501736}
   - component: {fileID: 7563135684652501737}
   - component: {fileID: 7563135684652501743}
-  - component: {fileID: 8456098812410592160}
   - component: {fileID: 5447573948053919164}
   m_Layer: 4
   m_Name: Gatorade Drop
@@ -235,18 +234,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &8456098812410592160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7563135684652501734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cac6c231b6644c4ea4a22acc6ef329f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5447573948053919164
 MonoBehaviour:
   m_ObjectHideFlags: 0
