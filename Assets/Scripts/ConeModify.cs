@@ -55,6 +55,7 @@ public class ConeModify : MonoBehaviour
     private void Update()
     {
         rend.material.SetFloat("_Mode", 3);
+        print(Time.deltaTime);
     }
 
     private void ModifyCone()
@@ -265,7 +266,8 @@ public class ConeModify : MonoBehaviour
                 }
                 else if (rend.material.color != otherColor)
                 {
-                    rend.material.color += new Color(otherColor.r, otherColor.g, otherColor.b, 0) / 256;
+                    rend.material.color = Color.Lerp(rend.material.color, otherColor, Time.deltaTime * 0.1f);
+                    // rend.material.color += new Color(otherColor.r, otherColor.g, otherColor.b, 0) / 256;
                 }
 
                 increasesSoFar += 1;
