@@ -136,4 +136,14 @@ public class CustomerScript : MonoBehaviour
         _currentSlot = null;
         ChangeState(CustomerState.Idle);
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Water")
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
+    }
 }
