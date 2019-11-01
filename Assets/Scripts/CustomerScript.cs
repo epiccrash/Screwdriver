@@ -105,6 +105,7 @@ public class CustomerScript : MonoBehaviour
             {
                 int idx = UnityEngine.Random.Range(0, _orderableDrinks.Count);
                 _currentDrinkOrder = _orderableDrinks[idx];
+                GetComponent<NavMeshAgent>().enabled = false;
 
                 ChangeState(CustomerState.WaitingForDrink);
             }
