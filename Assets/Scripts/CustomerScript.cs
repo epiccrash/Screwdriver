@@ -97,8 +97,6 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-        Debug.Log("Arrvbied at slot");
-
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)

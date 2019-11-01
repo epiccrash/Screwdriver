@@ -29,8 +29,8 @@ public class ConeModify : MonoBehaviour
     private float midHeightIncrease;
     private float increasesSoFar;
 
-    public float maxAlpha=.8f;
-    public float alphaStep=.05f;
+    public float maxAlpha = .8f;
+    public float alphaStep = .05f;
 
     private Material scriptedMaterial;
 
@@ -55,7 +55,7 @@ public class ConeModify : MonoBehaviour
     private void Update()
     {
         rend.material.SetFloat("_Mode", 3);
-        print(Time.deltaTime);
+        //print(Time.deltaTime);
     }
 
     private void ModifyCone()
@@ -89,7 +89,7 @@ public class ConeModify : MonoBehaviour
             vertices[vert] = new Vector3(Mathf.Cos(rad) * bottomRadius, 0f, Mathf.Sin(rad) * bottomRadius);
             vert++;
         }
-        
+
         // Top cap
         vertices[vert++] = new Vector3(0f, height, 0f);
         while (vert <= nbSides * 2 + 1)
@@ -275,7 +275,7 @@ public class ConeModify : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
-           
+
         /*else
         {
             print(rend.material.color);
@@ -283,9 +283,11 @@ public class ConeModify : MonoBehaviour
         }*/
     }
 
-    public void MakeOpaque() {
+    public void MakeOpaque()
+    {
         Color oldColor = rend.material.color;
-        if (oldColor.a < maxAlpha) {
+        if (oldColor.a < maxAlpha)
+        {
             Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a + alphaStep);
             rend.material.color = newColor;
         }
