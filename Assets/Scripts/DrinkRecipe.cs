@@ -22,4 +22,17 @@ public class DrinkRecipe : ScriptableObject
 
     [Header("Recipe")]
     public List<IngredientUnit> recipe;
+
+    public IngredientUnit GetUnitFromIngredientType(IngredientType type)
+    {
+        foreach (IngredientUnit unit in this.recipe)
+        {
+            if (unit.ingredient == type)
+            {
+                return unit;
+            }
+        }
+
+        return null;
+    }
 }

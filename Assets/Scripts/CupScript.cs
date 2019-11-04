@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CupScript : MonoBehaviour
 {
-    private List<GameObject> _iceCubesInCup;
-    private IDictionary<IngredientType, int> _itemsInCup;
+    private List<GameObject> _solidIngredientsInCup;
+    private IDictionary<IngredientType, int> _ingredientsInCup;
+
+    private bool _hasBeenShaken;
 
     private void Start()
     {
-        _itemsInCup = new Dictionary<IngredientType, int>();
-        _iceCubesInCup = new List<GameObject>();
+        _ingredientsInCup = new Dictionary<IngredientType, int>();
+        _solidIngredientsInCup = new List<GameObject>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,10 +20,10 @@ public class CupScript : MonoBehaviour
         if (other.gameObject.CompareTag("IceCube"))
         {
             // We need to keep track of specific ice cubes, so we don't double count.
-            if (!_iceCubesInCup.Contains(other.gameObject))
+            if (!_solidIngredientsInCup.Contains(other.gameObject))
             {
                 AddOrIncreaseIngredient(IngredientType.Ice);
-                _iceCubesInCup.Add(other.gameObject);
+                _solidIngredientsInCup.Add(other.gameObject);
             }
         }
         else if (other.gameObject.CompareTag("Water"))
@@ -35,22 +37,39 @@ public class CupScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("IceCube"))
         {
-            _iceCubesInCup.Remove(other.gameObject);
-            _itemsInCup[IngredientType.Ice]--;
+            _solidIngredientsInCup.Remove(other.gameObject);
+            _ingredientsInCup[IngredientType.Ice]--;
         }
     }
 
     private void AddOrIncreaseIngredient(IngredientType ingredient)
     {
-        if (_itemsInCup.ContainsKey(ingredient))
+        if (_ingredientsInCup.ContainsKey(ingredient))
         {
-            _itemsInCup[ingredient]++;
+            _ingredientsInCup[ingredient]++;
         }
         else
         {
-            _itemsInCup.Add(ingredient, 1);
+            _ingredientsInCup.Add(ingredient, 1);
         }
 
-        print(ingredient + ": " + _itemsInCup[ingredient]);
+        print(ingredient + ": " + _ingredientsInCup[ingredient]);
+    }
+
+    public List<IngredientType> GetIngredientList()
+    {
+        return new List<IngredientType>(_ingredientsInCup.Keys);
+    }
+
+    public float GetIngredientCorrectness(IngredientType type, int amount)
+    {
+        if (!_ingredientsInCup.ContainsKey(type))
+        {
+            return 0;
+        }
+
+        float diff = amount - Mathf.Abs(amount - _ingredientsInCup[type]);
+
+        return diff / amount;
     }
 }

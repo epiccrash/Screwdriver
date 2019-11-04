@@ -15,6 +15,8 @@ public enum CustomerState
 [RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
+    private const float DrinkPerfectionPercentageEpsilon = 0.05f;
+
     [SerializeField]
     private TextMeshPro _drinkOrderText;
 
@@ -31,6 +33,17 @@ public class CustomerScript : MonoBehaviour
 
     [SerializeField]
     private float _maxTimeBetweenDrinks;
+
+    [Header("Tipping")]
+
+    [SerializeField]
+    private float _tipPerCorrectIngredient;
+
+    [SerializeField]
+    private float _tipBonusOnPerfect;
+
+    [SerializeField]
+    private float _tipPenaltyPerWrongIngredient;
 
     private CustomerSlot _currentSlot;
     private DrinkRecipe _currentDrinkOrder;
@@ -80,11 +93,15 @@ public class CustomerScript : MonoBehaviour
         switch (newState)
         {
             case CustomerState.Idle:
+                GetComponent<NavMeshAgent>().enabled = true;
+                GetComponent<Rigidbody>().isKinematic = true;
                 _drinkOrderText.enabled = false;
                 RandomizeDrinkTimer();
                 _movementController.StartRandomWanderBehavior();
                 break;
             case CustomerState.WaitingForDrink:
+                GetComponent<NavMeshAgent>().enabled = false;
+                GetComponent<Rigidbody>().isKinematic = false;
                 _drinkOrderText.text = _currentDrinkOrder.drinkName;
                 _drinkOrderText.enabled = true;
                 break;
@@ -103,7 +120,6 @@ public class CustomerScript : MonoBehaviour
             {
                 int idx = UnityEngine.Random.Range(0, _orderableDrinks.Count);
                 _currentDrinkOrder = _orderableDrinks[idx];
-                GetComponent<NavMeshAgent>().enabled = false;
 
                 ChangeState(CustomerState.WaitingForDrink);
             }
@@ -124,27 +140,78 @@ public class CustomerScript : MonoBehaviour
         ChangeState(CustomerState.WalkingToSlot);
     }
 
-    public void OnDrinkReceived(GameObject drink)
+    public void OnDrinkReceived(GameObject drinkObj)
     {
-        // Test if we got the right drink.
+        CupScript drink = drinkObj.GetComponentInChildren<CupScript>();
+
+        Dictionary<IngredientType, float> ingredientsAndCorrectness = new Dictionary<IngredientType, float>();
+
+        // Add all ingredients to the dictionary.
+        foreach (IngredientUnit unit in _currentDrinkOrder.recipe)
+        {
+            ingredientsAndCorrectness.Add(unit.ingredient, 0);
+        }
+
+        // Lets check everything in the cup and test how close it is to the drink we ordered.
+        float tip = 0;
+
+        foreach (IngredientType ingredientType in drink.GetIngredientList())
+        {
+            IngredientUnit unit = _currentDrinkOrder.GetUnitFromIngredientType(ingredientType);
+
+            // Check if the ingredient is in the recipe.
+            if (unit != null)
+            {
+                // Check amounts, add to the tip
+                if (unit.amountMatters)
+                {
+                    ingredientsAndCorrectness[ingredientType] = drink.GetIngredientCorrectness(ingredientType, unit.amount);
+                }
+                else
+                {
+                    ingredientsAndCorrectness[ingredientType] = 1;
+                }
+            }
+            else
+            {
+                // Subtract some amount from the tip
+                tip -= _tipPenaltyPerWrongIngredient;
+            }
+        }
+
+        // Now lets calculate the tip.
+        bool isPerfectDrink = true;
+
+        foreach (IngredientType ingredient in ingredientsAndCorrectness.Keys)
+        {
+            if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > DrinkPerfectionPercentageEpsilon)
+            {
+                tip += ingredientsAndCorrectness[ingredient] * _tipPerCorrectIngredient;
+                isPerfectDrink = false;
+            }
+            else
+            {
+                tip += _tipPerCorrectIngredient;
+            }
+        }
+
+        if (isPerfectDrink)
+        {
+            tip += _tipBonusOnPerfect;
+        }
+
+        tip = Mathf.Max(0, tip);
+        print("Tip: " + tip);
+
+        // Use the tip jar to add the tip.
 
         // Are we drunk?
-
-        // Give tips if we want.
+        _drunkThreshhold += _currentDrinkOrder.alcoholContent;
 
         // Go back to partying before our next drink.
         _currentSlot.Unlock();
         _currentSlot = null;
+
         ChangeState(CustomerState.Idle);
-    }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Water")
-        {
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<Rigidbody>().isKinematic = false;
-        }
     }
 }
