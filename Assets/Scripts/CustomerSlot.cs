@@ -19,7 +19,7 @@ public class CustomerSlot : MonoBehaviour
     {
         // Draw the sphere to indicate the stand location.
         Gizmos.color = Color.cyan;
-        Gizmos.DrawSphere(_standLocation.position, 0.5f);
+        Gizmos.DrawSphere(_standLocation.position, 0.1f);
     }
 
     private void Start()
