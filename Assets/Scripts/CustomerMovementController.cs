@@ -137,6 +137,10 @@ public class CustomerMovementController : MonoBehaviour
 
         RandomizeWanderWaitTimer();
         _currWanderTimer = 0;
-        _agent.destination = newWanderPos;
+
+        if (_agent != null)
+        {
+            _agent.destination = newWanderPos;
+        }
     }
 }

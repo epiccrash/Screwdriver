@@ -53,6 +53,9 @@ public class CustomerScript : MonoBehaviour
     private CustomerState _state;
 
     private CustomerMovementController _movementController;
+    private NavMeshAgent _agent;
+    private Rigidbody _rigidBody;
+    private BoxCollider _collider;
 
     private void Start()
     {
@@ -61,10 +64,13 @@ public class CustomerScript : MonoBehaviour
         _drinkOrderText.enabled = false;
 
         _movementController = GetComponent<CustomerMovementController>();
+        _agent = GetComponent<NavMeshAgent>();
+        _rigidBody = GetComponent<Rigidbody>();
 
         // Setting the state this time is a special case, so we'll do it without ChangeState().
-        RandomizeDrinkTimer();
-        _state = CustomerState.Idle;
+        //RandomizeDrinkTimer();
+        //_state = CustomerState.Idle;
+        ChangeState(CustomerState.Idle);
     }
 
     private void Update()
@@ -93,15 +99,15 @@ public class CustomerScript : MonoBehaviour
         switch (newState)
         {
             case CustomerState.Idle:
-                GetComponent<NavMeshAgent>().enabled = true;
-                GetComponent<Rigidbody>().isKinematic = true;
+                _agent.enabled = true;
+                _rigidBody.isKinematic = true;
                 _drinkOrderText.enabled = false;
                 RandomizeDrinkTimer();
                 _movementController.StartRandomWanderBehavior();
                 break;
             case CustomerState.WaitingForDrink:
-                GetComponent<NavMeshAgent>().enabled = false;
-                GetComponent<Rigidbody>().isKinematic = false;
+                _agent.enabled = false;
+                _rigidBody.isKinematic = false;
                 _drinkOrderText.text = _currentDrinkOrder.drinkName;
                 _drinkOrderText.enabled = true;
                 break;
