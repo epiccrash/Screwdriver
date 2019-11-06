@@ -11,6 +11,7 @@ TagManager:
   - CustomerSlot
   - Container
   - Fill
+  - Juiceable
   layers:
   - Default
   - TransparentFX
