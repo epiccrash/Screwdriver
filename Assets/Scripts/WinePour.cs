@@ -48,9 +48,11 @@ public class WinePour : MonoBehaviour
 
     public void StartPour() {
         pour = true;
+        GetComponent<AudioSource>().Play();
     }
 
     public void StopPour() {
         pour = false;
+        GetComponent<AudioSource>().Stop();
     }
 }
