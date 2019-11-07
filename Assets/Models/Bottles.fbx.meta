@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: 12fbbb6dcef984656b5b4123774ee9b0
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Absolut Vodka
+    100002: Absolut_Vodka
+    100004: Absolut_Vodka_Sprite
+    100006: Baileys
+    100008: Becherovka
+    100010: Beefeater
+    100012: Beefeater 1
+    100014: Beefeater_Sprite
+    100016: //RootNode
+    100018: Chivas
+    100020: Cointreau
+    100022: Crema_di_Limoncino
+    100024: Curacao
+    100026: Havana_Club
+    100028: Jack_Daniel's
+    100030: Jagermeister
+    100032: Jameson
+    100034: Kahlua
+    100036: Malibu
+    100038: Martel
+    100040: Molinari_Sambuka
+    100042: Molinari_Sambuka 1
+    100044: Molinari_Sambuka_Sprite
+    100046: Olmeca
+    100048: Pernod
+    100050: Ramazzotti
+    100052: Sortilege
+    400000: Absolut Vodka
+    400002: Absolut_Vodka
+    400004: Absolut_Vodka_Sprite
+    400006: Baileys
+    400008: Becherovka
+    400010: Beefeater
+    400012: Beefeater 1
+    400014: Beefeater_Sprite
+    400016: //RootNode
+    400018: Chivas
+    400020: Cointreau
+    400022: Crema_di_Limoncino
+    400024: Curacao
+    400026: Havana_Club
+    400028: Jack_Daniel's
+    400030: Jagermeister
+    400032: Jameson
+    400034: Kahlua
+    400036: Malibu
+    400038: Martel
+    400040: Molinari_Sambuka
+    400042: Molinari_Sambuka 1
+    400044: Molinari_Sambuka_Sprite
+    400046: Olmeca
+    400048: Pernod
+    400050: Ramazzotti
+    400052: Sortilege
+    2100000: Atlas
+    2100002: Sprites
+    2300000: Absolut_Vodka
+    2300002: Absolut_Vodka_Sprite
+    2300004: Baileys
+    2300006: Becherovka
+    2300008: Beefeater 1
+    2300010: Beefeater_Sprite
+    2300012: Chivas
+    2300014: Cointreau
+    2300016: Crema_di_Limoncino
+    2300018: Curacao
+    2300020: Havana_Club
+    2300022: Jack_Daniel's
+    2300024: Jagermeister
+    2300026: Jameson
+    2300028: Kahlua
+    2300030: Malibu
+    2300032: Martel
+    2300034: Molinari_Sambuka 1
+    2300036: Molinari_Sambuka_Sprite
+    2300038: Olmeca
+    2300040: Pernod
+    2300042: Ramazzotti
+    2300044: Sortilege
+    3300000: Absolut_Vodka
+    3300002: Absolut_Vodka_Sprite
+    3300004: Baileys
+    3300006: Becherovka
+    3300008: Beefeater 1
+    3300010: Beefeater_Sprite
+    3300012: Chivas
+    3300014: Cointreau
+    3300016: Crema_di_Limoncino
+    3300018: Curacao
+    3300020: Havana_Club
+    3300022: Jack_Daniel's
+    3300024: Jagermeister
+    3300026: Jameson
+    3300028: Kahlua
+    3300030: Malibu
+    3300032: Martel
+    3300034: Molinari_Sambuka 1
+    3300036: Molinari_Sambuka_Sprite
+    3300038: Olmeca
+    3300040: Pernod
+    3300042: Ramazzotti
+    3300044: Sortilege
+    4300000: Cointreau
+    4300002: Olmeca
+    4300004: Becherovka
+    4300006: Sortilege
+    4300008: Havana_Club
+    4300010: Kahlua
+    4300012: Molinari_Sambuka_Sprite
+    4300014: Molinari_Sambuka
+    4300016: Pernod
+    4300018: Chivas
+    4300020: Crema_di_Limoncino
+    4300022: Baileys
+    4300024: Absolut_Vodka_Sprite
+    4300026: Absolut_Vodka
+    4300028: Jagermeister
+    4300030: Martel
+    4300032: Malibu
+    4300034: Ramazzotti
+    4300036: Beefeater
+    4300038: Beefeater_Sprite
+    4300040: Jameson
+    4300042: Jack_Daniel's
+    4300044: Curacao
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
