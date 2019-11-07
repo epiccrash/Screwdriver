@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5962d9a2156e8c040841147e5c044155, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,7 +153,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 3313882704424056477}
   - component: {fileID: 3313882704424056478}
   - component: {fileID: 2033025672}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Soda Jet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100002, guid: 36ed72df9b6f5de45819a1f02a1f034b, type: 3}
+  - {fileID: 2100000, guid: 7ae7e0b84e2c1c247b4a4656788b4f74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
     type: 3}
   liquidPrefab2: {fileID: 1350462474774450189, guid: 7e8bcf82af98da94285f0efc848070e9,
     type: 3}
-  force: 1000000
+  force: 500
   deadZone: 0.5
 --- !u!114 &2033025672
 MonoBehaviour:
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 3313882706247800765}
   - component: {fileID: 3313882706247800766}
   - component: {fileID: 3313882706247800767}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
