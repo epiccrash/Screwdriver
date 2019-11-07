@@ -5,6 +5,7 @@ using UnityEngine;
 public class FillTray : MonoBehaviour
 {
     public GameObject IceCube;
+    public int fillNum = 150;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class FillTray : MonoBehaviour
         float x;
         float z;
         GameObject cube;
-        for (int i = 0; i<150; i++)
+        for (int i = 0; i<fillNum; i++)
         {
             x = Random.Range(xMin, xMax);
             z = Random.Range(zMin, zMax);
