@@ -16,6 +16,8 @@ public enum CustomerState
 public class CustomerScript : MonoBehaviour
 {
     private const float DrinkPerfectionPercentageEpsilon = 0.05f;
+    private const int FallTimerMax = 4;
+    private const int MinFallAngle = 5;
 
     [SerializeField]
     private TextMeshPro _drinkOrderText;
@@ -50,6 +52,9 @@ public class CustomerScript : MonoBehaviour
 
     private int _alchoholLevel;
     private float _timeUntilNextDrink;
+    private float _fallTimer;
+    private Quaternion _originalRotation;
+    private bool _isRestoringRotation;
     private CustomerState _state;
 
     private CustomerMovementController _movementController;
@@ -60,6 +65,7 @@ public class CustomerScript : MonoBehaviour
     private void Start()
     {
         _alchoholLevel = 0;
+        _originalRotation = transform.rotation;
 
         _drinkOrderText.enabled = false;
 
@@ -67,9 +73,6 @@ public class CustomerScript : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _rigidBody = GetComponent<Rigidbody>();
 
-        // Setting the state this time is a special case, so we'll do it without ChangeState().
-        //RandomizeDrinkTimer();
-        //_state = CustomerState.Idle;
         ChangeState(CustomerState.Idle);
     }
 
@@ -87,6 +90,21 @@ public class CustomerScript : MonoBehaviour
                 BarManager.Instance.EnterCustomerQueue(this);
             }
         }
+        else if (_state == CustomerState.WaitingForDrink)
+        {
+            if (Mathf.Abs(transform.rotation.eulerAngles.x) >= MinFallAngle)
+            {
+                if (_fallTimer <= 0)
+                {
+                    ChangeState(CustomerState.Idle);
+                }
+                else
+                {
+                    _drinkOrderText.enabled = false;
+                    _fallTimer -= Time.deltaTime;
+                }
+            }
+        }
     }
 
     private void RandomizeDrinkTimer()
@@ -102,6 +120,8 @@ public class CustomerScript : MonoBehaviour
                 _agent.enabled = true;
                 _rigidBody.isKinematic = true;
                 _drinkOrderText.enabled = false;
+                _currentSlot?.Unlock();
+                _currentSlot = null;
                 RandomizeDrinkTimer();
                 _movementController.StartRandomWanderBehavior();
                 break;
@@ -110,6 +130,7 @@ public class CustomerScript : MonoBehaviour
                 _rigidBody.isKinematic = false;
                 _drinkOrderText.text = _currentDrinkOrder.drinkName;
                 _drinkOrderText.enabled = true;
+                _fallTimer = FallTimerMax;
                 break;
             default:
                 break;
@@ -215,9 +236,6 @@ public class CustomerScript : MonoBehaviour
         _drunkThreshhold += _currentDrinkOrder.alcoholContent;
 
         // Go back to partying before our next drink.
-        _currentSlot.Unlock();
-        _currentSlot = null;
-
         ChangeState(CustomerState.Idle);
     }
 }
