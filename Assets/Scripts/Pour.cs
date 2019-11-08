@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pour : MonoBehaviour
 {
     private GameObject spout;
+    private AudioSource pouringSource;
 
     public GameObject water;
     public int force;
@@ -12,6 +13,7 @@ public class Pour : MonoBehaviour
     void Start()
     {
         spout = transform.GetChild(0).gameObject;
+        pouringSource = GetComponent<AudioSource>();
         StartCoroutine(pour());
     }
 
@@ -31,6 +33,10 @@ public class Pour : MonoBehaviour
                 GameObject newDrop = Instantiate(water);
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
+                AudioManager.S.PlaySound(pouringSource);
+            } else
+            {
+                AudioManager.S.StopSound(pouringSource);
             }
 
             yield return new WaitForSeconds(0.005f);

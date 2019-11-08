@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 139178463292726899}
   margaritaville: {fileID: 139178463919069518}
+  margaritavilleLoop: {fileID: 4258540069753896331}
 --- !u!1 &7207955336567163419
 GameObject:
   m_ObjectHideFlags: 0

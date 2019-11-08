@@ -61,4 +61,12 @@ public class AudioManager : MonoBehaviour
             aSource.Play();
         }
     }
+
+    public void StopSound(AudioSource aSource)
+    {
+        if (aSource.isPlaying)
+        {
+            aSource.Stop();
+        }
+    }
 }
