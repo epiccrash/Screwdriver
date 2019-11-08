@@ -327,6 +327,10 @@ MonoBehaviour:
   _drunkThreshhold: 0
   _minTimeBetweenDrinks: 1
   _maxTimeBetweenDrinks: 10
+  _tipJar: {fileID: 3621427098404109874, guid: 8fac7d623b4fc4c028e9eb173272b879, type: 3}
+  _tipPerCorrectIngredient: 0
+  _tipBonusOnPerfect: 0
+  _tipPenaltyPerWrongIngredient: 0
 --- !u!23 &8862747841128798171
 MeshRenderer:
   m_ObjectHideFlags: 0

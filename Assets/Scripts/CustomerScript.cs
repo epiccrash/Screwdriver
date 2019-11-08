@@ -37,6 +37,9 @@ public class CustomerScript : MonoBehaviour
     [Header("Tipping")]
 
     [SerializeField]
+    private GameObject _tipJar;
+
+    [SerializeField]
     private float _tipPerCorrectIngredient;
 
     [SerializeField]
@@ -120,6 +123,7 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
+        _tipJar.GetComponentInChildren<TipScript>().AddTip(0.99f);
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
@@ -208,7 +212,7 @@ public class CustomerScript : MonoBehaviour
 
         tip = Mathf.Max(0, tip);
         print("Tip: " + tip);
-
+        _tipJar.GetComponentInChildren<TipScript>().AddTip(tip);
         // Use the tip jar to add the tip.
 
         // Are we drunk?
