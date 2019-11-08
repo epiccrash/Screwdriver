@@ -27,9 +27,11 @@ public class Pour : MonoBehaviour
         while (true) {
             Vector3 direction = spout.transform.position - transform.position;
             direction.Normalize();
-
+            Debug.Log("the spout is at "+ spout.transform.position.y);
+            Debug.Log("the bottle is at " + transform.position.y);
             if (spout.transform.position.y < transform.position.y)
             {
+                Debug.Log("im pouring");
                 GameObject newDrop = Instantiate(water);
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);

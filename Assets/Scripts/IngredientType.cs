@@ -13,6 +13,7 @@ public enum IngredientType
     Gin,
     Rum,
     WhiteWine,
+    Curacao,
 
     ////////////////////////////////////////
     // Mixers
