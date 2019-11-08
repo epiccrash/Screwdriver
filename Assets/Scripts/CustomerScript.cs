@@ -15,7 +15,7 @@ public enum CustomerState
 [RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
-    private const float DrinkPerfectionPercentageEpsilon = 0.3f;
+    private const float DrinkPerfectionPercentageEpsilon = 0.35f;
     private const int FallTimerMax = 4;
     private const int MinFallAngle = 5;
 
@@ -151,7 +151,6 @@ public class CustomerScript : MonoBehaviour
             result += line;
         }
 
-        print(result);
         return result;
     }
 
