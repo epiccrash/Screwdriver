@@ -39,6 +39,8 @@ public class CupScript : MonoBehaviour
         {
             _solidIngredientsInCup.Remove(other.gameObject);
             _ingredientsInCup[IngredientType.Ice]--;
+
+            print("Ice: " + _ingredientsInCup[IngredientType.Ice]);
         }
     }
 

@@ -8,6 +8,7 @@ public class IngredientUnit
     public IngredientType ingredient;
     public bool amountMatters;
     public int amount;
+    public string amountDescription;
 }
 
 [CreateAssetMenu]

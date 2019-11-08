@@ -10,21 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f310fffd8f6d84da3ab4493edcf7136c, type: 3}
-  m_Name: Mojito
+  m_Name: Wine Spritzer
   m_EditorClassIdentifier: 
-  drinkName: Mojito
-  alcoholContent: 2
+  drinkName: Wine Spritzer
+  alcoholContent: 3
   needsShaker: 0
   recipe:
-  - ingredient: 8
-    amountMatters: 0
-    amount: 0
-  - ingredient: 1
-    amountMatters: 1
-    amount: 2
   - ingredient: 5
     amountMatters: 1
-    amount: 16
-  - ingredient: 7
-    amountMatters: 0
-    amount: 0
+    amount: 600
+    amountDescription: 3/4 Cup
+  - ingredient: 8
+    amountMatters: 1
+    amount: 200
+    amountDescription: 1/4 Cup

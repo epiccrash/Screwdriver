@@ -63,7 +63,7 @@ public class CustomerMovementController : MonoBehaviour
 
                 // Have we spent too long trying to wander to our current position?
                 // If yes, we might be stuck and should pick another.
-                if (_currWanderTimer > _maxWanderPosWaitTime)
+                if (_currWanderTimer > MaxTimeToWanderPos)
                 {
                     MoveToRandomWanderPosition();
                 }
@@ -105,7 +105,7 @@ public class CustomerMovementController : MonoBehaviour
 
     private void RandomizeWanderWaitTimer()
     {
-        _wanderPauseTimer = UnityEngine.Random.Range(_minWanderPosWaitTime, _maxWanderPosWaitTime);
+        _wanderPauseTimer = Random.Range(_minWanderPosWaitTime, _maxWanderPosWaitTime);
     }
 
     public void StartRandomWanderBehavior()
