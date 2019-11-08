@@ -72,6 +72,6 @@ public class CupScript : MonoBehaviour
 
         float diff = amount - Mathf.Abs(amount - _ingredientsInCup[type]);
 
-        return diff / amount;
+        return Mathf.Max(0, diff / amount);
     }
 }
