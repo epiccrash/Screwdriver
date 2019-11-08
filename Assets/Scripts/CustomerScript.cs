@@ -62,6 +62,16 @@ public class CustomerScript : MonoBehaviour
     private Rigidbody _rigidBody;
     private BoxCollider _collider;
 
+    [Header("Sound Making")]
+    [SerializeField] private int frequency;
+    [SerializeField] private int soundUpperBound = 2500;
+    private AudioSource noise;
+
+    private void Awake()
+    {
+        noise = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         _alchoholLevel = 0;
@@ -92,6 +102,8 @@ public class CustomerScript : MonoBehaviour
         }
         else if (_state == CustomerState.WaitingForDrink)
         {
+            AudioManager.S.PlaySound(noise, frequency, soundUpperBound);
+
             if (Mathf.Abs(transform.rotation.eulerAngles.x) >= MinFallAngle)
             {
                 if (_fallTimer <= 0)
@@ -154,6 +166,12 @@ public class CustomerScript : MonoBehaviour
             {
                 // We can't order any drinks!
                 ChangeState(CustomerState.Idle);
+            }
+
+            if (_state == CustomerState.WaitingForDrink)
+            {
+                // Play customer grunt
+                AudioManager.S.PlaySound(noise);
             }
         }
     }
