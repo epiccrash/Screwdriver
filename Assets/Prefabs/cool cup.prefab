@@ -750,9 +750,9 @@ MonoBehaviour:
   attachmentFlags: 44
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
-  releaseVelocityStyle: 2
+  releaseVelocityStyle: 3
   releaseVelocityTimeOffset: -0.011
-  scaleReleaseVelocity: 1.1
+  scaleReleaseVelocity: 1.5
   scaleReleaseVelocityThreshold: -1
   scaleReleaseVelocityCurve:
     serializedVersion: 2
