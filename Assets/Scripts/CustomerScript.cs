@@ -17,7 +17,7 @@ public class CustomerScript : MonoBehaviour
 {
     private const float DrinkPerfectionPercentageEpsilon = 0.35f;
     private const int FallTimerMax = 4;
-    private const int MinFallAngle = 5;
+    private const int MinFallAngle = 15;
 
     [SerializeField]
     private TextMeshPro _drinkNameText;
@@ -108,7 +108,7 @@ public class CustomerScript : MonoBehaviour
         {
             AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
 
-            if (Mathf.Abs(transform.rotation.eulerAngles.x) >= MinFallAngle)
+            if (Vector3.Angle(transform.up,Vector3.up) >= MinFallAngle)
             {
                 if (_fallTimer <= 0)
                 {
@@ -285,6 +285,8 @@ public class CustomerScript : MonoBehaviour
             tip += _tipBonusOnPerfect;
         }
 
+
+        Destroy(drinkObj);
         tip = Mathf.Max(0, tip);
         print("Tip: " + tip);
         _tipJar.GetComponentInChildren<TipScript>().AddTip(tip);
