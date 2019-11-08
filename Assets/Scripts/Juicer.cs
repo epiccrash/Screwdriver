@@ -17,6 +17,8 @@ public class Juicer : MonoBehaviour
 
     private float SaveAngle;
 
+    private AudioSource juiceSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class Juicer : MonoBehaviour
     {
         if (other.tag == "Juiceable") {
             if (juiceableObject!=null) {
+                AudioManager.S.PlaySound(juiceSound);
                 Destroy(juiceableObject);
             }
             juiceableObject = other.gameObject;

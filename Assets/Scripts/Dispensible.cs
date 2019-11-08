@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dispensible : MonoBehaviour
 {
+
     private bool dispensed=false;
     // Start is called before the first frame update
     void Start()
@@ -16,10 +17,13 @@ public class Dispensible : MonoBehaviour
     {
         if (dispensed)
         {
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            // Commented this out just for testing
+            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
-        else {
-             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        else
+        {
+            // Commented this out just for testing
+            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 

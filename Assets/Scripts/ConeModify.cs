@@ -274,6 +274,14 @@ public class ConeModify : MonoBehaviour
                 ModifyCone();
             }
             Destroy(other.gameObject);
+        } else if (other == null)
+        {
+            if (increasesSoFar > 0)
+            {
+                // Hardcoded values
+                increasesSoFar = increasesSoFar > 9 ? increasesSoFar - 10: increasesSoFar = 0;
+                ModifyCone();
+            }
         }
 
         /*else
