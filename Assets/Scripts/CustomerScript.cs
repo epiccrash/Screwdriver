@@ -192,7 +192,7 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-        _tipJar.GetComponentInChildren<TipScript>().AddTip(0.99f);
+       
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
