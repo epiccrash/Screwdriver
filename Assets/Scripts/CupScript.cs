@@ -63,6 +63,11 @@ public class CupScript : MonoBehaviour
         return new List<IngredientType>(_ingredientsInCup.Keys);
     }
 
+    public bool IsEmpty()
+    {
+        return _ingredientsInCup.Keys.Count == 0;
+    }
+
     public float GetIngredientCorrectness(IngredientType type, int amount)
     {
         if (!_ingredientsInCup.ContainsKey(type))

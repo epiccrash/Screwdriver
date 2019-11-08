@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TipScript : MonoBehaviour
+[Singleton(SingletonAttribute.Type.ExistsInScene)]
+public class TipScript : Singleton<TipScript>
 {
     public GameObject coin;
     public GameObject bill;
@@ -17,10 +18,10 @@ public class TipScript : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // For the singleton stuff to work.
+    public override void Initialize()
     {
-        
+        return;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +30,7 @@ public class TipScript : MonoBehaviour
         {
             source.Play();
         }
-        
+
     }
 
     public void AddTip(float tip)

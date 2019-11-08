@@ -42,9 +42,6 @@ public class CustomerScript : MonoBehaviour
     [Header("Tipping")]
 
     [SerializeField]
-    private GameObject _tipJar;
-
-    [SerializeField]
     private float _tipPerCorrectIngredient;
 
     [SerializeField]
@@ -108,7 +105,7 @@ public class CustomerScript : MonoBehaviour
         {
             AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
 
-            if (Vector3.Angle(transform.up,Vector3.up) >= MinFallAngle)
+            if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle)
             {
                 if (_fallTimer <= 0)
                 {
@@ -192,7 +189,7 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-       
+
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
@@ -285,12 +282,14 @@ public class CustomerScript : MonoBehaviour
             tip += _tipBonusOnPerfect;
         }
 
-
+        // Destroy the drink.
         Destroy(drinkObj);
+
         tip = Mathf.Max(0, tip);
         print("Tip: " + tip);
-        _tipJar.GetComponentInChildren<TipScript>().AddTip(tip);
+
         // Use the tip jar to add the tip.
+        TipScript.Instance.AddTip(tip);
 
         // Are we drunk?
         _drunkThreshhold += _currentDrinkOrder.alcoholContent;
