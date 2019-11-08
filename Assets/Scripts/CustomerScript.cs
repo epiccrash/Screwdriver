@@ -15,10 +15,15 @@ public enum CustomerState
 [RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
-    private const float DrinkPerfectionPercentageEpsilon = 0.05f;
+    private const float DrinkPerfectionPercentageEpsilon = 0.35f;
+    private const int FallTimerMax = 4;
+    private const int MinFallAngle = 5;
 
     [SerializeField]
-    private TextMeshPro _drinkOrderText;
+    private TextMeshPro _drinkNameText;
+
+    [SerializeField]
+    private TextMeshPro _drinkRecipeText;
 
     [SerializeField]
     private List<DrinkRecipe> _orderableDrinks;
@@ -53,6 +58,7 @@ public class CustomerScript : MonoBehaviour
 
     private int _alchoholLevel;
     private float _timeUntilNextDrink;
+    private float _fallTimer;
     private CustomerState _state;
 
     private CustomerMovementController _movementController;
@@ -60,19 +66,27 @@ public class CustomerScript : MonoBehaviour
     private Rigidbody _rigidBody;
     private BoxCollider _collider;
 
+    [Header("Sound Making")]
+    [SerializeField] private int frequency;
+    [SerializeField] private int soundUpperBound = 2500;
+    private AudioSource noise;
+
+    private void Awake()
+    {
+        noise = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         _alchoholLevel = 0;
 
-        _drinkOrderText.enabled = false;
+        _drinkNameText.enabled = false;
+        _drinkRecipeText.enabled = false;
 
         _movementController = GetComponent<CustomerMovementController>();
         _agent = GetComponent<NavMeshAgent>();
         _rigidBody = GetComponent<Rigidbody>();
 
-        // Setting the state this time is a special case, so we'll do it without ChangeState().
-        //RandomizeDrinkTimer();
-        //_state = CustomerState.Idle;
         ChangeState(CustomerState.Idle);
     }
 
@@ -90,11 +104,57 @@ public class CustomerScript : MonoBehaviour
                 BarManager.Instance.EnterCustomerQueue(this);
             }
         }
+        else if (_state == CustomerState.WaitingForDrink)
+        {
+            AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
+
+            if (Mathf.Abs(transform.rotation.eulerAngles.x) >= MinFallAngle)
+            {
+                if (_fallTimer <= 0)
+                {
+                    ChangeState(CustomerState.Idle);
+                }
+                else
+                {
+                    _drinkNameText.enabled = false;
+                    _drinkRecipeText.enabled = false;
+                    _fallTimer -= Time.deltaTime;
+                }
+            }
+        }
     }
 
     private void RandomizeDrinkTimer()
     {
         _timeUntilNextDrink = UnityEngine.Random.Range(_minTimeBetweenDrinks, _maxTimeBetweenDrinks);
+    }
+
+    private string GenerateRecipeString()
+    {
+        List<string> recipeLines = new List<string>();
+
+        foreach (IngredientUnit unit in _currentDrinkOrder.recipe)
+        {
+            string line = unit.ingredient.ToString();
+
+            if (unit.amountMatters)
+            {
+                line += " (" + unit.amountDescription + ")";
+            }
+
+            line += "\n";
+
+            recipeLines.Add(line);
+        }
+
+        string result = "";
+
+        foreach (string line in recipeLines)
+        {
+            result += line;
+        }
+
+        return result;
     }
 
     private void ChangeState(CustomerState newState)
@@ -104,15 +164,24 @@ public class CustomerScript : MonoBehaviour
             case CustomerState.Idle:
                 _agent.enabled = true;
                 _rigidBody.isKinematic = true;
-                _drinkOrderText.enabled = false;
+                _drinkNameText.enabled = false;
+                _drinkRecipeText.enabled = false;
+                _currentSlot?.Unlock();
+                _currentSlot = null;
                 RandomizeDrinkTimer();
                 _movementController.StartRandomWanderBehavior();
                 break;
             case CustomerState.WaitingForDrink:
                 _agent.enabled = false;
                 _rigidBody.isKinematic = false;
-                _drinkOrderText.text = _currentDrinkOrder.drinkName;
-                _drinkOrderText.enabled = true;
+
+                _drinkNameText.text = _currentDrinkOrder.drinkName;
+                _drinkNameText.enabled = true;
+
+                _drinkRecipeText.text = GenerateRecipeString();
+                _drinkRecipeText.enabled = true;
+
+                _fallTimer = FallTimerMax;
                 break;
             default:
                 break;
@@ -137,6 +206,12 @@ public class CustomerScript : MonoBehaviour
             {
                 // We can't order any drinks!
                 ChangeState(CustomerState.Idle);
+            }
+
+            if (_state == CustomerState.WaitingForDrink)
+            {
+                // Play customer grunt
+                AudioManager.S?.PlaySound(noise);
             }
         }
     }
@@ -219,9 +294,6 @@ public class CustomerScript : MonoBehaviour
         _drunkThreshhold += _currentDrinkOrder.alcoholContent;
 
         // Go back to partying before our next drink.
-        _currentSlot.Unlock();
-        _currentSlot = null;
-
         ChangeState(CustomerState.Idle);
     }
 }

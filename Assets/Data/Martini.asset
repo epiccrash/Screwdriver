@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Martini
   m_EditorClassIdentifier: 
   drinkName: Martini
-  alcoholContent: 3
-  needsShaker: 1
+  alcoholContent: 4
+  needsShaker: 0
   recipe:
-  - ingredient: 0
+  - ingredient: 5
     amountMatters: 1
-    amount: 3
-  - ingredient: 6
+    amount: 200
+    amountDescription: 1/4 Cup
+  - ingredient: 3
     amountMatters: 1
-    amount: 1
+    amount: 600
+    amountDescription: 3/4 Cup
