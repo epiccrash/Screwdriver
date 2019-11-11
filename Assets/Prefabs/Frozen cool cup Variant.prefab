@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &431269516332052582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119253374465454757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1515ef8e74238a34fb46a7c8735521f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8371797757764189424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 5549594360450223701, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8,
         type: 3}
       propertyPath: m_Name
-      value: Frozen cool cup
+      value: Frozen cool cup Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5549594360450223698, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8,
         type: 3}
@@ -74,3 +86,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8, type: 3}
+--- !u!1 &4119253374465454757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5549594360450223701, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8371797757764189424}
+  m_PrefabAsset: {fileID: 0}

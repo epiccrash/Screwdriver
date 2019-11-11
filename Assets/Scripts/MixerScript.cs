@@ -47,10 +47,21 @@ public class MixerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "IceCube") {
-            other.transform.parent = this.gameObject.transform;
+            if (other.transform.parent == null)
+                other.transform.parent = this.gameObject.transform;
+            else
+                other.transform.parent = null;
             // other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
             // other.gameObject.GetComponent<Interactable>().enabled = false;
         }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "IceCube")
+        {
+            if (other.transform.parent == this.gameObject.transform)
+                other.transform.parent = null;
+        }
+    }
 }

@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 5549594360450223697}
   - component: {fileID: 5549594360450223696}
   - component: {fileID: 5549594360450223703}
+  - component: {fileID: 6447616473387674829}
   - component: {fileID: 5549594360450223702}
   - component: {fileID: 8246900721815349135}
   - component: {fileID: 442038939684714563}
@@ -735,6 +736,18 @@ MonoBehaviour:
   handFollowTransform: 1
   highlightOnHover: 1
   hideHighlight: []
+--- !u!114 &6447616473387674829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549594360450223701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1515ef8e74238a34fb46a7c8735521f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5549594360450223702
 MonoBehaviour:
   m_ObjectHideFlags: 0
