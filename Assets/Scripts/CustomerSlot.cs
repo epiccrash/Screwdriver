@@ -18,8 +18,14 @@ public class CustomerSlot : MonoBehaviour
     private void OnDrawGizmos()
     {
         // Draw the sphere to indicate the stand location.
-        Gizmos.color = Color.cyan;
+        Gizmos.color = new Color(0, 0.5f, 0.5f, 0.8f);
         Gizmos.DrawSphere(_standLocation.position, 0.1f);
+
+        if (Application.IsPlaying(this))
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawLine(_standLocation.transform.position, _standLocation.transform.forward);
+        }
     }
 
     private void Start()
