@@ -53,7 +53,7 @@ public class CustomerScript : MonoBehaviour
     private CustomerSlot _currentSlot;
     private DrinkRecipe _currentDrinkOrder;
 
-    private int _alchoholLevel;
+    private int _alcoholLevel;
     private float _timeUntilNextDrink;
     private float _fallTimer;
     private CustomerState _state;
@@ -75,7 +75,7 @@ public class CustomerScript : MonoBehaviour
 
     private void Start()
     {
-        _alchoholLevel = 0;
+        _alcoholLevel = 0;
 
         _drinkNameText.enabled = false;
         _drinkRecipeText.enabled = false;
@@ -83,6 +83,9 @@ public class CustomerScript : MonoBehaviour
         _movementController = GetComponent<CustomerMovementController>();
         _agent = GetComponent<NavMeshAgent>();
         _rigidBody = GetComponent<Rigidbody>();
+
+        // We're really good at avoiding things! Unless we're drunk.
+        _agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
 
         ChangeState(CustomerState.Idle);
     }
@@ -292,7 +295,13 @@ public class CustomerScript : MonoBehaviour
         TipScript.Instance.AddTip(tip);
 
         // Are we drunk?
-        _drunkThreshhold += _currentDrinkOrder.alcoholContent;
+        _alcoholLevel += _currentDrinkOrder.alcoholContent;
+
+        if (_alcoholLevel >= _drunkThreshhold)
+        {
+            // If we're drunk, we won't be as good at avoiding obstacles.
+            _agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+        }
 
         // Go back to partying before our next drink.
         ChangeState(CustomerState.Idle);
