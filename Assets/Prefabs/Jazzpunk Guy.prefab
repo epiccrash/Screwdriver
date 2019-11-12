@@ -56,7 +56,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7541570429980577571, guid: 467f4ed11bd54b04ca3d3cfa20bce019, type: 2}
+  - {fileID: -1479691420819309722, guid: 1d0eefd11dde54a08a33876d6f02e12d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Hello!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 467f4ed11bd54b04ca3d3cfa20bce019, type: 2}
-  m_sharedMaterial: {fileID: 7541570429980577571, guid: 467f4ed11bd54b04ca3d3cfa20bce019,
+  m_fontAsset: {fileID: 11400000, guid: 1d0eefd11dde54a08a33876d6f02e12d, type: 2}
+  m_sharedMaterial: {fileID: -1479691420819309722, guid: 1d0eefd11dde54a08a33876d6f02e12d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -332,7 +332,6 @@ MonoBehaviour:
   _drunkThreshhold: 0
   _minTimeBetweenDrinks: 1
   _maxTimeBetweenDrinks: 10
-  _tipJar: {fileID: 0}
   _tipPerCorrectIngredient: 0.75
   _tipBonusOnPerfect: 1
   _tipPenaltyPerWrongIngredient: 0.25
@@ -621,7 +620,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7541570429980577571, guid: 467f4ed11bd54b04ca3d3cfa20bce019, type: 2}
+  - {fileID: -1479691420819309722, guid: 1d0eefd11dde54a08a33876d6f02e12d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -686,8 +685,8 @@ MonoBehaviour:
 
     Drink Ingredient'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 467f4ed11bd54b04ca3d3cfa20bce019, type: 2}
-  m_sharedMaterial: {fileID: 7541570429980577571, guid: 467f4ed11bd54b04ca3d3cfa20bce019,
+  m_fontAsset: {fileID: 11400000, guid: 1d0eefd11dde54a08a33876d6f02e12d, type: 2}
+  m_sharedMaterial: {fileID: -1479691420819309722, guid: 1d0eefd11dde54a08a33876d6f02e12d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
