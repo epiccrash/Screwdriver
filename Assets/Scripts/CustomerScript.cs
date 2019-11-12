@@ -29,7 +29,7 @@ public class CustomerScript : MonoBehaviour
     private List<DrinkRecipe> _orderableDrinks;
 
     [SerializeField]
-    private int _drunkThreshhold;
+    private float _drunkThreshhold;
 
     [Header("Drink Order Timing")]
 
@@ -53,7 +53,7 @@ public class CustomerScript : MonoBehaviour
     private CustomerSlot _currentSlot;
     private DrinkRecipe _currentDrinkOrder;
 
-    private int _alcoholLevel;
+    private float _alcoholLevel;
     private float _timeUntilNextDrink;
     private float _fallTimer;
     private CustomerState _state;
@@ -295,7 +295,8 @@ public class CustomerScript : MonoBehaviour
         TipScript.Instance.AddTip(tip);
 
         // Are we drunk?
-        _alcoholLevel += _currentDrinkOrder.alcoholContent;
+        //_alcoholLevel += _currentDrinkOrder.alcoholContent;
+        _alcoholLevel += drink.GetABV();
 
         if (_alcoholLevel >= _drunkThreshhold)
         {

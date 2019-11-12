@@ -4,27 +4,31 @@ using UnityEngine;
 
 public enum IngredientType
 {
+    // Value of enum is the percent alcohol of the drink
+    // VALUES >100: Non-Alcoholic
+    // VALUES <100: Alcoholic
+
     ////////////////////////////////////////
     // Liquor
     ////////////////////////////////////////
-    Vodka,
-    Tequila,
-    TripleSec,
-    Gin,
-    Rum,
-    WhiteWine,
-    Curacao,
+    Vodka = 40,
+    Tequila = 40, 
+    TripleSec = 30,
+    Gin = 40,
+    Rum = 50,
+    WhiteWine = 10,
+    Curacao = 40,
 
     ////////////////////////////////////////
     // Mixers
     ////////////////////////////////////////
-    Cola,
-    OrangeJuice,
-    ClubSoda,
+    Cola = 101,
+    OrangeJuice = 102,
+    ClubSoda = 103,
 
     ////////////////////////////////////////
     // Garnishes/Other
     ////////////////////////////////////////
-    Ice,
-    OrangeWedge
+    Ice = 104,
+    OrangeWedge = 105
 }

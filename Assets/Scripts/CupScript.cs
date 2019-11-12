@@ -6,6 +6,7 @@ public class CupScript : MonoBehaviour
 {
     private List<GameObject> _solidIngredientsInCup;
     private IDictionary<IngredientType, int> _ingredientsInCup;
+    private float _alcoholByVolume;
 
     private bool _hasBeenShaken;
 
@@ -55,12 +56,25 @@ public class CupScript : MonoBehaviour
             _ingredientsInCup.Add(ingredient, 1);
         }
 
+        int enumVal = (int)ingredient; // Calculating alcohol content of the drink
+        if (enumVal < 100)
+        {
+            _alcoholByVolume += ((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
+        }
+        print("Alcohol by Volume: " + _alcoholByVolume);
+        
+
         print(ingredient + ": " + _ingredientsInCup[ingredient]);
     }
 
     public List<IngredientType> GetIngredientList()
     {
         return new List<IngredientType>(_ingredientsInCup.Keys);
+    }
+
+    public float GetABV()
+    {
+        return _alcoholByVolume;
     }
 
     public bool IsEmpty()
