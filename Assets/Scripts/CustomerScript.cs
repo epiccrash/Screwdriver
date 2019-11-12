@@ -15,9 +15,8 @@ public enum CustomerState
 [RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
-    private const float DrinkPerfectionPercentageEpsilon = 0.35f;
-    private const int FallTimerMax = 4;
-    private const int MinFallAngle = 5;
+    private const int FallTimerMax = 3;
+    private const int MinFallAngle = 10;
 
     [SerializeField]
     private TextMeshPro _drinkNameText;
@@ -42,9 +41,6 @@ public class CustomerScript : MonoBehaviour
     [Header("Tipping")]
 
     [SerializeField]
-    private GameObject _tipJar;
-
-    [SerializeField]
     private float _tipPerCorrectIngredient;
 
     [SerializeField]
@@ -56,7 +52,7 @@ public class CustomerScript : MonoBehaviour
     private CustomerSlot _currentSlot;
     private DrinkRecipe _currentDrinkOrder;
 
-    private int _alchoholLevel;
+    private int _alcoholLevel;
     private float _timeUntilNextDrink;
     private float _fallTimer;
     private CustomerState _state;
@@ -78,7 +74,7 @@ public class CustomerScript : MonoBehaviour
 
     private void Start()
     {
-        _alchoholLevel = 0;
+        _alcoholLevel = 0;
 
         _drinkNameText.enabled = false;
         _drinkRecipeText.enabled = false;
@@ -86,6 +82,9 @@ public class CustomerScript : MonoBehaviour
         _movementController = GetComponent<CustomerMovementController>();
         _agent = GetComponent<NavMeshAgent>();
         _rigidBody = GetComponent<Rigidbody>();
+
+        // We're really good at avoiding things! Unless we're drunk.
+        _agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
 
         ChangeState(CustomerState.Idle);
     }
@@ -108,7 +107,7 @@ public class CustomerScript : MonoBehaviour
         {
             AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
 
-            if (Mathf.Abs(transform.rotation.eulerAngles.x) >= MinFallAngle)
+            if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle)
             {
                 if (_fallTimer <= 0)
                 {
@@ -192,7 +191,7 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-        _tipJar.GetComponentInChildren<TipScript>().AddTip(0.99f);
+        // _tipJar.GetComponentInChildren<TipScript>().AddTip(0.99f);
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
@@ -269,7 +268,7 @@ public class CustomerScript : MonoBehaviour
 
         foreach (IngredientType ingredient in ingredientsAndCorrectness.Keys)
         {
-            if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > DrinkPerfectionPercentageEpsilon)
+            if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > GameConstants.DrinkPerfectionPercentageEpsilon)
             {
                 tip += ingredientsAndCorrectness[ingredient] * _tipPerCorrectIngredient;
                 isPerfectDrink = false;
@@ -285,13 +284,23 @@ public class CustomerScript : MonoBehaviour
             tip += _tipBonusOnPerfect;
         }
 
+        // Destroy the drink.
+        Destroy(drinkObj);
+
         tip = Mathf.Max(0, tip);
         print("Tip: " + tip);
-        _tipJar.GetComponentInChildren<TipScript>().AddTip(tip);
+
         // Use the tip jar to add the tip.
+        TipScript.Instance.AddTip(tip);
 
         // Are we drunk?
-        _drunkThreshhold += _currentDrinkOrder.alcoholContent;
+        _alcoholLevel += _currentDrinkOrder.alcoholContent;
+
+        if (_alcoholLevel >= _drunkThreshhold)
+        {
+            // If we're drunk, we won't be as good at avoiding obstacles.
+            _agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+        }
 
         // Go back to partying before our next drink.
         ChangeState(CustomerState.Idle);

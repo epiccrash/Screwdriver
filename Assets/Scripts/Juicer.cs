@@ -23,8 +23,8 @@ public class Juicer : MonoBehaviour
     void Start()
     {
         SaveAngle = handle.outAngle;
-        
 
+        juiceSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,20 +35,24 @@ public class Juicer : MonoBehaviour
             newDrop.transform.position = spout.transform.position;
             SaveAngle -= 90 / juiceableObject.GetComponent<Juiceable>().jucieUnits;
             juiceLeft--;
+            AudioManager.S.PlaySound(juiceSound);
         }
         
         float scaleMove = ((handle.outAngle / -90) *.84f);
         
 
         squisher.transform.localScale = new Vector3(squisher.transform.localScale.x,.16f+scaleMove, squisher.transform.localScale.z);
-        
-        
 
+
+        Debug.Log(juiceLeft);
         
-        if (juiceLeft == 0) {
+        if (juiceLeft <= 0) {
             full = false;
+            SaveAngle = 0;
             if (juiceableObject != null) {
                 Destroy(juiceableObject);
+                 juiceableObject = null;
+                
             }
             
 
@@ -60,8 +64,9 @@ public class Juicer : MonoBehaviour
     {
         if (other.tag == "Juiceable") {
             if (juiceableObject!=null) {
-                AudioManager.S.PlaySound(juiceSound);
+                
                 Destroy(juiceableObject);
+                juiceableObject = null;
             }
             juiceableObject = other.gameObject;
             LoadJuicer();

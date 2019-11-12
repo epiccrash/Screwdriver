@@ -27,7 +27,7 @@ public class Pour : MonoBehaviour
         while (true) {
             Vector3 direction = spout.transform.position - transform.position;
             direction.Normalize();
-
+            
             if (spout.transform.position.y < transform.position.y)
             {
                 GameObject newDrop = Instantiate(water);

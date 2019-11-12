@@ -63,6 +63,11 @@ public class CupScript : MonoBehaviour
         return new List<IngredientType>(_ingredientsInCup.Keys);
     }
 
+    public bool IsEmpty()
+    {
+        return _ingredientsInCup.Keys.Count == 0;
+    }
+
     public float GetIngredientCorrectness(IngredientType type, int amount)
     {
         if (!_ingredientsInCup.ContainsKey(type))
@@ -72,6 +77,6 @@ public class CupScript : MonoBehaviour
 
         float diff = amount - Mathf.Abs(amount - _ingredientsInCup[type]);
 
-        return diff / amount;
+        return Mathf.Max(0, diff / amount);
     }
 }

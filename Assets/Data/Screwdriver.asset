@@ -16,11 +16,11 @@ MonoBehaviour:
   alcoholContent: 5
   needsShaker: 0
   recipe:
-  - ingredient: 9
+  - ingredient: 10
     amountMatters: 0
     amount: 0
     amountDescription: 
-  - ingredient: 7
+  - ingredient: 8
     amountMatters: 1
     amount: 400
     amountDescription: 1/2 Cup

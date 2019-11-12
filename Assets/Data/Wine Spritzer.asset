@@ -20,7 +20,7 @@ MonoBehaviour:
     amountMatters: 1
     amount: 600
     amountDescription: 3/4 Cup
-  - ingredient: 8
+  - ingredient: 9
     amountMatters: 1
     amount: 200
     amountDescription: 1/4 Cup

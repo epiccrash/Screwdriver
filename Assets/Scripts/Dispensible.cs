@@ -18,12 +18,12 @@ public class Dispensible : MonoBehaviour
         if (dispensed)
         {
             // Commented this out just for testing
-            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
         else
         {
             // Commented this out just for testing
-            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
