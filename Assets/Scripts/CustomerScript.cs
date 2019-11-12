@@ -15,9 +15,8 @@ public enum CustomerState
 [RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
-    private const float DrinkPerfectionPercentageEpsilon = 0.35f;
-    private const int FallTimerMax = 4;
-    private const int MinFallAngle = 15;
+    private const int FallTimerMax = 3;
+    private const int MinFallAngle = 10;
 
     [SerializeField]
     private TextMeshPro _drinkNameText;
@@ -269,7 +268,7 @@ public class CustomerScript : MonoBehaviour
 
         foreach (IngredientType ingredient in ingredientsAndCorrectness.Keys)
         {
-            if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > DrinkPerfectionPercentageEpsilon)
+            if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > GameConstants.DrinkPerfectionPercentageEpsilon)
             {
                 tip += ingredientsAndCorrectness[ingredient] * _tipPerCorrectIngredient;
                 isPerfectDrink = false;
