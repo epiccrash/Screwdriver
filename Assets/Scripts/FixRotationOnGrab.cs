@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FixRotationOnGrab : MonoBehaviour
 {
-    [SerializeField] float rotationTime = 2.0f;
+    [SerializeField] float rotationTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class FixRotationOnGrab : MonoBehaviour
     {
         if (transform.parent.name == "Left Hand" || transform.parent.name == "Right Hand")
         {
-            //transform.rotation = Quaternion.Lerp(transform.rotation, transform.parent.rotation, rotationTime);
+            // transform.rotation = Quaternion.Lerp(transform.rotation, transform.parent.rotation, rotationTime * Time.deltaTime);
             transform.LookAt(Vector3.forward);
         }
     }
