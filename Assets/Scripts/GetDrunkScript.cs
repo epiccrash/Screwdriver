@@ -5,7 +5,8 @@ using UnityStandardAssets.ImageEffects;
 
 public class GetDrunkScript : MonoBehaviour
 {
-
+    public float vortexMultiplier = 20.0f;
+    public int vortexSpeed = 20;
     private enum DrunkState
     {
         LevelZero,
@@ -43,20 +44,17 @@ public class GetDrunkScript : MonoBehaviour
         //_vortex.angle = (_alcoholByVolume * 20) - Mathf.PingPong(Time.time, _alcoholByVolume * 10); 
         //if (_alcoholByVolume > 0.01f)
         //{
-        //float vortexMin = _alcoholByVolume * -10;
-        //float vortexMax = _alcoholByVolume * 10;
-        float vortexMin = -20.0f;
-        float vortexMax = 20.0f;
+        float vortexMin = _alcoholByVolume * -vortexMultiplier;
+        float vortexMax = _alcoholByVolume * vortexMultiplier;
 
-            // float subtractAmt = Mathf.Min(_alcoholByVolume * 60, 80);
-            // _vortex.angle = (Mathf.PingPong(Time.time * 60, 100) - subtractAmt);
-        _vortex.angle = (Mathf.PingPong(Time.time * 30, vortexMax - vortexMin) + vortexMin);
-        print("Vortex Angle:" + _vortex.angle);
+        // float subtractAmt = Mathf.Min(_alcoholByVolume * 60, 80);
+        // _vortex.angle = (Mathf.PingPong(Time.time * 60, 100) - subtractAmt);
+        _vortex.angle = (Mathf.PingPong(Time.time * vortexSpeed, vortexMax - vortexMin) + vortexMin);
         //}        
 
         if (Time.time - _drunkStartTime > 5 && _alcoholByVolume > 0.1f)
         {
-            UpdateAlc(-Time.deltaTime);
+            UpdateAlc(-Time.deltaTime / 2.0f);
         }
     }
 
