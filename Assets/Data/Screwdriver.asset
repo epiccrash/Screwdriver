@@ -28,7 +28,7 @@ MonoBehaviour:
     amountMatters: 1
     amount: 400
     amountDescription: 1/2 Cup
-  - ingredient: 10
+  - ingredient: 11
     amountMatters: 1
     amount: 1
     amountDescription: 1 Wedge
