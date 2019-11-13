@@ -30,7 +30,6 @@ public class Pour : MonoBehaviour
             
             if (spout.transform.position.y < transform.position.y)
             {
-                Debug.Log("im pouring");
                 GameObject newDrop = Instantiate(water);
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);

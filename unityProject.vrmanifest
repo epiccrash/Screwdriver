@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.screwdriver.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Jonathan Namovic\\Documents\\UnityProjects\\Screwdriver\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\team-admin\\Desktop\\Screwdriver\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Screwdriver [Testing]"
