@@ -43,8 +43,8 @@ public class GetDrunkScript : MonoBehaviour
         //_vortex.angle = (_alcoholByVolume * 20) - Mathf.PingPong(Time.time, _alcoholByVolume * 10); 
         if (_alcoholByVolume > 0.01f)
         {
-            float vortexMin = _alcoholByVolume * -15;
-            float vortexMax = _alcoholByVolume * 15;
+            float vortexMin = _alcoholByVolume * -10;
+            float vortexMax = _alcoholByVolume * 10;
 
             // float subtractAmt = Mathf.Min(_alcoholByVolume * 60, 80);
             // _vortex.angle = (Mathf.PingPong(Time.time * 60, 100) - subtractAmt);
@@ -52,16 +52,16 @@ public class GetDrunkScript : MonoBehaviour
         }        
 
         if (Time.time - _drunkStartTime > 5 && _alcoholByVolume > 0.1f)
-            {
-                UpdateAlc(-10 * Time.deltaTime);
-            }
+        {
+            UpdateAlc(-2 * Time.deltaTime);
+        }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.gameObject.tag.Equals("Water"))
+        if (other.gameObject.tag.Equals("Water"))
         {
-            IngredientType ingredient = collider.gameObject.GetComponent<IngredientScript>().IngredientType;
+            IngredientType ingredient = other.gameObject.GetComponent<IngredientScript>().IngredientType;
             int enumVal = (int)ingredient; // Calculating alcohol content of the drink
             if (enumVal < 100)
             {
