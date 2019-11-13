@@ -17,6 +17,7 @@ public class CustomerScript : MonoBehaviour
 {
     private const int FallTimerMax = 3;
     private const int MinFallAngle = 10;
+    private const float SlotDistanceTolerance = 1.2f;
 
     [SerializeField]
     private TextMeshPro _drinkNameText;
@@ -60,7 +61,6 @@ public class CustomerScript : MonoBehaviour
     private CustomerMovementController _movementController;
     private NavMeshAgent _agent;
     private Rigidbody _rigidBody;
-    private BoxCollider _collider;
 
     [Header("Sound Making")]
     [SerializeField] private int frequency;
@@ -107,7 +107,8 @@ public class CustomerScript : MonoBehaviour
         {
             AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
 
-            if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle)
+            if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle
+                || Vector3.SqrMagnitude(transform.position - _currentSlot.StandLocation.position) > SlotDistanceTolerance)
             {
                 if (_fallTimer <= 0)
                 {
@@ -191,7 +192,7 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-        // _tipJar.GetComponentInChildren<TipScript>().AddTip(0.99f);
+
         if (_state == CustomerState.WalkingToSlot)
         {
             if (_orderableDrinks.Count > 0)
@@ -200,17 +201,14 @@ public class CustomerScript : MonoBehaviour
                 _currentDrinkOrder = _orderableDrinks[idx];
 
                 ChangeState(CustomerState.WaitingForDrink);
+
+                // Play customer grunt.
+                AudioManager.S?.PlaySound(noise);
             }
             else
             {
                 // We can't order any drinks!
                 ChangeState(CustomerState.Idle);
-            }
-
-            if (_state == CustomerState.WaitingForDrink)
-            {
-                // Play customer grunt
-                AudioManager.S?.PlaySound(noise);
             }
         }
     }
