@@ -41,19 +41,22 @@ public class GetDrunkScript : MonoBehaviour
         print("Alc: " + _alcoholByVolume);
         // arbitrary funciton for now, will replace with more sensible function soon
         //_vortex.angle = (_alcoholByVolume * 20) - Mathf.PingPong(Time.time, _alcoholByVolume * 10); 
-        if (_alcoholByVolume > 0.01f)
-        {
-            float vortexMin = _alcoholByVolume * -10;
-            float vortexMax = _alcoholByVolume * 10;
+        //if (_alcoholByVolume > 0.01f)
+        //{
+        //float vortexMin = _alcoholByVolume * -10;
+        //float vortexMax = _alcoholByVolume * 10;
+        float vortexMin = -10.0f;
+        float vortexMax = 10.0f;
 
             // float subtractAmt = Mathf.Min(_alcoholByVolume * 60, 80);
             // _vortex.angle = (Mathf.PingPong(Time.time * 60, 100) - subtractAmt);
-            _vortex.angle = (Mathf.PingPong(Time.time, vortexMax - vortexMin) + vortexMin);
-        }        
+        _vortex.angle = (Mathf.PingPong(Time.time, vortexMax - vortexMin) + vortexMin);
+        print("Vortex Angle:" + _vortex.angle);
+        //}        
 
         if (Time.time - _drunkStartTime > 5 && _alcoholByVolume > 0.1f)
         {
-            UpdateAlc(-2 * Time.deltaTime);
+            UpdateAlc(-Time.deltaTime);
         }
     }
 
@@ -98,7 +101,7 @@ public class GetDrunkScript : MonoBehaviour
 
     private void UpdateAlc(float incAlc)
     {
-        if (_alcoholByVolume + incAlc < 10)
+        if (_alcoholByVolume >= 0)
         {
             _alcoholByVolume += incAlc;
         }
