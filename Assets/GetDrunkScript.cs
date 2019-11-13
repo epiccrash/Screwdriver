@@ -13,23 +13,23 @@ public class GetDrunkScript : MonoBehaviour
         LevelTwo
     }
 
-    public GameObject VRCamera;
-
     private float _alcoholByVolume;
     private BlurOptimized _blur;
     private Vortex _vortex;
     private DrunkState _state;
     private const float EPSILON = 0.01f;
 
+    private float _drunkStartTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        _blur = VRCamera.GetComponent<BlurOptimized>();
-        _vortex = VRCamera.GetComponent<Vortex>();
+        _blur = GetComponent<BlurOptimized>();
+        _vortex = GetComponent<Vortex>();
         _state = DrunkState.LevelZero;
         ResetBlur();
         ResetVortex();
-        StartCoroutine(SoberUp());
+        // StartCoroutine(SoberUp());
         // Every 20 seconds you can start to sober
         // Ping pong the vortex angle
         // Slowly ramp up the drunk blur
@@ -38,21 +38,36 @@ public class GetDrunkScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("Alc: " + _alcoholByVolume);
         // arbitrary funciton for now, will replace with more sensible function soon
-        _vortex.angle = (_alcoholByVolume * 10) - Mathf.PingPong(Time.time, _alcoholByVolume * 20); 
+        //_vortex.angle = (_alcoholByVolume * 20) - Mathf.PingPong(Time.time, _alcoholByVolume * 10); 
+        if (_alcoholByVolume > 0.01f)
+        {
+            float vortexMin = _alcoholByVolume * -15;
+            float vortexMax = _alcoholByVolume * 15;
 
+            // float subtractAmt = Mathf.Min(_alcoholByVolume * 60, 80);
+            // _vortex.angle = (Mathf.PingPong(Time.time * 60, 100) - subtractAmt);
+            _vortex.angle = (Mathf.PingPong(Time.time, vortexMax - vortexMin) + vortexMin);
+        }        
+
+        if (Time.time - _drunkStartTime > 5 && _alcoholByVolume > 0.1f)
+            {
+                UpdateAlc(-10 * Time.deltaTime);
+            }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag.Equals("Water"))
+        if (collider.gameObject.tag.Equals("Water"))
         {
-            IngredientType ingredient = collision.gameObject.GetComponent<IngredientScript>().IngredientType;
+            IngredientType ingredient = collider.gameObject.GetComponent<IngredientScript>().IngredientType;
             int enumVal = (int)ingredient; // Calculating alcohol content of the drink
             if (enumVal < 100)
             {
                 UpdateAlc((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
                 
+                _drunkStartTime = Time.time;
             }
         }
     }
@@ -64,14 +79,16 @@ public class GetDrunkScript : MonoBehaviour
 
     private void ResetBlur()
     {
+        _blur.enabled = true;
         _blur.downsample = 0;
         _blur.blurSize = 0;
-        _blur.blurIterations = 1;
-        _blur.enabled = false;
+        _blur.blurIterations = 0;
+        
     }
 
     private void ResetVortex()
     {
+        _vortex.enabled = true;
         _vortex.radius.x = 0.5f;
         _vortex.radius.y = 0.5f;
         _vortex.center.x = 0.5f;
@@ -81,7 +98,11 @@ public class GetDrunkScript : MonoBehaviour
 
     private void UpdateAlc(float incAlc)
     {
-        _alcoholByVolume += incAlc;
+        if (_alcoholByVolume + incAlc < 10)
+        {
+            _alcoholByVolume += incAlc;
+        }
+
         UpdateBlur(incAlc);
     }
 
@@ -101,7 +122,11 @@ public class GetDrunkScript : MonoBehaviour
         //}
 
         // Simple blur function to determine if everything is set up correctly
-        _blur.blurSize += incBlur;
+        if ((_blur.blurSize < 4.5f && incBlur > 0) || (_blur.blurSize >= 0 && incBlur <= 0)) {
+            _blur.blurSize += incBlur;
+        }
+
+        _blur.blurIterations = (int) Mathf.Max(1, Mathf.Floor(_blur.blurSize));
     }
 
     private void BlurLevelOne()
@@ -124,7 +149,6 @@ public class GetDrunkScript : MonoBehaviour
                 UpdateAlc(-0.1f);
                 yield return new WaitForSeconds(5.0f);
             }
-            
         }
     }
 
