@@ -101,6 +101,7 @@ public class Juicer : MonoBehaviour
     {
         handle.outAngle = 0f;
         handleObj.transform.localEulerAngles = Vector3.zero;
+        SaveAngle = 0;
         full = true;
         juiceLeft = juiceableObject.GetComponent<Juiceable>().jucieUnits;
         juiceDrop = juiceableObject.GetComponent<Juiceable>().juiceDrop;
