@@ -66,7 +66,7 @@ public class GetDrunkScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Water"))
+        if (other.gameObject.tag.Equals("Alcohol"))
         {
             IngredientType ingredient = other.gameObject.GetComponent<IngredientScript>().IngredientType;
             int enumVal = (int)ingredient; // Calculating alcohol content of the drink
