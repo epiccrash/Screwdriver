@@ -882,6 +882,7 @@ MonoBehaviour:
     type: 3}
   force: 500
   deadZone: 0.5
+  spoutLocation: {fileID: 0}
 --- !u!1 &3313882706247800753
 GameObject:
   m_ObjectHideFlags: 0
