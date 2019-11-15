@@ -27,8 +27,8 @@ public class CustomerMovementController : MonoBehaviour
     private Transform _currentDest;
     private bool _didArriveAtDest;
     private Delegates.onArrivedAtDestDel _onArrived;
-    private bool _isRotating;
-    private float _rotateTimeCount;
+    private bool _isSnappingToPos;
+    private float _snappingTimeCount;
 
     private NavMeshAgent _agent;
 
@@ -77,17 +77,20 @@ public class CustomerMovementController : MonoBehaviour
 
                 _onArrived = null;
                 _didArriveAtDest = true;
-                _isRotating = true;
+                _isSnappingToPos = true;
             }
 
-            if (_isRotating && _currentDest != null)
+            if (_isSnappingToPos && _currentDest != null)
             {
-                _rotateTimeCount += Time.deltaTime;
+                _snappingTimeCount += Time.deltaTime;
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, _currentDest.rotation, _rotateTimeCount);
+                transform.rotation = Quaternion.Slerp(transform.rotation, _currentDest.rotation, _snappingTimeCount);
+
+                Vector3 newDestination = new Vector3(_currentDest.position.x, transform.position.y, _currentDest.position.z);
+                transform.position = Vector3.Lerp(transform.position, newDestination, _snappingTimeCount);
 
                 // Are we rotated the right way yet?
-                _isRotating = !Mathf.Approximately(0, Quaternion.Angle(transform.rotation, _currentDest.rotation));
+                _isSnappingToPos = !Mathf.Approximately(0, Quaternion.Angle(transform.rotation, _currentDest.rotation));
             }
         }
     }
@@ -99,7 +102,7 @@ public class CustomerMovementController : MonoBehaviour
 
         StopRandomWanderBehavior();
         _didArriveAtDest = false;
-        _rotateTimeCount = 0;
+        _snappingTimeCount = 0;
         _agent.destination = newDest.position;
     }
 
