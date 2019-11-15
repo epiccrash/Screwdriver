@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FixRotationOnGrab : MonoBehaviour
 {
-    [SerializeField] float rotationTime = 0.5f;
     bool check;
+
+    Transform target;
 
     // Start is called before the first frame update
     void Start()
@@ -16,18 +17,20 @@ public class FixRotationOnGrab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent != null && (transform.parent.name == "LeftHand" || transform.parent.name == "RightHand"))
+        if (transform.parent == null) 
         {
-            // transform.rotation = Quaternion.Lerp(transform.rotation, transform.parent.rotation, rotationTime * Time.deltaTime);
-            //transform.LookAt(Vector3.forward);
-            Quaternion rotation = Quaternion.LookRotation(transform.parent.transform.right, Vector3.up);
-            // transform.rotation = rotation;
-            // transform.LookAt(transform.parent);
-            // transform.Rotate(new Vector3(0, 90, 0));
-            check = true;
+            target = null;
         }
-        else {
-            check = false;
+        else 
+        {
+            if (target == null) {
+                target = transform.parent.GetChild(0);
+            }
+
+            if (transform.parent.name == "LeftHand" || transform.parent.name == "RightHand")
+            {
+                transform.LookAt(target);
+            }
         }
     }
 }
