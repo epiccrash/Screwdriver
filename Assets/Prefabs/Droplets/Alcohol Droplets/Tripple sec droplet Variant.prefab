@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tripple sec droplet Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7563135684652501734, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Alcohol
+      objectReference: {fileID: 0}
     - target: {fileID: 7563135684652501741, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
       propertyPath: m_LocalPosition.x

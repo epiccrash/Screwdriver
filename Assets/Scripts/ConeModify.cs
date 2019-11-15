@@ -255,7 +255,7 @@ public class ConeModify : MonoBehaviour
 
     public void ChangeFill(GameObject other)
     {
-        if (other.gameObject.tag == "Water")
+        if (other.gameObject.tag == "Water" || other.gameObject.tag == "Alcohol")
         {
             if (increasesSoFar < numIncreases)
             {
