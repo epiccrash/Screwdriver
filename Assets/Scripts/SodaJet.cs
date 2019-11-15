@@ -39,8 +39,10 @@ public class SodaJet : MonoBehaviour
         joystickL = SteamVR_Actions._default.Joystick.GetAxis(inputSource);
         joystickR = SteamVR_Actions._default.Joystick.GetAxis(inputSource2);
         if (snapping) {
-            //GetComponent<Rigidbody>().isKinematic = true;
-            transform.position = Vector3.Lerp(transform.position, spoutLocation.position, Time.deltaTime);
+            GetComponent<Rigidbody>().isKinematic = true;
+            transform.position = spoutLocation.position;
+            transform.rotation = spoutLocation.rotation;
+            snapping = false;
         }
         if (transform.position == spoutLocation.position) {
             snapping = false;

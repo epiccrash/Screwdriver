@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class DestroyOnTouch : MonoBehaviour
 {
+    private SpawnerScript spawnScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnScript = GetComponentInParent<SpawnerScript>();
+        Debug.Log(spawnScript);
     }
 
     // Update is called once per frame
@@ -18,10 +21,12 @@ public class DestroyOnTouch : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("HEALP");
        
         if (collision.transform.tag == "floor")
         {
-
+            if(spawnScript!=null)
+                spawnScript.needSpawn = true;
             Destroy(this.gameObject);
         }
     }
