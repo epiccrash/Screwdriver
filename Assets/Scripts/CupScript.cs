@@ -38,8 +38,10 @@ public class CupScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("IceCube"))
         {
-            _solidIngredientsInCup.Remove(other.gameObject);
-            _ingredientsInCup[IngredientType.Ice]--;
+            if (_solidIngredientsInCup.Remove(other.gameObject))
+            {
+                _ingredientsInCup[IngredientType.Ice]--;
+            }
 
             print("Ice: " + _ingredientsInCup[IngredientType.Ice]);
         }
@@ -62,7 +64,7 @@ public class CupScript : MonoBehaviour
             _alcoholByVolume += ((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
         }
         print("Alcohol by Volume: " + _alcoholByVolume);
-        
+
 
         print(ingredient + ": " + _ingredientsInCup[ingredient]);
     }
