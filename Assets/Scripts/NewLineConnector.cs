@@ -17,7 +17,7 @@ public class NewLineConnector : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         line.SetPositions(new [] {transform.position, other.position });
     }

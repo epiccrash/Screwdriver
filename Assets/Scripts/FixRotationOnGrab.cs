@@ -29,7 +29,9 @@ public class FixRotationOnGrab : MonoBehaviour
 
             if (transform.parent.name == "LeftHand" || transform.parent.name == "RightHand")
             {
-                transform.LookAt(target);
+                transform.localPosition = target.localPosition;
+                transform.rotation = target.rotation * Quaternion.Euler(0, 90, 90);
+                //transform.LookAt(target, -Vector3.right);
             }
         }
     }
