@@ -12,6 +12,8 @@ TagManager:
   - Container
   - Fill
   - Coin
+  - Juiceable
+  - SodaSnap
   layers:
   - Default
   - TransparentFX
