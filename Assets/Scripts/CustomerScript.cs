@@ -17,7 +17,7 @@ public class CustomerScript : MonoBehaviour
 {
     private const int FallTimerMax = 2;
     private const int MinFallAngle = 10;
-    private const float SlotDistanceTolerance = 1.2f;
+    private const float SlotDistanceTolerance = 2.5f;
 
     [SerializeField]
     private List<DrinkRecipe> _orderableDrinks;

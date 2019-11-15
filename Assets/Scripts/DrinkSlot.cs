@@ -11,10 +11,12 @@ public class DrinkSlot : MonoBehaviour
     private UnityAction _onDrinkDetachedFromHand;
 
     private GameObject _drinkInSlot;
+    private CustomerSlot _parentSlot;
 
     private void Start()
     {
         _onDrinkDetachedFromHand += OnDrinkPutDown;
+        _parentSlot = transform.GetComponentInParent<CustomerSlot>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,6 +28,8 @@ public class DrinkSlot : MonoBehaviour
             if (parent != null && _drinkInSlot != parent)
             {
                 _drinkInSlot = parent;
+
+                _parentSlot.HighlightCustomer();
 
                 // When the drink is put down we'll trigger this unity action.
                 other.gameObject.GetComponentInParent<Valve.VR.InteractionSystem.Throwable>()
@@ -43,6 +47,8 @@ public class DrinkSlot : MonoBehaviour
             if (parent != null && _drinkInSlot == parent)
             {
                 _drinkInSlot = null;
+
+                _parentSlot.UnhighlightCustomer();
 
                 // Now that the drink isn't in the slot, we'll stop listening for the drop.
                 other.gameObject.GetComponentInParent<Valve.VR.InteractionSystem.Throwable>()
