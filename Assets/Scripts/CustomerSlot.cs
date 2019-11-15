@@ -59,4 +59,14 @@ public class CustomerSlot : MonoBehaviour
     {
         _recipeDisplay.WipeDisplay();
     }
+
+    public void HighlightCustomer()
+    {
+        _recipeDisplay.HighlightDrinkName();
+    }
+
+    public void UnhighlightCustomer()
+    {
+        _recipeDisplay.UnhighlightDrinkName();
+    }
 }

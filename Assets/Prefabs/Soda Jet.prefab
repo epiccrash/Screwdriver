@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 337883550}
   - component: {fileID: 337883551}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: DaStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +175,7 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0.445, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
