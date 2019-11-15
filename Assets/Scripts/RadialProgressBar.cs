@@ -25,9 +25,9 @@ public class RadialProgressBar : MonoBehaviour
 
     private void Update()
     {
-        if (!Mathf.Approximately(_progressPercentage, _progressBar.fillAmount))
+        if (!Mathf.Approximately(Mathf.Min(1, _progressPercentage), _progressBar.fillAmount))
         {
-            _progressBar.fillAmount = Mathf.Lerp(_progressBar.fillAmount, _progressPercentage, Time.deltaTime * LerpSpeed);
+            _progressBar.fillAmount = Mathf.Lerp(_progressBar.fillAmount, Mathf.Min(1, _progressPercentage), Time.deltaTime * LerpSpeed);
         }
     }
 

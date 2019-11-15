@@ -14,10 +14,15 @@ public class RecipeDisplayScript : MonoBehaviour
     [SerializeField]
     private GameObject _radialProgressBarPrefab;
 
+    [SerializeField]
+    private Color _highlightColor;
+
     private Dictionary<IngredientType, RadialProgressBar> _ingredientRings;
+    private Color _originalTextColor;
 
     private void Start()
     {
+        _originalTextColor = _drinkNameDisplay.color;
         _drinkNameDisplay.enabled = false;
         _ingredientRings = new Dictionary<IngredientType, RadialProgressBar>();
     }
@@ -61,5 +66,15 @@ public class RecipeDisplayScript : MonoBehaviour
         {
             _ingredientRings[ingredient].SetIngredientAmount(newAmt);
         }
+    }
+
+    public void HighlightDrinkName()
+    {
+        _drinkNameDisplay.color = _highlightColor;
+    }
+
+    public void UnhighlightDrinkName()
+    {
+        _drinkNameDisplay.color = _originalTextColor;
     }
 }
