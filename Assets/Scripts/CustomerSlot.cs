@@ -5,26 +5,26 @@ using UnityEngine;
 public class CustomerSlot : MonoBehaviour
 {
     [SerializeField]
-    private Transform _standLocation;
+    private DrinkSlot _drinkSlot;
 
     [SerializeField]
-    private DrinkSlot _drinkSlot;
+    private RecipeDisplayScript _recipeDisplay;
 
     private bool _isFree;
 
     public bool IsFree { get { return _isFree; } }
-    public Transform StandLocation { get { return _standLocation; } }
+    public Transform StandLocation { get { return transform; } }
 
     private void OnDrawGizmos()
     {
         // Draw the sphere to indicate the stand location.
         Gizmos.color = new Color(0, 0.5f, 0.5f, 0.8f);
-        Gizmos.DrawSphere(_standLocation.position, 0.1f);
+        Gizmos.DrawSphere(transform.position, 0.1f);
 
         if (Application.IsPlaying(this))
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(_standLocation.transform.position, _standLocation.transform.forward);
+            Gizmos.DrawLine(transform.position, transform.forward);
         }
     }
 
@@ -40,11 +40,23 @@ public class CustomerSlot : MonoBehaviour
 
     public void Unlock()
     {
+        _recipeDisplay.WipeDisplay();
+
         _isFree = true;
     }
 
     public void SetOnDrinkServed(Delegates.onDrinkServedDel onServedFunc)
     {
         _drinkSlot.onDrinkServed = onServedFunc;
+    }
+
+    public void InitializeRecipeDisplay(DrinkRecipe drinkOrder)
+    {
+        _recipeDisplay.InitializeForNewDrink(drinkOrder);
+    }
+
+    public void WipeRecipeDisplay()
+    {
+        _recipeDisplay.WipeDisplay();
     }
 }

@@ -8,7 +8,7 @@ public class RadialProgressBar : MonoBehaviour
 {
     private const float LerpSpeed = 10;
 
-    // Treat these lke constants, DO NOT CHANGE
+    // Treat these like constants, DO NOT CHANGE
     private static Color32 IncorrectAmtColor = new Color32(235, 158, 52, 255);
     private static Color32 CorrectAmtColor = new Color32(28, 184, 28, 255);
 
@@ -21,8 +21,6 @@ public class RadialProgressBar : MonoBehaviour
     [SerializeField]
     private Image _progressBar;
 
-    private float _maxAmount;
-    private float _currentAmount;
     private float _progressPercentage;
 
     private void Update()
@@ -33,21 +31,18 @@ public class RadialProgressBar : MonoBehaviour
         }
     }
 
-    public void InitializeForNewIngredient(IngredientType ingredient, float perfectAmount)
+    public void InitializeForNewIngredient(IngredientType ingredient)
     {
         _progressBar.fillAmount = 0;
         _progressBar.color = IncorrectAmtColor;
-
-        _maxAmount = perfectAmount;
 
         _ingredientText.text = ingredient.ToString();
         _tooMuchText.enabled = false;
     }
 
-    public void SetIngredientAmount(float amt)
+    public void SetIngredientAmount(float percentage)
     {
-        _currentAmount = amt;
-        _progressPercentage = _currentAmount / _maxAmount;
+        _progressPercentage = percentage;
 
         if (_progressPercentage <= 1)
         {

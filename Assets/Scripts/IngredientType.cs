@@ -12,12 +12,12 @@ public enum IngredientType
     // Liquor
     ////////////////////////////////////////
     Vodka = 39,
-    Tequila = 40, 
+    Tequila = 40,
     TripleSec = 30,
     Gin = 41,
     Rum = 50,
     WhiteWine = 10,
-    Curacao = 41,
+    Curacao = 42,
 
     ////////////////////////////////////////
     // Mixers
