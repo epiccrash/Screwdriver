@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < spawners.Count; i++)
         {
             GameObject g = spawners[i];
-            if (g.GetComponent<SpawnerScript>().GetOpen()&& g.GetComponent<SpawnerScript>().needSpawn)
+            if (g.GetComponent<SpawnerScript>().GetOpen()&& (g.GetComponent<SpawnerScript>().needSpawn|| g.GetComponent<SpawnerScript>().infiniteSpawn))
             {
                 GameObject newObj=Instantiate(spawnItems[i], g.transform.position, g.transform.rotation);
                 newObj.transform.SetParent(g.transform);

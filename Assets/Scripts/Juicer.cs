@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 public class Juicer : MonoBehaviour
 {
     public CircularDrive handle;
+    public GameObject handleObj;
     public GameObject spout;
     public GameObject squisher;
 
@@ -32,9 +33,14 @@ public class Juicer : MonoBehaviour
     {
         if (handle.outAngle < SaveAngle && full)
         {
+            
+            Debug.Log("handle angle: " + handle.outAngle);
             GameObject newDrop = Instantiate(juiceDrop);
             newDrop.transform.position = spout.transform.position;
-            SaveAngle -= 90 / juiceableObject.GetComponent<Juiceable>().jucieUnits;
+            Debug.Log("before: " + SaveAngle);
+            Debug.Log("subtraction: " + (90.0f / juiceableObject.GetComponent<Juiceable>().jucieUnits));
+            SaveAngle -= 90.0f / juiceableObject.GetComponent<Juiceable>().jucieUnits;
+            Debug.Log("after: " + SaveAngle);
             juiceLeft--;
             AudioManager.S.PlaySound(juiceSound);
         }
@@ -48,6 +54,7 @@ public class Juicer : MonoBehaviour
         {
             full = false;
             SaveAngle = 0;
+            juiceLeft = 0;
             if (juiceableObject != null)
             {
                 Destroy(juiceableObject);
@@ -63,7 +70,9 @@ public class Juicer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Juiceable")
-        {
+        {   
+            
+
             if (juiceableObject != null)
             {
 
@@ -76,12 +85,32 @@ public class Juicer : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Juiceable")
+        {
+            
+            juiceableObject = null;
+            unloadJuicer();
+
+        }
+    }
+
 
     public void LoadJuicer()
     {
+        handle.outAngle = 0f;
+        handleObj.transform.localEulerAngles = Vector3.zero;
         full = true;
         juiceLeft = juiceableObject.GetComponent<Juiceable>().jucieUnits;
         juiceDrop = juiceableObject.GetComponent<Juiceable>().juiceDrop;
+    }
+
+    public void unloadJuicer()
+    {
+        full = false;
+        juiceLeft = 0;
+        juiceDrop = null;
     }
 
     public bool IsFull()

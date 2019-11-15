@@ -10,7 +10,7 @@ public class DestroyOnTouch : MonoBehaviour
     void Start()
     {
         spawnScript = GetComponentInParent<SpawnerScript>();
-        Debug.Log(spawnScript);
+        
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class DestroyOnTouch : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("HEALP");
+        
        
         if (collision.transform.tag == "floor")
         {
