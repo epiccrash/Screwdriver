@@ -15,15 +15,9 @@ public enum CustomerState
 [RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
-    private const int FallTimerMax = 3;
+    private const int FallTimerMax = 2;
     private const int MinFallAngle = 10;
     private const float SlotDistanceTolerance = 1.2f;
-
-    [SerializeField]
-    private TextMeshPro _drinkNameText;
-
-    [SerializeField]
-    private TextMeshPro _drinkRecipeText;
 
     [SerializeField]
     private List<DrinkRecipe> _orderableDrinks;
@@ -76,9 +70,6 @@ public class CustomerScript : MonoBehaviour
     {
         _alcoholLevel = 0;
 
-        _drinkNameText.enabled = false;
-        _drinkRecipeText.enabled = false;
-
         _movementController = GetComponent<CustomerMovementController>();
         _agent = GetComponent<NavMeshAgent>();
         _rigidBody = GetComponent<Rigidbody>();
@@ -116,8 +107,7 @@ public class CustomerScript : MonoBehaviour
                 }
                 else
                 {
-                    _drinkNameText.enabled = false;
-                    _drinkRecipeText.enabled = false;
+                    _currentSlot.WipeRecipeDisplay();
                     _fallTimer -= Time.deltaTime;
                 }
             }
@@ -129,34 +119,6 @@ public class CustomerScript : MonoBehaviour
         _timeUntilNextDrink = UnityEngine.Random.Range(_minTimeBetweenDrinks, _maxTimeBetweenDrinks);
     }
 
-    private string GenerateRecipeString()
-    {
-        List<string> recipeLines = new List<string>();
-
-        foreach (IngredientUnit unit in _currentDrinkOrder.recipe)
-        {
-            string line = unit.ingredient.ToString();
-
-            if (unit.amountMatters)
-            {
-                line += " (" + unit.amountDescription + ")";
-            }
-
-            line += "\n";
-
-            recipeLines.Add(line);
-        }
-
-        string result = "";
-
-        foreach (string line in recipeLines)
-        {
-            result += line;
-        }
-
-        return result;
-    }
-
     private void ChangeState(CustomerState newState)
     {
         switch (newState)
@@ -164,8 +126,6 @@ public class CustomerScript : MonoBehaviour
             case CustomerState.Idle:
                 _agent.enabled = true;
                 _rigidBody.isKinematic = true;
-                _drinkNameText.enabled = false;
-                _drinkRecipeText.enabled = false;
                 _currentSlot?.Unlock();
                 _currentSlot = null;
                 RandomizeDrinkTimer();
@@ -174,13 +134,6 @@ public class CustomerScript : MonoBehaviour
             case CustomerState.WaitingForDrink:
                 _agent.enabled = false;
                 _rigidBody.isKinematic = false;
-
-                _drinkNameText.text = _currentDrinkOrder.drinkName;
-                _drinkNameText.enabled = true;
-
-                _drinkRecipeText.text = GenerateRecipeString();
-                _drinkRecipeText.enabled = true;
-
                 _fallTimer = FallTimerMax;
                 break;
             default:
@@ -199,6 +152,8 @@ public class CustomerScript : MonoBehaviour
             {
                 int idx = UnityEngine.Random.Range(0, _orderableDrinks.Count);
                 _currentDrinkOrder = _orderableDrinks[idx];
+
+                _currentSlot.InitializeRecipeDisplay(_currentDrinkOrder);
 
                 ChangeState(CustomerState.WaitingForDrink);
 
