@@ -6,7 +6,7 @@ public class SpawnerScript : MonoBehaviour
 {
     // Just checks to see if the spawner can spawn an object in
     private bool open = true;
-
+    public bool infiniteSpawn=false;
     public bool needSpawn = false;
     // [SerializeField] float spawnDelay = 0.0f;
 
