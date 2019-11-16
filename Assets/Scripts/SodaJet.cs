@@ -10,6 +10,7 @@ public class SodaJet : MonoBehaviour
 
     private Vector2 joystickL;
     private Vector2 joystickR;
+    private Vector2 currentJoystick;
 
     private Transform leftHand;
     private Transform rightHand;
@@ -23,6 +24,9 @@ public class SodaJet : MonoBehaviour
     private bool snapping= false;
 
     private GameObject spout;
+
+    [SerializeField] Transform joystickObj;
+    [SerializeField] GameObject rotationPoint;
 
     private void Start()
     {
@@ -50,38 +54,43 @@ public class SodaJet : MonoBehaviour
         }
         //joystickL = new Vector2(Input.GetAxis("JoystickLeftH"), Input.GetAxis("JoystickLeftV"));
         //joystickR = new Vector2(Input.GetAxis("JoystickLeftH"), Input.GetAxis("JoystickLeftV"));
+
+        if (transform.parent == leftHand) {
+            currentJoystick = joystickL;
+        } else if (transform.parent == rightHand) {
+            currentJoystick = joystickR;
+        } else {
+            currentJoystick = Vector2.zero;
+        }
+
+        if (currrentJoystick == joystickL || currentJoystick == joystickR) {
+            // joystickObj.RotateAround(rotationPoint, Vector3.forward, Time.deltaTime);
+            transform.eulerAngles = new Vector3(currentJoystick.x * 30, 0.0f, currentJoystick.y * 30);
+        }
     }
 
     IEnumerator Squirt()
     {
         while (true)
         {
-            Vector3 direction = spout.transform.up + new Vector3(0, 0.5f, 0);
-            direction.Normalize();
-
             if (transform.parent != null)
             {
                 print(transform.parent == rightHand);
                 if ((transform.parent == leftHand && joystickL.y >= 0.1f) ||
                     (transform.parent == rightHand && joystickR.y >= 0.1f))
                 {
-                    GameObject newDrop = Instantiate(liquidPrefab);
-                    newDrop.transform.position = spout.transform.position;
-                    newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
+                    CreateDrop(liquidPrefab);
                 }
                 else if ((transform.parent == leftHand && joystickL.y <= -0.1f) ||
                          (transform.parent == rightHand && joystickR.y <= -0.1f))
                 {
-                    GameObject newDrop = Instantiate(liquidPrefab2);
-                    newDrop.transform.position = spout.transform.position;
-                    newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
+                    CreateDrop(liquidPrefab2);
                 }
             }
 
             yield return new WaitForSeconds(0.005f);
         }
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -90,4 +99,13 @@ public class SodaJet : MonoBehaviour
         }
     }
 
+    private void CreateDrop(GameObject liquid) {
+        
+        Vector3 direction = spout.transform.up + new Vector3(0, 0.5f, 0);
+        direction.Normalize();
+
+        GameObject newDrop = Instantiate(liquid);
+        newDrop.transform.position = spout.transform.position;
+        newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
+    }
 }
