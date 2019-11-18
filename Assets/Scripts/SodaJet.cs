@@ -19,6 +19,9 @@ public class SodaJet : MonoBehaviour
     [SerializeField] private int force = 3000;
     [SerializeField] private float deadZone = 0.5f;
 
+    public Transform spoutLocation;
+    private bool snapping= false;
+
     private GameObject spout;
 
     private void Start()
@@ -35,6 +38,14 @@ public class SodaJet : MonoBehaviour
     {
         joystickL = SteamVR_Actions._default.Joystick.GetAxis(inputSource);
         joystickR = SteamVR_Actions._default.Joystick.GetAxis(inputSource2);
+        if (snapping) {
+            //GetComponent<Rigidbody>().isKinematic = true;
+            transform.position = Vector3.Lerp(transform.position, spoutLocation.position, Time.deltaTime);
+        }
+        if (transform.position == spoutLocation.position) {
+            snapping = false;
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
         //joystickL = new Vector2(Input.GetAxis("JoystickLeftH"), Input.GetAxis("JoystickLeftV"));
         //joystickR = new Vector2(Input.GetAxis("JoystickLeftH"), Input.GetAxis("JoystickLeftV"));
     }
@@ -68,4 +79,13 @@ public class SodaJet : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "SodaSnap") {
+            snapping = true;
+        }
+    }
+
 }

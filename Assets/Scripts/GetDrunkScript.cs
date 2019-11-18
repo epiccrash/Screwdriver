@@ -5,13 +5,19 @@ using UnityStandardAssets.ImageEffects;
 
 public class GetDrunkScript : MonoBehaviour
 {
-    public float vortexMultiplier = 20.0f;
-    public int vortexSpeed = 20;
+
+    private enum DrunkState
+    {
+        LevelZero,
+        LevelOne,
+        LevelTwo
+    }
 
     private float _alcoholByVolume;
     private BlurOptimized _blur;
     private Vortex _vortex;
-
+    private DrunkState _state;
+    private const float EPSILON = 0.01f;
 
     private float _drunkStartTime;
 
@@ -20,6 +26,7 @@ public class GetDrunkScript : MonoBehaviour
     {
         _blur = GetComponent<BlurOptimized>();
         _vortex = GetComponent<Vortex>();
+        _state = DrunkState.LevelZero;
         ResetBlur();
         ResetVortex();
         // StartCoroutine(SoberUp());
@@ -36,17 +43,24 @@ public class GetDrunkScript : MonoBehaviour
         //_vortex.angle = (_alcoholByVolume * 20) - Mathf.PingPong(Time.time, _alcoholByVolume * 10); 
         //if (_alcoholByVolume > 0.01f)
         //{
-        float vortexMin = _alcoholByVolume * -vortexMultiplier;
-        float vortexMax = _alcoholByVolume * vortexMultiplier;
+        float vortexMin = _alcoholByVolume * -10;
+        float vortexMax = _alcoholByVolume * 10;
+        float speed = _alcoholByVolume * 5;
+        // float vortexMin = -20.0f;
+        // float vortexMax = 20.0f;
 
-        // float subtractAmt = Mathf.Min(_alcoholByVolume * 60, 80);
-        // _vortex.angle = (Mathf.PingPong(Time.time * 60, 100) - subtractAmt);
-        _vortex.angle = (Mathf.PingPong(Time.time * vortexSpeed, vortexMax - vortexMin) + vortexMin);
+            // float subtractAmt = Mathf.Min(_alcoholByVolume * 60, 80);
+            // _vortex.angle = (Mathf.PingPong(Time.time * 60, 100) - subtractAmt);
+        if (vortexMin < 0 && vortexMax > 0) {
+            _vortex.angle = (Mathf.PingPong(Time.time * speed, vortexMax - vortexMin) + vortexMin);
+        }
+
+        // print("Vortex Angle:" + _vortex.angle);
         //}        
 
-        if (Time.time - _drunkStartTime > 10 && _alcoholByVolume > 0)
+        if (Time.time - _drunkStartTime > 5 && _alcoholByVolume > 0)
         {
-            UpdateAlc(-Time.deltaTime / 2.0f);
+            UpdateAlc(-Time.deltaTime);
         }
     }
 
@@ -94,6 +108,13 @@ public class GetDrunkScript : MonoBehaviour
         if (_alcoholByVolume >= 0)
         {
             _alcoholByVolume += incAlc;
+        } else if (_alcoholByVolume < 0) {
+            _alcoholByVolume = 0;
+            _vortex.angle = 0;
+        }
+
+        if (_alcoholByVolume > 5) {
+            _alcoholByVolume = 5;
         }
 
         UpdateBlur(incAlc);
@@ -101,6 +122,18 @@ public class GetDrunkScript : MonoBehaviour
 
     private void UpdateBlur(float incBlur)
     {
+        //if (System.Math.Abs(_alcoholByVolume) < EPSILON && _state == DrunkState.LevelZero) // if alc level == 0
+        //{
+        //    BlurLevelOne();
+        //}
+        //else if (System.Math.Abs(_blur.blurSize - 2.7f) < EPSILON && _state == DrunkState.LevelOne) // blur size == 2.7
+        //{
+        //    BlurLevelTwo();
+        //}
+        //else
+        //{
+        //    _blur.blurSize += incBlur;
+        //}
 
         // Simple blur function to determine if everything is set up correctly
         if ((_blur.blurSize < 4.5f && incBlur > 0) || (_blur.blurSize >= 0 && incBlur <= 0)) {
@@ -108,8 +141,17 @@ public class GetDrunkScript : MonoBehaviour
         }
 
         _blur.blurIterations = (int) Mathf.Max(1, Mathf.Floor(_blur.blurSize));
+    }
 
+    private void BlurLevelOne()
+    {
+        _blur.enabled = true;
+    }
 
+    private void BlurLevelTwo()
+    {
+        _blur.blurSize = 1.2f;
+        _blur.blurIterations = 2;
     }
 
     private IEnumerator SoberUp()

@@ -16,11 +16,11 @@ MonoBehaviour:
   alcoholContent: 4
   needsShaker: 0
   recipe:
-  - ingredient: 5
+  - ingredient: 10
     amountMatters: 1
     amount: 200
     amountDescription: 1/4 Cup
-  - ingredient: 3
+  - ingredient: 41
     amountMatters: 1
     amount: 600
     amountDescription: 3/4 Cup

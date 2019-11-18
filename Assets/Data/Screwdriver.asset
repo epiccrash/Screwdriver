@@ -16,19 +16,19 @@ MonoBehaviour:
   alcoholContent: 5
   needsShaker: 0
   recipe:
-  - ingredient: 10
+  - ingredient: 104
     amountMatters: 0
     amount: 0
     amountDescription: 
-  - ingredient: 8
+  - ingredient: 102
     amountMatters: 1
     amount: 400
     amountDescription: 1/2 Cup
-  - ingredient: 0
+  - ingredient: 39
     amountMatters: 1
     amount: 400
     amountDescription: 1/2 Cup
-  - ingredient: 10
+  - ingredient: 105
     amountMatters: 1
     amount: 1
     amountDescription: 1 Wedge

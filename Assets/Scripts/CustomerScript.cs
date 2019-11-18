@@ -15,9 +15,9 @@ public enum CustomerState
 [RequireComponent(typeof(CustomerMovementController), typeof(NavMeshAgent))]
 public class CustomerScript : MonoBehaviour
 {
-    private const float DrinkPerfectionPercentageEpsilon = 0.35f;
-    private const int FallTimerMax = 4;
-    private const int MinFallAngle = 15;
+    private const int FallTimerMax = 3;
+    private const int MinFallAngle = 10;
+    private const float SlotDistanceTolerance = 1.2f;
 
     [SerializeField]
     private TextMeshPro _drinkNameText;
@@ -61,7 +61,6 @@ public class CustomerScript : MonoBehaviour
     private CustomerMovementController _movementController;
     private NavMeshAgent _agent;
     private Rigidbody _rigidBody;
-    private BoxCollider _collider;
 
     [Header("Sound Making")]
     [SerializeField] private int frequency;
@@ -108,7 +107,8 @@ public class CustomerScript : MonoBehaviour
         {
             AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
 
-            if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle)
+            if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle
+                || Vector3.SqrMagnitude(transform.position - _currentSlot.StandLocation.position) > SlotDistanceTolerance)
             {
                 if (_fallTimer <= 0)
                 {
@@ -201,17 +201,14 @@ public class CustomerScript : MonoBehaviour
                 _currentDrinkOrder = _orderableDrinks[idx];
 
                 ChangeState(CustomerState.WaitingForDrink);
+
+                // Play customer grunt.
+                AudioManager.S?.PlaySound(noise);
             }
             else
             {
                 // We can't order any drinks!
                 ChangeState(CustomerState.Idle);
-            }
-
-            if (_state == CustomerState.WaitingForDrink)
-            {
-                // Play customer grunt
-                AudioManager.S?.PlaySound(noise);
             }
         }
     }
@@ -269,7 +266,7 @@ public class CustomerScript : MonoBehaviour
 
         foreach (IngredientType ingredient in ingredientsAndCorrectness.Keys)
         {
-            if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > DrinkPerfectionPercentageEpsilon)
+            if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > GameConstants.DrinkPerfectionPercentageEpsilon)
             {
                 tip += ingredientsAndCorrectness[ingredient] * _tipPerCorrectIngredient;
                 isPerfectDrink = false;
