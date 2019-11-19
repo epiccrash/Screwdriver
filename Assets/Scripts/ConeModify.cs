@@ -45,6 +45,7 @@ public class ConeModify : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
         rend.material = new Material(shader);
         rend.material.color = new Color(0, 0, 0, alphaSetting);
+        /*
         rend.material.SetFloat("_Mode", 3);
         rend.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
         rend.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
@@ -53,6 +54,7 @@ public class ConeModify : MonoBehaviour
         rend.material.DisableKeyword("_ALPHABLEND_ON");
         rend.material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
         rend.material.renderQueue = 2999;
+        */
     }
 
     private void Update()
