@@ -16,7 +16,8 @@ public class ConeModify : MonoBehaviour
     [SerializeField]
     private int numIncreases = 1000;
     [SerializeField]
-    private Shader shader;
+    public Shader shader;
+    // private Shader shader;
     [SerializeField]
     private int alphaSetting = 150;
 
