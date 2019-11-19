@@ -31,6 +31,7 @@ public class PourFromCup : MonoBehaviour
 
     IEnumerator pour()
     {
+        Debug.Log("coroutine started");
         while (true)
         {
             Vector3 direction = spout.transform.position - transform.position;
@@ -60,11 +61,13 @@ public class PourFromCup : MonoBehaviour
     public void Fill(Material color) {
         pourable = true;
         liquidColor = color;
+        Debug.Log("i am filled");
     }
 
     public void Empty() {
         pourable = false;
         liquidColor = null;
+        Debug.Log("i am empty");
     }
 
 }
