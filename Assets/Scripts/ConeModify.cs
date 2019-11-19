@@ -294,8 +294,10 @@ public class ConeModify : MonoBehaviour
     }
 
     public void DecreaseFill() {
+        Debug.Log("i am decreased");
         if (increasesSoFar >= 0)
         {
+            Debug.Log("increases is greater than zero");
             increasesSoFar--;
             ModifyCone();
             pourScript.Fill(rend.material);
