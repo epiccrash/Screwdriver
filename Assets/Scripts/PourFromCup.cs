@@ -11,6 +11,7 @@ public class PourFromCup : MonoBehaviour
     public GameObject spout;
     public float force;
     private AudioSource pouringSource;
+    public Shader trailShader;
 
     public ConeModify cone;
 
@@ -31,7 +32,7 @@ public class PourFromCup : MonoBehaviour
 
     IEnumerator pour()
     {
-        Debug.Log("coroutine started");
+        
         while (true)
         {
             Vector3 direction = spout.transform.position - transform.position;
@@ -39,10 +40,16 @@ public class PourFromCup : MonoBehaviour
             
             if (spout.transform.position.y < transform.position.y && pourable)
             {
-                Debug.Log("made it in the if");
+                
                 cone.DecreaseFill();
+                //baseLiquid.GetComponent<TrailRenderer>().materials[0] = liquidColor;
                 GameObject newDrop = Instantiate(baseLiquid);
-                newDrop.GetComponent<Renderer>().material = liquidColor;
+                Material dropMat = new Material(trailShader);
+                dropMat.color=liquidColor.color;
+                print(liquidColor);
+                newDrop.GetComponent<TrailRenderer>().materials[0] = dropMat;
+                newDrop.GetComponent<TrailRenderer>().enabled=true;
+                Debug.Log("this is the material: "+newDrop.GetComponent<TrailRenderer>().materials[0]);
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 AudioManager.S.PlaySound(pouringSource);
@@ -61,7 +68,9 @@ public class PourFromCup : MonoBehaviour
 
     public void Fill(Material color) {
         pourable = true;
+   
         liquidColor = color;
+        
         Debug.Log("i am filled");
     }
 

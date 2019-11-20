@@ -274,6 +274,7 @@ public class ConeModify : MonoBehaviour
                     rend.material.color = Color.Lerp(rend.material.color, otherColor, Time.deltaTime * 0.1f);
                     // rend.material.color += new Color(otherColor.r, otherColor.g, otherColor.b, 0) / 256;
                 }
+               
                 pourScript.Fill(rend.material);
                 increasesSoFar += 1;
                 ModifyCone(1);
@@ -298,7 +299,7 @@ public class ConeModify : MonoBehaviour
 
     public void DecreaseFill() {
         Debug.Log("i am decreased");
-        if (increasesSoFar >= 0)
+        if (increasesSoFar > 0)
         {
             Debug.Log("increases is greater than zero");
             increasesSoFar--;

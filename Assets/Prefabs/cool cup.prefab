@@ -831,10 +831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cdfa5d8214b0c04183e332de22c22c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseLiquid: {fileID: 7563135684652501734, guid: e37f0d264de6ba645bf5a6650829aa9a,
+  baseLiquid: {fileID: 4765753491322531928, guid: 1132a2ab4717c984bac22bfe0c78fae8,
     type: 3}
   spout: {fileID: 1380191077167489885}
   force: 20
+  trailShader: {fileID: 210, guid: 0000000000000000f000000000000000, type: 0}
   cone: {fileID: 8060872554433305927}
 --- !u!114 &5549594360450223696
 MonoBehaviour:
