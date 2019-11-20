@@ -21,6 +21,12 @@ public class ConeModify : MonoBehaviour
     [SerializeField]
     private int alphaSetting = 150;
 
+    [Header("Plane Slicer Objects")]
+    [SerializeField]
+    private GameObject plane;
+    [SerializeField]
+    private GameObject coolCup;
+
     private Texture texture;
     private Color color;
 
@@ -45,7 +51,6 @@ public class ConeModify : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
         rend.material = new Material(shader);
         rend.material.color = new Color(0, 0, 0, alphaSetting);
-        /*
         rend.material.SetFloat("_Mode", 3);
         rend.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
         rend.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
@@ -53,13 +58,13 @@ public class ConeModify : MonoBehaviour
         rend.material.DisableKeyword("_ALPHATEST_ON");
         rend.material.DisableKeyword("_ALPHABLEND_ON");
         rend.material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
-        rend.material.renderQueue = 2999;
-        */
+        // rend.material.renderQueue = 2999;
     }
 
     private void Update()
     {
         rend.material.SetFloat("_Mode", 3);
+
         //print(Time.deltaTime);
     }
 
@@ -67,6 +72,8 @@ public class ConeModify : MonoBehaviour
     {
         midRadiusIncrease = topRadiusSize / numIncreases * multiplier;
         midHeightIncrease = coneHeight / numIncreases * multiplier;
+
+        plane.transform.localPosition += new Vector3(0, midHeightIncrease, 0);
 
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         Mesh mesh = filter.mesh;
@@ -274,6 +281,8 @@ public class ConeModify : MonoBehaviour
                     rend.material.color = Color.Lerp(rend.material.color, otherColor, Time.deltaTime * 0.1f);
                     // rend.material.color += new Color(otherColor.r, otherColor.g, otherColor.b, 0) / 256;
                 }
+
+                plane.GetComponent<ClippingPlane>().mat = rend.material;
                
                 pourScript.Fill(rend.material);
                 increasesSoFar += 1;

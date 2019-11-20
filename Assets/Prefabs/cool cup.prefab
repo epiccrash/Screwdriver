@@ -1353,6 +1353,8 @@ MonoBehaviour:
   numIncreases: 1000
   shader: {fileID: 4800000, guid: 606a96a3bf0640c41b8150776c9c60cc, type: 3}
   alphaSetting: 150
+  plane: {fileID: 6149384363443457007}
+  coolCup: {fileID: 5549594360450223701}
   maxAlpha: 0.99
   alphaStep: 0.01
   pourScript: {fileID: 4003563696012443873}
