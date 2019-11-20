@@ -27,7 +27,7 @@ public class CupScript : MonoBehaviour
                 _solidIngredientsInCup.Add(other.gameObject);
             }
         }
-        else if (other.gameObject.CompareTag("Water"))
+        else if (other.gameObject.layer == 4) // Water Layer
         {
             IngredientScript ingredient = other.gameObject.GetComponent<IngredientScript>();
             AddOrIncreaseIngredient(ingredient.IngredientType);
@@ -91,8 +91,8 @@ public class CupScript : MonoBehaviour
             return 0;
         }
 
-        float diff = amount - Mathf.Abs(amount - _ingredientsInCup[type]);
+        float diff = Mathf.Abs(amount - _ingredientsInCup[type]);
 
-        return Mathf.Max(0, diff / amount);
+        return diff / amount;
     }
 }

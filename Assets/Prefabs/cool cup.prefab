@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380191077167489885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1236,7 +1236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6149384363443457007}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8060872555398499202}
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   bottomRadiusSize: 0.16
   topRadiusSize: 0.03
   coneHeight: 0.6
-  numIncreases: 1000
+  numIncreases: 250
   shader: {fileID: 4800000, guid: 606a96a3bf0640c41b8150776c9c60cc, type: 3}
   alphaSetting: 150
   plane: {fileID: 6149384363443457007}

@@ -15,13 +15,18 @@ PrefabInstance:
     - target: {fileID: 7563135684652501734, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7563135684652501734, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
       propertyPath: m_TagString
       value: Alcohol
       objectReference: {fileID: 0}
+    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47ec87c13699e9c4e961ddd1f52e2cfb, type: 2}
     - target: {fileID: 7563135684652501741, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -77,10 +82,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+    - target: {fileID: 4509781828398075492, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 47ec87c13699e9c4e961ddd1f52e2cfb, type: 2}
+      propertyPath: _ingredientType
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e37f0d264de6ba645bf5a6650829aa9a, type: 3}

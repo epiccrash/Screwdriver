@@ -46,10 +46,10 @@ public class PourFromCup : MonoBehaviour
                 GameObject newDrop = Instantiate(baseLiquid);
                 Material dropMat = new Material(trailShader);
                 dropMat.color=liquidColor.color;
-                print(liquidColor);
+                
                 newDrop.GetComponent<TrailRenderer>().materials[0] = dropMat;
                 newDrop.GetComponent<TrailRenderer>().enabled=true;
-                Debug.Log("this is the material: "+newDrop.GetComponent<TrailRenderer>().materials[0]);
+                
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 AudioManager.S.PlaySound(pouringSource);
@@ -71,13 +71,13 @@ public class PourFromCup : MonoBehaviour
    
         liquidColor = color;
         
-        Debug.Log("i am filled");
+        
     }
 
     public void Empty() {
         pourable = false;
         liquidColor = null;
-        Debug.Log("i am empty");
+       
     }
 
 }

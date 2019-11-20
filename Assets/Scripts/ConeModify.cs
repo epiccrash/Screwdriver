@@ -307,17 +307,17 @@ public class ConeModify : MonoBehaviour
     }
 
     public void DecreaseFill() {
-        Debug.Log("i am decreased");
+        
         if (increasesSoFar > 0)
         {
-            Debug.Log("increases is greater than zero");
+            
             increasesSoFar--;
             ModifyCone(-1);
             
         }
         else {
             increasesSoFar = 0;
-            // ModifyCone(-1);
+            ModifyCone(-1);
             pourScript.Empty();
         }
     }
