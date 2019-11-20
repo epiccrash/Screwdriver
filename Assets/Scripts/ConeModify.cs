@@ -63,10 +63,10 @@ public class ConeModify : MonoBehaviour
         //print(Time.deltaTime);
     }
 
-    private void ModifyCone()
+    private void ModifyCone(int multiplier)
     {
-        midRadiusIncrease = topRadiusSize / numIncreases;
-        midHeightIncrease = coneHeight / numIncreases;
+        midRadiusIncrease = topRadiusSize / numIncreases * multiplier;
+        midHeightIncrease = coneHeight / numIncreases * multiplier;
 
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         Mesh mesh = filter.mesh;
@@ -276,7 +276,7 @@ public class ConeModify : MonoBehaviour
                 }
                 pourScript.Fill(rend.material);
                 increasesSoFar += 1;
-                ModifyCone();
+                ModifyCone(1);
             }
             Destroy(other.gameObject);
         } else if (other == null)
@@ -285,7 +285,7 @@ public class ConeModify : MonoBehaviour
             {
                 // Hardcoded values
                 increasesSoFar = increasesSoFar > 9 ? increasesSoFar - 10: increasesSoFar = 0;
-                ModifyCone();
+                ModifyCone(1);
             }
         }
 
@@ -302,12 +302,12 @@ public class ConeModify : MonoBehaviour
         {
             Debug.Log("increases is greater than zero");
             increasesSoFar--;
-            ModifyCone();
+            ModifyCone(-1);
             
         }
         else {
             increasesSoFar = 0;
-            ModifyCone();
+            // ModifyCone(-1);
             pourScript.Empty();
         }
     }

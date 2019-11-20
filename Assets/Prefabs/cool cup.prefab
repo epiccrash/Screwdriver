@@ -1354,7 +1354,7 @@ MonoBehaviour:
   alphaSetting: 150
   maxAlpha: 0.99
   alphaStep: 0.01
-  pourScript: {fileID: 0}
+  pourScript: {fileID: 4003563696012443873}
 --- !u!65 &8060872554433305923
 BoxCollider:
   m_ObjectHideFlags: 0
