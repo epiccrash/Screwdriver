@@ -36,8 +36,7 @@ public class PourFromCup : MonoBehaviour
         {
             Vector3 direction = spout.transform.position - transform.position;
             direction.Normalize();
-            Debug.Log("spout: "+spout.transform.position.y);
-            Debug.Log("cup: "+transform.position.y);
+            
             if (spout.transform.position.y < transform.position.y && pourable)
             {
                 Debug.Log("made it in the if");
