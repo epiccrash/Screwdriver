@@ -63,7 +63,7 @@ public class SodaJet : MonoBehaviour
             currentJoystick = Vector2.zero;
         }
 
-        if (currrentJoystick == joystickL || currentJoystick == joystickR) {
+        if (currentJoystick == joystickL || currentJoystick == joystickR) {
             // joystickObj.RotateAround(rotationPoint, Vector3.forward, Time.deltaTime);
             transform.eulerAngles = new Vector3(currentJoystick.x * 30, 0.0f, currentJoystick.y * 30);
         }
