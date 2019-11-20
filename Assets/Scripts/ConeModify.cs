@@ -32,6 +32,8 @@ public class ConeModify : MonoBehaviour
     public float maxAlpha = .8f;
     public float alphaStep = .05f;
 
+    public PourFromCup pourScript;
+
     private Material scriptedMaterial;
 
     private MeshRenderer rend;
@@ -289,6 +291,20 @@ public class ConeModify : MonoBehaviour
             print(rend.material.color);
             rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 150);
         }*/
+    }
+
+    public void DecreaseFill() {
+        if (increasesSoFar >= 0)
+        {
+            increasesSoFar--;
+            ModifyCone();
+            pourScript.Fill(rend.material);
+        }
+        else {
+            increasesSoFar = 0;
+            ModifyCone();
+            pourScript.Empty();
+        }
     }
 
     public void MakeOpaque()
