@@ -27,9 +27,10 @@ public class PourFromCup : MonoBehaviour
     void Update()
     {
         Vector3 spoutPos = spout.transform.localPosition;
-        spoutPos.x = Mathf.Clamp(spoutPos.x, -0.6f, 0.6f);
-        spoutPos.z = Mathf.Clamp(spoutPos.z, -0.6f, 0.6f);
+        //spoutPos.x = Mathf.Clamp(spout.transform.localPosition.x, -0.6f, 0.6f);
+        //spoutPos.z = Mathf.Clamp(spout.transform.localPosition.z, -0.6f, 0.6f);
         spout.transform.localPosition = spoutPos;
+        // spout.GetComponent<Rigidbody>().AddForce(-Vector3.up);
     }
 
 
