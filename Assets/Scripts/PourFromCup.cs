@@ -21,15 +21,17 @@ public class PourFromCup : MonoBehaviour
         spout = transform.GetChild(0).gameObject;
         pouringSource = GetComponent<AudioSource>();
         StartCoroutine(pour());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 spoutPos = spout.transform.position;
-        spoutPos.x = Mathf.Clamp(spoutPos.x, -0.6f, 0.6f);
-        spoutPos.y = Mathf.Clamp(spoutPos.z, -0.6f, 0.6f);
-        spout.transform.position = spoutPos;
+        Vector3 spoutPos = spout.transform.localPosition;
+        //spoutPos.x = Mathf.Clamp(spout.transform.localPosition.x, -0.6f, 0.6f);
+        //spoutPos.z = Mathf.Clamp(spout.transform.localPosition.z, -0.6f, 0.6f);
+        spout.transform.localPosition = spoutPos;
+        // spout.GetComponent<Rigidbody>().AddForce(-Vector3.up);
     }
 
 
@@ -46,12 +48,14 @@ public class PourFromCup : MonoBehaviour
                 cone.DecreaseFill();
                 //baseLiquid.GetComponent<TrailRenderer>().materials[0] = liquidColor;
                 GameObject newDrop = Instantiate(baseLiquid);
+
                 Material dropMat = new Material(trailShader);
                 dropMat.color = new Color(liquidColor.color.r, liquidColor.color.g, liquidColor.color.b, 0.572549f);
 
                 newDrop.GetComponent<TrailRenderer>().sharedMaterial = dropMat;
                 // newDrop.GetComponent<TrailRenderer>().enabled=true;
                 
+
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 AudioManager.S.PlaySound(pouringSource);

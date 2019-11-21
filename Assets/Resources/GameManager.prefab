@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8165859188566023008}
   - component: {fileID: 5427988662291183047}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,3 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a42a2be4d9b444e9bd2f63dbaa67439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnGameStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnGameOver:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnLightningRoundStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _regularGameLength: 120
+  _lightningRoundLength: 0

@@ -31,7 +31,7 @@ public class MixerScript : MonoBehaviour
 
             //if the velocity changes directions
             if (Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x) || Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x) || Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x))
-                fillCone.GetComponent<ConeModify>().MakeOpaque();
+                Mix();
             
 
             lastVelocity = velocity;
@@ -63,5 +63,11 @@ public class MixerScript : MonoBehaviour
             if (other.transform.parent == this.gameObject.transform)
                 other.transform.parent = null;
         }
+    }
+
+    //the method that is run when the mixer is shaken
+    private void Mix() {
+
+
     }
 }
