@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 708b781cad112c75d0008dfa8d76c639, type: 3}
   radius: {x: 0.4, y: 0.4}
-  angle: 50
+  angle: 0
   center: {x: 0.5, y: 0.5}
 --- !u!114 &714117164
 MonoBehaviour:
@@ -7081,6 +7081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66d1694abbcdba4695b982a64569e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationTime: 0.5
 --- !u!1 &1569227757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4508385419885900397, guid: dbe885479422e884996b32e0e1a83b96,
