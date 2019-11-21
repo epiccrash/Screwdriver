@@ -20,6 +20,7 @@ public class PourFromCup : MonoBehaviour
         spout = transform.GetChild(0).gameObject;
         pouringSource = GetComponent<AudioSource>();
         StartCoroutine(pour());
+        
     }
 
     // Update is called once per frame
@@ -41,7 +42,11 @@ public class PourFromCup : MonoBehaviour
             {
                 cone.DecreaseFill();
                 GameObject newDrop = Instantiate(baseLiquid);
-                newDrop.GetComponent<Renderer>().material = liquidColor;
+                Material trailrenderermaterial=new Material(liquidColor.shader);
+                trailrenderermaterial.color = liquidColor.color;
+
+                newDrop.GetComponent<TrailRenderer>().materials[0] = trailrenderermaterial;
+               
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 AudioManager.S.PlaySound(pouringSource);
