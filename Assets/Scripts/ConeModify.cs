@@ -58,7 +58,7 @@ public class ConeModify : MonoBehaviour
         rend.material.DisableKeyword("_ALPHATEST_ON");
         rend.material.DisableKeyword("_ALPHABLEND_ON");
         rend.material.EnableKeyword("_ALPHAPREMULTIPLY_ON");
-        // rend.material.renderQueue = 2999;
+        rend.material.renderQueue = 2999;
     }
 
     private void Update()
@@ -66,6 +66,11 @@ public class ConeModify : MonoBehaviour
         rend.material.SetFloat("_Mode", 3);
 
         //print(Time.deltaTime);
+
+        float xEulerValue = Mathf.Clamp(-coolCup.transform.eulerAngles.x, -30, 30);
+        float zEulerValue = Mathf.Clamp(-coolCup.transform.eulerAngles.z, -30, 30);
+
+        plane.transform.eulerAngles = new Vector3(xEulerValue, 0, zEulerValue);
     }
 
     private void ModifyCone(int multiplier)
@@ -73,7 +78,7 @@ public class ConeModify : MonoBehaviour
         midRadiusIncrease = topRadiusSize / numIncreases * multiplier;
         midHeightIncrease = coneHeight / numIncreases * multiplier;
 
-        plane.transform.localPosition += new Vector3(0, midHeightIncrease, 0);
+        plane.transform.localPosition += new Vector3(0, midHeightIncrease * multiplier, 0);
 
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         Mesh mesh = filter.mesh;

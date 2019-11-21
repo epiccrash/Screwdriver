@@ -91,8 +91,10 @@ public class CupScript : MonoBehaviour
             return 0;
         }
 
-        float diff = Mathf.Abs(amount - _ingredientsInCup[type]);
+        float diff = amount - Mathf.Abs(amount - _ingredientsInCup[type]);
+        // float diff = Mathf.Abs(amount - _ingredientsInCup[type]);
 
-        return diff / amount;
+        return Mathf.Max(0, diff / amount);
+        // return diff / amount;
     }
 }
