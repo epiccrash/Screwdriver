@@ -145,7 +145,7 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-        TipScript.Instance.AddTip(1.2f);
+        TipScript.Instance.AddTip(0.1f);
 
         if (_state == CustomerState.WalkingToSlot)
         {

@@ -94,7 +94,7 @@ MonoBehaviour:
   oneCoin: {fileID: 8300000, guid: af3856255654b4a2eb66385d39bec15b, type: 3}
   fewCoins: {fileID: 8300000, guid: f2aaaff934f9f4429a65d374504f87ae, type: 3}
   severalCoins: {fileID: 8300000, guid: c0c6fed693a4d44c7b088d4da38811f1, type: 3}
-  tipText: {fileID: 0}
+  tipText: {fileID: 2596830082813749798, guid: 1533d4cec84cc46cf85577b7337e552c, type: 3}
 --- !u!82 &966091215401128305
 AudioSource:
   m_ObjectHideFlags: 0

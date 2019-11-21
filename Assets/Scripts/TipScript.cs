@@ -11,7 +11,8 @@ public class TipScript : Singleton<TipScript>
     public AudioClip oneCoin;
     public AudioClip fewCoins;
     public AudioClip severalCoins;
-    public TextMeshProUGUI tipText;
+    public GameObject tipText;
+    public GameObject canvas;
     private AudioSource source;
 
     // Start is called before the first frame update
@@ -37,7 +38,11 @@ public class TipScript : Singleton<TipScript>
 
     public void AddTip(float tip)
     {
-        tipText.text = string.Format("{0:C}", tip); // Convert to currency
+        GameObject tt = Instantiate(tipText, canvas.transform);
+        //tt.transform.SetParent(transform);
+        //tt.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+        //tt.GetComponentInChildren<TextMeshProUGUI>().text = string.Format("{0:C}", tip); // Convert to currency
+        tt.GetComponent<TextMeshProUGUI>().text = "+" + string.Format("{0:C}", tip);
         //print("Added Tip: " + tip);
         // Determine number of bills in tip
         int numBills = (int)tip;
