@@ -19,6 +19,7 @@ public class RecipeDisplayScript : MonoBehaviour
 
     private Dictionary<IngredientType, RadialProgressBar> _ingredientRings;
     private Color _originalTextColor;
+    private DrinkRecipe _currentDrink;
 
     private void Start()
     {
@@ -39,8 +40,10 @@ public class RecipeDisplayScript : MonoBehaviour
 
     public void InitializeForNewDrink(DrinkRecipe newDrink)
     {
+        _currentDrink = newDrink;
         _drinkNameDisplay.text = newDrink.drinkName;
         _drinkNameDisplay.enabled = true;
+        UnhighlightDrinkName();
 
         foreach (IngredientUnit ingredientUnit in newDrink.recipe)
         {
@@ -60,11 +63,40 @@ public class RecipeDisplayScript : MonoBehaviour
         DestroyIngredientRings();
     }
 
-    public void UpdateIngredientRing(IngredientType ingredient, float newAmt)
+    public void UpdateIngredientRing(IngredientType ingredient)
     {
-        if (_ingredientRings.ContainsKey(ingredient))
+        IngredientUnit recipeUnit = _currentDrink.GetUnitFromIngredientType(ingredient);
+
+        if (recipeUnit != null && _ingredientRings.ContainsKey(ingredient))
         {
-            _ingredientRings[ingredient].SetIngredientAmount(newAmt);
+            if (recipeUnit.amountMatters)
+            {
+                float correctness = BarManager.Instance.GetCurrentCupIngredientCorrectness(ingredient, recipeUnit.amount);
+
+                if (ingredient == IngredientType.OrangeJuice)
+                {
+                    print("Orange Juice!: " + correctness);
+                }
+
+                _ingredientRings[ingredient].SetIngredientAmount(correctness);
+            }
+            else if (BarManager.Instance.GetCurrentCupIngredientAmount(ingredient) > 0)
+            {
+                // Amount doesn't matter, so we're 100% correct!
+                _ingredientRings[ingredient].SetIngredientAmount(1);
+            }
+            else
+            {
+                _ingredientRings[ingredient].SetIngredientAmount(0);
+            }
+        }
+    }
+
+    public void ResetIngredientDisplayForNewCup()
+    {
+        foreach (IngredientType ingredient in _ingredientRings.Keys)
+        {
+            UpdateIngredientRing(ingredient);
         }
     }
 

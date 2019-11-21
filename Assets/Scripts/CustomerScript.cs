@@ -223,6 +223,7 @@ public class CustomerScript : MonoBehaviour
         {
             if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > GameConstants.DrinkPerfectionPercentageEpsilon)
             {
+                print("Ingredient: "+ ingredient + " Value: " + ingredientsAndCorrectness[ingredient]);
                 tip += ingredientsAndCorrectness[ingredient] * _tipPerCorrectIngredient;
                 isPerfectDrink = false;
             }

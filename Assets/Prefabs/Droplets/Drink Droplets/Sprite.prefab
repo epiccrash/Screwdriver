@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sprite
       objectReference: {fileID: 0}
+    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8887157fd4c4def4a8c5832e60b41832, type: 2}
     - target: {fileID: 7563135684652501741, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,10 +72,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+    - target: {fileID: 4509781828398075492, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8887157fd4c4def4a8c5832e60b41832, type: 2}
+      propertyPath: _ingredientType
+      value: 103
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e37f0d264de6ba645bf5a6650829aa9a, type: 3}

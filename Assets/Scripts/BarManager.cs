@@ -9,7 +9,9 @@ public class BarManager : Singleton<BarManager>
     private float _customerWanderZLimit;
 
     private List<CustomerSlot> _customerSlots;
+    private List<RecipeDisplayScript> _recipeDisplays;
     private Queue<CustomerScript> _customerQueue;
+    private CupScript _currentTrackedCup;
 
     public float CustomerZWanderLimit { get { return _customerWanderZLimit; } }
 
@@ -30,6 +32,9 @@ public class BarManager : Singleton<BarManager>
         {
             _customerSlots.Add(slot.GetComponent<CustomerSlot>());
         }
+
+        RecipeDisplayScript[] displayArray = FindObjectsOfType<RecipeDisplayScript>();
+        _recipeDisplays = new List<RecipeDisplayScript>(displayArray);
     }
 
     private void Update()
@@ -84,5 +89,62 @@ public class BarManager : Singleton<BarManager>
     public void EnterCustomerQueue(CustomerScript customer)
     {
         _customerQueue.Enqueue(customer);
+    }
+
+    public void UpdateIngredientDisplays(IngredientType type, CupScript updatedCup)
+    {
+        bool changedTrackedCup = false;
+
+        if (_currentTrackedCup != updatedCup)
+        {
+            changedTrackedCup = true;
+            _currentTrackedCup = updatedCup;
+        }
+
+        foreach (RecipeDisplayScript display in _recipeDisplays)
+        {
+            if (changedTrackedCup)
+            {
+                display.ResetIngredientDisplayForNewCup();
+            }
+            else
+            {
+                display.UpdateIngredientRing(type);
+            }
+        }
+    }
+
+    public void OnCupPickedUp(CupScript pickedUpCup)
+    {
+
+        if (_currentTrackedCup != pickedUpCup)
+        {
+            _currentTrackedCup = pickedUpCup;
+
+            foreach (RecipeDisplayScript display in _recipeDisplays)
+            {
+                display.ResetIngredientDisplayForNewCup();
+            }
+        }
+    }
+
+    public float GetCurrentCupIngredientCorrectness(IngredientType type, int amount)
+    {
+        if (_currentTrackedCup != null)
+        {
+            return _currentTrackedCup.GetIngredientCorrectness(type, amount);
+        }
+
+        return 0;
+    }
+
+    public float GetCurrentCupIngredientAmount(IngredientType type)
+    {
+        if (_currentTrackedCup != null)
+        {
+            return _currentTrackedCup.GetIngredientAmount(type);
+        }
+
+        return 0;
     }
 }

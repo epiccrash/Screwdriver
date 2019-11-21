@@ -17,7 +17,9 @@ public enum IngredientType
     Gin = 41,
     Rum = 50,
     WhiteWine = 10,
+    RedWhite = 12,
     Curacao = 42,
+    Beer = 6,
 
     ////////////////////////////////////////
     // Mixers

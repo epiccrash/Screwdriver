@@ -35,6 +35,7 @@ public class TipScript : Singleton<TipScript>
 
     public void AddTip(float tip)
     {
+        print("Added Tip: " + tip);
         // Determine number of bills in tip
         int numBills = (int)tip;
         print("Num Bills: " + numBills);
