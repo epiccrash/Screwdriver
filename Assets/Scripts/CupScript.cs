@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CupScript : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class CupScript : MonoBehaviour
             if (_solidIngredientsInCup.Remove(other.gameObject))
             {
                 _ingredientsInCup[IngredientType.Ice]--;
+                BarManager.Instance.UpdateIngredientDisplays(IngredientType.Ice, this);
             }
 
             print("Ice: " + _ingredientsInCup[IngredientType.Ice]);
@@ -58,14 +60,15 @@ public class CupScript : MonoBehaviour
             _ingredientsInCup.Add(ingredient, 1);
         }
 
+        BarManager.Instance.UpdateIngredientDisplays(ingredient, this);
+
         int enumVal = (int)ingredient; // Calculating alcohol content of the drink
         if (enumVal < 100)
         {
             _alcoholByVolume += ((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
         }
+
         print("Alcohol by Volume: " + _alcoholByVolume);
-
-
         print(ingredient + ": " + _ingredientsInCup[ingredient]);
     }
 
@@ -91,8 +94,23 @@ public class CupScript : MonoBehaviour
             return 0;
         }
 
-        float diff = Mathf.Abs(amount - _ingredientsInCup[type]);
+        float diff = amount - Mathf.Abs(amount - _ingredientsInCup[type]);
 
-        return diff / amount;
+        return Mathf.Max(0, diff / amount);
+    }
+
+    public int GetIngredientAmount(IngredientType type)
+    {
+        if (_ingredientsInCup.ContainsKey(type))
+        {
+            return _ingredientsInCup[type];
+        }
+
+        return 0;
+    }
+
+    public void AlertBarManager()
+    {
+        BarManager.Instance.OnCupPickedUp(this);
     }
 }
