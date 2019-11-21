@@ -67,8 +67,8 @@ public class ConeModify : MonoBehaviour
 
         //print(Time.deltaTime);
 
-        float xEulerValue = Mathf.Clamp(-coolCup.transform.eulerAngles.x, -30, 30);
-        float zEulerValue = Mathf.Clamp(-coolCup.transform.eulerAngles.z, -30, 30);
+        float xEulerValue = -coolCup.transform.eulerAngles.x;
+        float zEulerValue = -coolCup.transform.eulerAngles.z;
 
         plane.transform.eulerAngles = new Vector3(xEulerValue, 0, zEulerValue);
     }
