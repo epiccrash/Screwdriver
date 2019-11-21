@@ -247,7 +247,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650804004587200401}
-  - component: {fileID: 273610227650645505}
   - component: {fileID: 6010904664241253400}
   m_Layer: 0
   m_Name: Cup Interior
@@ -270,18 +269,6 @@ Transform:
   m_Father: {fileID: 5549594360450223698}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &273610227650645505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4430701065432037211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da06aae1a8e4477797ff6b777c8feea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &6010904664241253400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -772,8 +759,8 @@ GameObject:
   - component: {fileID: 5549594360450223702}
   - component: {fileID: 8246900721815349135}
   - component: {fileID: 442038939684714563}
-  - component: {fileID: -7203874238713316621}
   - component: {fileID: 849619291233071112}
+  - component: {fileID: 5755200765198678587}
   m_Layer: 0
   m_Name: cool cup
   m_TagString: Container
@@ -973,6 +960,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5755200765198678587}
+        m_MethodName: AlertBarManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onDetachFromHand:
@@ -1011,18 +1009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede12bd6a29a99c4783a0202e3c1c82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-7203874238713316621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5549594360450223701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da06aae1a8e4477797ff6b777c8feea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &849619291233071112
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1047,7 +1033,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -1119,6 +1105,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5755200765198678587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549594360450223701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da06aae1a8e4477797ff6b777c8feea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5549594360589883583
 GameObject:
   m_ObjectHideFlags: 0
