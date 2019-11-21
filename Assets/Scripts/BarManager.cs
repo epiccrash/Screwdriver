@@ -137,4 +137,14 @@ public class BarManager : Singleton<BarManager>
 
         return 0;
     }
+
+    public float GetCurrentCupIngredientAmount(IngredientType type)
+    {
+        if (_currentTrackedCup != null)
+        {
+            return _currentTrackedCup.GetIngredientAmount(type);
+        }
+
+        return 0;
+    }
 }

@@ -42,10 +42,16 @@ public class CupScript : MonoBehaviour
             if (_solidIngredientsInCup.Remove(other.gameObject))
             {
                 _ingredientsInCup[IngredientType.Ice]--;
+
+                if (_ingredientsInCup[IngredientType.Ice] == 0)
+                {
+                    _ingredientsInCup.Remove(IngredientType.Ice);
+                }
+
                 BarManager.Instance.UpdateIngredientDisplays(IngredientType.Ice, this);
             }
 
-            print("Ice: " + _ingredientsInCup[IngredientType.Ice]);
+            // print("Ice: " + _ingredientsInCup[IngredientType.Ice]);
         }
     }
 
@@ -101,12 +107,7 @@ public class CupScript : MonoBehaviour
 
     public int GetIngredientAmount(IngredientType type)
     {
-        if (_ingredientsInCup.ContainsKey(type))
-        {
-            return _ingredientsInCup[type];
-        }
-
-        return 0;
+        return _ingredientsInCup.ContainsKey(type) ? _ingredientsInCup[type] : 0;
     }
 
     public void AlertBarManager()
