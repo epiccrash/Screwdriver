@@ -7061,6 +7061,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6378225309183258030, guid: 8fac7d623b4fc4c028e9eb173272b879,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579947147625353716, guid: 8fac7d623b4fc4c028e9eb173272b879,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579947147625353716, guid: 8fac7d623b4fc4c028e9eb173272b879,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579947147625353716, guid: 8fac7d623b4fc4c028e9eb173272b879,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579947147625353716, guid: 8fac7d623b4fc4c028e9eb173272b879,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579947147625353716, guid: 8fac7d623b4fc4c028e9eb173272b879,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fac7d623b4fc4c028e9eb173272b879, type: 3}
 --- !u!1 &1567759409 stripped
@@ -7081,7 +7111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66d1694abbcdba4695b982a64569e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationTime: 0.5
 --- !u!1 &1569227757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4508385419885900397, guid: dbe885479422e884996b32e0e1a83b96,
