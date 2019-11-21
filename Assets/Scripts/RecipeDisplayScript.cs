@@ -73,11 +73,6 @@ public class RecipeDisplayScript : MonoBehaviour
             {
                 float correctness = BarManager.Instance.GetCurrentCupIngredientCorrectness(ingredient, recipeUnit.amount);
 
-                if (ingredient == IngredientType.OrangeJuice)
-                {
-                    print("Orange Juice!: " + correctness);
-                }
-
                 _ingredientRings[ingredient].SetIngredientAmount(correctness);
             }
             else if (BarManager.Instance.GetCurrentCupIngredientAmount(ingredient) > 0)

@@ -17,7 +17,7 @@ public class CustomerScript : MonoBehaviour
 {
     private const int FallTimerMax = 2;
     private const int MinFallAngle = 10;
-    private const float SlotDistanceTolerance = 2.5f;
+    private const float SlotDistanceTolerance = 1.5f;
 
     [SerializeField]
     private List<DrinkRecipe> _orderableDrinks;
@@ -52,9 +52,13 @@ public class CustomerScript : MonoBehaviour
     private float _fallTimer;
     private CustomerState _state;
 
+    private bool _isNormalRound;
+    private bool _isLightningRound;
+
     private CustomerMovementController _movementController;
     private NavMeshAgent _agent;
     private Rigidbody _rigidBody;
+    private BoxCollider _collider;
 
     [Header("Sound Making")]
     [SerializeField] private int frequency;
@@ -69,13 +73,21 @@ public class CustomerScript : MonoBehaviour
     private void Start()
     {
         _alcoholLevel = 0;
+        _isNormalRound = false;
+        _isLightningRound = false;
 
         _movementController = GetComponent<CustomerMovementController>();
         _agent = GetComponent<NavMeshAgent>();
         _rigidBody = GetComponent<Rigidbody>();
+        _collider = GetComponent<BoxCollider>();
 
         // We're really good at avoiding things! Unless we're drunk.
         _agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+
+        // Add ourselves as listeners to some important game events.
+        GameManager.Instance.OnGameStart.AddListener(this.OnGameStart);
+        GameManager.Instance.OnLightningRoundStart.AddListener(this.OnLightningRoundStart);
+        GameManager.Instance.OnGameStart.AddListener(this.OnGameOver);
 
         ChangeState(CustomerState.Idle);
     }
@@ -83,7 +95,7 @@ public class CustomerScript : MonoBehaviour
     private void Update()
     {
         // Countdown drink timer.
-        if (_state == CustomerState.Idle)
+        if (_isNormalRound && _state == CustomerState.Idle)
         {
             _timeUntilNextDrink -= Time.deltaTime;
 
@@ -99,7 +111,8 @@ public class CustomerScript : MonoBehaviour
             AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
 
             if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle
-                || Vector3.SqrMagnitude(transform.position - _currentSlot.StandLocation.position) > SlotDistanceTolerance)
+                || Vector3.SqrMagnitude(transform.position - _currentSlot.StandLocation.position) > SlotDistanceTolerance
+                || _fallTimer < FallTimerMax)
             {
                 if (_fallTimer <= 0)
                 {
@@ -114,6 +127,28 @@ public class CustomerScript : MonoBehaviour
         }
     }
 
+    private void OnGameStart()
+    {
+        _isNormalRound = true;
+    }
+
+    private void OnLightningRoundStart()
+    {
+        // Move away from the seats.
+        ChangeState(CustomerState.Idle);
+
+        _isNormalRound = false;
+        _isLightningRound = true;
+    }
+
+    private void OnGameOver()
+    {
+        // Move away from the seats.
+        ChangeState(CustomerState.Idle);
+
+        _isLightningRound = false;
+    }
+
     private void RandomizeDrinkTimer()
     {
         _timeUntilNextDrink = UnityEngine.Random.Range(_minTimeBetweenDrinks, _maxTimeBetweenDrinks);
@@ -126,6 +161,7 @@ public class CustomerScript : MonoBehaviour
             case CustomerState.Idle:
                 _agent.enabled = true;
                 _rigidBody.isKinematic = true;
+                _collider.enabled = false;
                 _currentSlot?.Unlock();
                 _currentSlot = null;
                 RandomizeDrinkTimer();
@@ -134,6 +170,7 @@ public class CustomerScript : MonoBehaviour
             case CustomerState.WaitingForDrink:
                 _agent.enabled = false;
                 _rigidBody.isKinematic = false;
+                _collider.enabled = true;
                 _fallTimer = FallTimerMax;
                 break;
             default:
@@ -223,7 +260,7 @@ public class CustomerScript : MonoBehaviour
         {
             if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > GameConstants.DrinkPerfectionPercentageEpsilon)
             {
-                print("Ingredient: "+ ingredient + " Value: " + ingredientsAndCorrectness[ingredient]);
+                print("Ingredient: " + ingredient + " Value: " + ingredientsAndCorrectness[ingredient]);
                 tip += ingredientsAndCorrectness[ingredient] * _tipPerCorrectIngredient;
                 isPerfectDrink = false;
             }

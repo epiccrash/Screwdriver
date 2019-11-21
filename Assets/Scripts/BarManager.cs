@@ -13,6 +13,9 @@ public class BarManager : Singleton<BarManager>
     private Queue<CustomerScript> _customerQueue;
     private CupScript _currentTrackedCup;
 
+    private bool _isRegularGame;
+    private bool _isLightningRound;
+
     public float CustomerZWanderLimit { get { return _customerWanderZLimit; } }
 
     protected override void Awake()
@@ -25,6 +28,9 @@ public class BarManager : Singleton<BarManager>
         _customerSlots = new List<CustomerSlot>();
         _customerQueue = new Queue<CustomerScript>();
 
+        _isRegularGame = false;
+        _isLightningRound = false;
+
         // Find all slots in the scene.
         GameObject[] slotObjs = GameObject.FindGameObjectsWithTag("CustomerSlot");
 
@@ -35,21 +41,52 @@ public class BarManager : Singleton<BarManager>
 
         RecipeDisplayScript[] displayArray = FindObjectsOfType<RecipeDisplayScript>();
         _recipeDisplays = new List<RecipeDisplayScript>(displayArray);
+
+        // Add listeners for game events.
+        GameManager.Instance.OnGameStart.AddListener(this.OnGameStart);
+        GameManager.Instance.OnLightningRoundStart.AddListener(this.OnLightningRoundStart);
+        GameManager.Instance.OnGameOver.AddListener(this.OnGameOver);
     }
 
     private void Update()
     {
-        CustomerSlot freeSlot = GetRandomAvailableSlot();
-
-        if (freeSlot != null)
+        if (_isRegularGame)
         {
-            CustomerScript nextCustomer = GetCustomerFromQueue();
+            // People take turns being seated.
+            CustomerSlot freeSlot = GetRandomAvailableSlot();
 
-            if (nextCustomer != null)
+            if (freeSlot != null)
             {
-                freeSlot.Lock();
-                nextCustomer.AssignSlot(freeSlot);
+                CustomerScript nextCustomer = GetCustomerFromQueue();
+
+                if (nextCustomer != null)
+                {
+                    freeSlot.Lock();
+                    nextCustomer.AssignSlot(freeSlot);
+                }
             }
+        }
+    }
+
+    private void OnGameStart()
+    {
+        _isRegularGame = true;
+    }
+
+    private void OnLightningRoundStart()
+    {
+        _isRegularGame = false;
+        _isLightningRound = true;
+    }
+
+    private void OnGameOver()
+    {
+        _isLightningRound = false;
+
+        // Nobody is sitting anymore!
+        foreach (CustomerSlot slot in _customerSlots)
+        {
+            slot.Unlock();
         }
     }
 
