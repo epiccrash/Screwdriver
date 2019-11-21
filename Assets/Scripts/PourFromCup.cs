@@ -11,6 +11,7 @@ public class PourFromCup : MonoBehaviour
     public GameObject spout;
     public float force;
     private AudioSource pouringSource;
+    public Shader trailShader;
 
     public ConeModify cone;
 
@@ -26,27 +27,34 @@ public class PourFromCup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 spoutPos = spout.transform.localPosition;
+        spoutPos.x = Mathf.Clamp(spoutPos.x, -0.6f, 0.6f);
+        spoutPos.z = Mathf.Clamp(spoutPos.z, -0.6f, 0.6f);
+        spout.transform.localPosition = spoutPos;
     }
 
 
     IEnumerator pour()
     {
-        Debug.Log("coroutine started");
+        
         while (true)
         {
             Vector3 direction = spout.transform.position - transform.position;
             direction.Normalize();
-
+            
             if (spout.transform.position.y < transform.position.y && pourable)
             {
                 cone.DecreaseFill();
+                //baseLiquid.GetComponent<TrailRenderer>().materials[0] = liquidColor;
                 GameObject newDrop = Instantiate(baseLiquid);
-                Material trailrenderermaterial=new Material(liquidColor.shader);
-                trailrenderermaterial.color = liquidColor.color;
 
-                newDrop.GetComponent<TrailRenderer>().materials[0] = trailrenderermaterial;
-               
+                Material dropMat = new Material(trailShader);
+                dropMat.color = new Color(liquidColor.color.r, liquidColor.color.g, liquidColor.color.b, 0.572549f);
+
+                newDrop.GetComponent<TrailRenderer>().sharedMaterial = dropMat;
+                // newDrop.GetComponent<TrailRenderer>().enabled=true;
+                
+
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 AudioManager.S.PlaySound(pouringSource);
@@ -65,14 +73,16 @@ public class PourFromCup : MonoBehaviour
 
     public void Fill(Material color) {
         pourable = true;
+   
         liquidColor = color;
-        Debug.Log("i am filled");
+        
+        
     }
 
     public void Empty() {
         pourable = false;
         liquidColor = null;
-        Debug.Log("i am empty");
+       
     }
 
 }

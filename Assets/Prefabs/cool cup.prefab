@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380191077167489885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -247,7 +247,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650804004587200401}
-  - component: {fileID: 273610227650645505}
   - component: {fileID: 6010904664241253400}
   m_Layer: 0
   m_Name: Cup Interior
@@ -270,18 +269,6 @@ Transform:
   m_Father: {fileID: 5549594360450223698}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &273610227650645505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4430701065432037211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da06aae1a8e4477797ff6b777c8feea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &6010904664241253400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -772,8 +759,8 @@ GameObject:
   - component: {fileID: 5549594360450223702}
   - component: {fileID: 8246900721815349135}
   - component: {fileID: 442038939684714563}
-  - component: {fileID: -7203874238713316621}
   - component: {fileID: 849619291233071112}
+  - component: {fileID: 5755200765198678587}
   m_Layer: 0
   m_Name: cool cup
   m_TagString: Container
@@ -831,10 +818,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cdfa5d8214b0c04183e332de22c22c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseLiquid: {fileID: 7563135684652501734, guid: e37f0d264de6ba645bf5a6650829aa9a,
+  baseLiquid: {fileID: 4765753491322531928, guid: 1132a2ab4717c984bac22bfe0c78fae8,
     type: 3}
   spout: {fileID: 1380191077167489885}
   force: 20
+  trailShader: {fileID: 210, guid: 0000000000000000f000000000000000, type: 0}
   cone: {fileID: 8060872554433305927}
 --- !u!114 &5549594360450223696
 MonoBehaviour:
@@ -972,6 +960,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5755200765198678587}
+        m_MethodName: AlertBarManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onDetachFromHand:
@@ -1010,18 +1009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede12bd6a29a99c4783a0202e3c1c82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-7203874238713316621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5549594360450223701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da06aae1a8e4477797ff6b777c8feea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &849619291233071112
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1046,7 +1033,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -1118,6 +1105,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5755200765198678587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549594360450223701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da06aae1a8e4477797ff6b777c8feea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5549594360589883583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1209,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6149384363443457007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 871431565914280094}
+  - component: {fileID: 8451206597379072008}
+  m_Layer: 0
+  m_Name: Plane Obj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &871431565914280094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149384363443457007}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.016999992, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8060872555398499202}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8451206597379072008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149384363443457007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a435e0e64d5f84fbada5ed987ecf64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 4283e0fcab1757949a80a917da295998, type: 2}
 --- !u!1 &8060872554433305925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,12 +1348,14 @@ MonoBehaviour:
   bottomRadiusSize: 0.16
   topRadiusSize: 0.03
   coneHeight: 0.6
-  numIncreases: 1000
-  shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  numIncreases: 250
+  shader: {fileID: 4800000, guid: 606a96a3bf0640c41b8150776c9c60cc, type: 3}
   alphaSetting: 150
+  plane: {fileID: 6149384363443457007}
+  coolCup: {fileID: 5549594360450223701}
   maxAlpha: 0.99
   alphaStep: 0.01
-  pourScript: {fileID: 0}
+  pourScript: {fileID: 4003563696012443873}
 --- !u!65 &8060872554433305923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1352,6 +1397,7 @@ Transform:
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children:
   - {fileID: 8060872554433305926}
+  - {fileID: 871431565914280094}
   m_Father: {fileID: 5385713917819057648}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

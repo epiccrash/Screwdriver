@@ -10,7 +10,32 @@ PrefabInstance:
     - target: {fileID: 7563135684652501734, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
       propertyPath: m_Name
-      value: Orange Juice
+      value: Orange Juice Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563135684652501739, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d0d1fb893f2043439c694281d3805e2, type: 2}
+    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d0d1fb893f2043439c694281d3805e2, type: 2}
+    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_Emitting
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7563135684652501741, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
@@ -67,30 +92,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7563135684652501739, guid: e37f0d264de6ba645bf5a6650829aa9a,
+    - target: {fileID: 4509781828398075492, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1d0d1fb893f2043439c694281d3805e2, type: 2}
-    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1d0d1fb893f2043439c694281d3805e2, type: 2}
-    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
-        type: 3}
-      propertyPath: m_ReceiveShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
-        type: 3}
-      propertyPath: m_Emitting
-      value: 1
+      propertyPath: _ingredientType
+      value: 102
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e37f0d264de6ba645bf5a6650829aa9a, type: 3}

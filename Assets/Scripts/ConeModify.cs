@@ -16,9 +16,16 @@ public class ConeModify : MonoBehaviour
     [SerializeField]
     private int numIncreases = 1000;
     [SerializeField]
-    private Shader shader;
+    public Shader shader;
+    // private Shader shader;
     [SerializeField]
     private int alphaSetting = 150;
+
+    [Header("Plane Slicer Objects")]
+    [SerializeField]
+    private GameObject plane;
+    [SerializeField]
+    private GameObject coolCup;
 
     private Texture texture;
     private Color color;
@@ -57,13 +64,21 @@ public class ConeModify : MonoBehaviour
     private void Update()
     {
         rend.material.SetFloat("_Mode", 3);
+
         //print(Time.deltaTime);
+
+        float xEulerValue = Mathf.Clamp(-coolCup.transform.eulerAngles.x, -30, 30);
+        float zEulerValue = Mathf.Clamp(-coolCup.transform.eulerAngles.z, -30, 30);
+
+        plane.transform.eulerAngles = new Vector3(xEulerValue, 0, zEulerValue);
     }
 
-    private void ModifyCone()
+    private void ModifyCone(int multiplier)
     {
-        midRadiusIncrease = topRadiusSize / numIncreases;
-        midHeightIncrease = coneHeight / numIncreases;
+        midRadiusIncrease = topRadiusSize / numIncreases * multiplier;
+        midHeightIncrease = coneHeight / numIncreases * multiplier;
+
+        plane.transform.localPosition += new Vector3(0, midHeightIncrease * multiplier, 0);
 
         MeshFilter filter = gameObject.GetComponent<MeshFilter>();
         Mesh mesh = filter.mesh;
@@ -271,9 +286,12 @@ public class ConeModify : MonoBehaviour
                     rend.material.color = Color.Lerp(rend.material.color, otherColor, Time.deltaTime * 0.1f);
                     // rend.material.color += new Color(otherColor.r, otherColor.g, otherColor.b, 0) / 256;
                 }
+
+                plane.GetComponent<ClippingPlane>().mat = rend.material;
+               
                 pourScript.Fill(rend.material);
                 increasesSoFar += 1;
-                ModifyCone();
+                ModifyCone(1);
             }
             Destroy(other.gameObject);
         } else if (other == null)
@@ -282,7 +300,7 @@ public class ConeModify : MonoBehaviour
             {
                 // Hardcoded values
                 increasesSoFar = increasesSoFar > 9 ? increasesSoFar - 10: increasesSoFar = 0;
-                ModifyCone();
+                ModifyCone(1);
             }
         }
 
@@ -294,17 +312,17 @@ public class ConeModify : MonoBehaviour
     }
 
     public void DecreaseFill() {
-        Debug.Log("i am decreased");
-        if (increasesSoFar >= 0)
+        
+        if (increasesSoFar > 0)
         {
-            Debug.Log("increases is greater than zero");
+            
             increasesSoFar--;
-            ModifyCone();
+            ModifyCone(-1);
             
         }
         else {
             increasesSoFar = 0;
-            ModifyCone();
+            ModifyCone(-1);
             pourScript.Empty();
         }
     }
