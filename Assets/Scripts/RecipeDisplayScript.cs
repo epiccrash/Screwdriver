@@ -65,24 +65,27 @@ public class RecipeDisplayScript : MonoBehaviour
 
     public void UpdateIngredientRing(IngredientType ingredient)
     {
-        IngredientUnit recipeUnit = _currentDrink.GetUnitFromIngredientType(ingredient);
-
-        if (recipeUnit != null && _ingredientRings.ContainsKey(ingredient))
+        if (_currentDrink != null)
         {
-            if (recipeUnit.amountMatters)
-            {
-                float correctness = BarManager.Instance.GetCurrentCupIngredientCorrectness(ingredient, recipeUnit.amount);
+            IngredientUnit recipeUnit = _currentDrink.GetUnitFromIngredientType(ingredient);
 
-                _ingredientRings[ingredient].SetIngredientAmount(correctness);
-            }
-            else if (BarManager.Instance.GetCurrentCupIngredientAmount(ingredient) > 0)
+            if (recipeUnit != null && _ingredientRings.ContainsKey(ingredient))
             {
-                // Amount doesn't matter, so we're 100% correct!
-                _ingredientRings[ingredient].SetIngredientAmount(1);
-            }
-            else
-            {
-                _ingredientRings[ingredient].SetIngredientAmount(0);
+                if (recipeUnit.amountMatters)
+                {
+                    float correctness = BarManager.Instance.GetCurrentCupIngredientCorrectness(ingredient, recipeUnit.amount);
+
+                    _ingredientRings[ingredient].SetIngredientAmount(correctness);
+                }
+                else if (BarManager.Instance.GetCurrentCupIngredientAmount(ingredient) > 0)
+                {
+                    // Amount doesn't matter, so we're 100% correct!
+                    _ingredientRings[ingredient].SetIngredientAmount(1);
+                }
+                else
+                {
+                    _ingredientRings[ingredient].SetIngredientAmount(0);
+                }
             }
         }
     }
