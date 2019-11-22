@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: e8e93c90b05c743879d3b64feed0a924
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Cube
+    100004: Cube.1032_Cube.1477
+    100006: Cube.1033_Cube.1478
+    100008: Cube.1038_Cube.1483
+    100010: Cube.1039_Cube.1484
+    100012: Cube.918_Cube.000
+    100014: Cube.919_Cube.000
+    100016: Cube.919_Cube.001
+    100018: Cube.919_Cube.002
+    100020: Cube.919_Cube.003
+    100022: Cube.919_Cube.1269
+    100024: Cylinder.008
+    100026: Table.000
+    100028: Table.001
+    100030: Table.002
+    100032: Table.003
+    100034: Table.004
+    100036: Table.005
+    100038: Table.006
+    100040: Table.007
+    400000: //RootNode
+    400002: Cube
+    400004: Cube.1032_Cube.1477
+    400006: Cube.1033_Cube.1478
+    400008: Cube.1038_Cube.1483
+    400010: Cube.1039_Cube.1484
+    400012: Cube.918_Cube.000
+    400014: Cube.919_Cube.000
+    400016: Cube.919_Cube.001
+    400018: Cube.919_Cube.002
+    400020: Cube.919_Cube.003
+    400022: Cube.919_Cube.1269
+    400024: Cylinder.008
+    400026: Table.000
+    400028: Table.001
+    400030: Table.002
+    400032: Table.003
+    400034: Table.004
+    400036: Table.005
+    400038: Table.006
+    400040: Table.007
+    2100000: Brownie
+    2100002: VIP_BlackTexture
+    2100004: Brushed Metal
+    2100006: Trays
+    2100008: Coffee_Cups
+    2100010: Black Coffee Maker
+    2100012: Cookie
+    2100014: ChairColor
+    2100016: ChairSeatCover
+    2100018: Top
+    2100020: Bottom
+    2100022: Flower
+    2100024: Stems
+    2100026: Leaves
+    2100028: Glassware
+    2300000: Cube
+    2300002: Cube.1032_Cube.1477
+    2300004: Cube.1033_Cube.1478
+    2300006: Cube.1038_Cube.1483
+    2300008: Cube.1039_Cube.1484
+    2300010: Cube.918_Cube.000
+    2300012: Cube.919_Cube.000
+    2300014: Cube.919_Cube.001
+    2300016: Cube.919_Cube.002
+    2300018: Cube.919_Cube.003
+    2300020: Cube.919_Cube.1269
+    2300022: Cylinder.008
+    2300024: Table.000
+    2300026: Table.001
+    2300028: Table.002
+    2300030: Table.003
+    2300032: Table.004
+    2300034: Table.005
+    2300036: Table.006
+    2300038: Table.007
+    3300000: Cube
+    3300002: Cube.1032_Cube.1477
+    3300004: Cube.1033_Cube.1478
+    3300006: Cube.1038_Cube.1483
+    3300008: Cube.1039_Cube.1484
+    3300010: Cube.918_Cube.000
+    3300012: Cube.919_Cube.000
+    3300014: Cube.919_Cube.001
+    3300016: Cube.919_Cube.002
+    3300018: Cube.919_Cube.003
+    3300020: Cube.919_Cube.1269
+    3300022: Cylinder.008
+    3300024: Table.000
+    3300026: Table.001
+    3300028: Table.002
+    3300030: Table.003
+    3300032: Table.004
+    3300034: Table.005
+    3300036: Table.006
+    3300038: Table.007
+    4300000: Cube
+    4300002: Cube.1032_Cube.1477
+    4300004: Cube.1033_Cube.1478
+    4300006: Cube.1038_Cube.1483
+    4300008: Cube.1039_Cube.1484
+    4300010: Cube.918_Cube.000
+    4300012: Cube.919_Cube.000
+    4300014: Cube.919_Cube.001
+    4300016: Cube.919_Cube.1269
+    4300018: Cylinder.008
+    4300020: Cube.919_Cube.002
+    4300022: Cube.919_Cube.003
+    4300024: Table.001
+    4300026: Table.000
+    4300028: Table.002
+    4300030: Table.003
+    4300032: Table.004
+    4300034: Table.005
+    4300036: Table.006
+    4300038: Table.007
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

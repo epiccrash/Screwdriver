@@ -20,10 +20,12 @@ public class FillTray : MonoBehaviour
 
     public void Fill()
     {
-        float xMax = transform.position.x + GetComponent<Collider>().bounds.extents.x;
-        float xMin = transform.position.x - GetComponent<Collider>().bounds.extents.x;
-        float zMax = transform.position.z + GetComponent<Collider>().bounds.extents.z;
-        float zMin = transform.position.z - GetComponent<Collider>().bounds.extents.z;
+        float xMax = transform.position.x + 0.0001f;
+        float xMin = transform.position.x - 0.0001f;
+        float zMax = transform.position.z + 0.0001f;
+        float zMin = transform.position.z - 0.0001f;
+        print(xMax + ", " + xMin + "; " + zMax + ", " + zMin);
+
         float x;
         float z;
         GameObject cube;
