@@ -7,6 +7,8 @@ public class ShotManager : Singleton<ShotManager>
 {
     private List<ShotSpawnLocation> _spawners;
 
+    private bool _isTimeForShots = false;
+
     protected override void Awake()
     {
         // Get all our spawn locations.
@@ -16,6 +18,9 @@ public class ShotManager : Singleton<ShotManager>
         {
             spawn.gameObject.SetActive(false);
         }
+
+        GameManager.Instance.OnLightningRoundStart.AddListener(OnLightningRoundBegin);
+        GameManager.Instance.OnGameOver.AddListener(OnGameOver);
     }
 
     public override void Initialize()
@@ -26,10 +31,33 @@ public class ShotManager : Singleton<ShotManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (_isTimeForShots)
         {
-            StartCoroutine("SpawnFirstRow");
+            bool shouldRespawn = true;
+
+            foreach (ShotSpawnLocation spawn in _spawners)
+            {
+                if (!spawn.isWaitingForShot)
+                {
+                    shouldRespawn = false;
+                }
+            }
+
+            if (shouldRespawn)
+            {
+                _ = StartCoroutine("SpawnFirstRow");
+            }
         }
+    }
+
+    private void OnLightningRoundBegin()
+    {
+        _isTimeForShots = true;
+    }
+
+    private void OnGameOver()
+    {
+        _isTimeForShots = false;
     }
 
     IEnumerator SpawnFirstRow()
