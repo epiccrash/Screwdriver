@@ -88,6 +88,26 @@ public class CupScript : MonoBehaviour
         return _alcoholByVolume;
     }
 
+    public float GetTotalAlcohol()
+    {
+        if (_ingredientsInCup != null && _ingredientsInCup.Count > 0)
+        {
+            float totalAlc = 0;
+
+            foreach (IngredientType ingredient in _ingredientsInCup.Keys)
+            {
+                if ((int)ingredient < 100)
+                {
+                    totalAlc += _ingredientsInCup[ingredient];
+                }
+            }
+
+            return totalAlc;
+        }
+
+        return 0;
+    }
+
     public bool IsEmpty()
     {
         return _ingredientsInCup.Keys.Count == 0;

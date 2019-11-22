@@ -35,11 +35,11 @@ public class ShotSpawnLocation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!_isGameOver && _currentCup != null)
         {
-            float amt = _currentCup.GetIngredientAmount(IngredientType.Vodka);
+            float amt = _currentCup.GetTotalAlcohol();
             float percentage = amt / _desiredFillAmount;
 
             _progressRing.SetIngredientAmount(Mathf.Min(1, percentage));
