@@ -45,8 +45,10 @@ public class RecipeDisplayScript : MonoBehaviour
         _drinkNameDisplay.enabled = true;
         UnhighlightDrinkName();
 
-        foreach (IngredientUnit ingredientUnit in newDrink.recipe)
+        foreach (IngredientType ingredient in newDrink.GetIngredientList())
         {
+            IngredientUnit ingredientUnit = newDrink.GetUnitFromIngredientType(ingredient);
+
             GameObject newIngredientRing = Instantiate(_radialProgressBarPrefab, _ingredientRingParent.transform) as GameObject;
 
             RadialProgressBar radialBarScript = newIngredientRing.GetComponent<RadialProgressBar>();
