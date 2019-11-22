@@ -182,7 +182,7 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-        
+
 
         if (_state == CustomerState.WalkingToSlot)
         {
@@ -222,8 +222,10 @@ public class CustomerScript : MonoBehaviour
         Dictionary<IngredientType, float> ingredientsAndCorrectness = new Dictionary<IngredientType, float>();
 
         // Add all ingredients to the dictionary.
-        foreach (IngredientUnit unit in _currentDrinkOrder.recipe)
+        foreach (IngredientType ingredient in _currentDrinkOrder.GetIngredientList())
         {
+            IngredientUnit unit = _currentDrinkOrder.GetUnitFromIngredientType(ingredient);
+
             ingredientsAndCorrectness.Add(unit.ingredient, 0);
         }
 
