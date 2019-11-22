@@ -145,6 +145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shotGlassPrefab: {fileID: 292739451080918663, guid: b0c1aaaa4f2924c76acb8b062af836a5,
     type: 3}
+  _desiredFillAmount: 75
+  _tipAmount: 1.5
+  _progressRing: {fileID: 1727730668424832089}
 --- !u!1001 &7054864338124012321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262,6 +265,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8511179181876404088, guid: aadb2967530d34966b9711e3dcb2d789,
+        type: 3}
+      propertyPath: IncorrectAmtColor.rgba
+      value: 4293631028
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511179181876404088, guid: aadb2967530d34966b9711e3dcb2d789,
+        type: 3}
+      propertyPath: CorrectAmtColor.rgba
+      value: 4293631028
+      objectReference: {fileID: 0}
     - target: {fileID: 5799943175332076332, guid: aadb2967530d34966b9711e3dcb2d789,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -355,3 +368,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7054864338124012321}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1727730668424832089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8511179181876404088, guid: aadb2967530d34966b9711e3dcb2d789,
+    type: 3}
+  m_PrefabInstance: {fileID: 7054864338124012321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f413d2bd70a554c5fbcd43dcadf76499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

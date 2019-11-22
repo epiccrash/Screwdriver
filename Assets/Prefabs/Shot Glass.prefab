@@ -90,8 +90,10 @@ PrefabInstance:
     - target: {fileID: 8060872554433305927, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8,
         type: 3}
       propertyPath: numIncreases
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 442038939684714563, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8, type: 3}
+    - {fileID: 5549594360450223702, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8, type: 3}
+    - {fileID: 5549594360450223703, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f9c1a1df8bc1ce488e6c7cab3ef40f8, type: 3}
