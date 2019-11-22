@@ -145,8 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shotGlassPrefab: {fileID: 292739451080918663, guid: b0c1aaaa4f2924c76acb8b062af836a5,
     type: 3}
-  _desiredFillAmount: 75
-  _tipAmount: 1.5
+  _desiredFillAmount: 40
+  _tipAmount: 0.75
   _progressRing: {fileID: 1727730668424832089}
 --- !u!1001 &7054864338124012321
 PrefabInstance:
