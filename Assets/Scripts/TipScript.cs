@@ -80,7 +80,7 @@ public class TipScript : Singleton<TipScript>
         for (int coins = 0; coins < numCoins; coins++)
         {
             c = Instantiate(coin);
-            c.transform.position = transform.position + new Vector3(0, 0.5f, 0); // Instantiate coins slightly above tip jar
+            c.transform.position = transform.position + new Vector3(0, 0.6f, 0); // Instantiate coins slightly above tip jar
         }
     }
 }

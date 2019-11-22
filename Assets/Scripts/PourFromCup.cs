@@ -27,11 +27,13 @@ public class PourFromCup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         Vector3 spoutPos = spout.transform.localPosition;
-        //spoutPos.x = Mathf.Clamp(spout.transform.localPosition.x, -0.6f, 0.6f);
-        //spoutPos.z = Mathf.Clamp(spout.transform.localPosition.z, -0.6f, 0.6f);
+        spout.GetComponent<Rigidbody>().AddForce(-spout.transform.right.normalized);
+        spoutPos.x = Mathf.Clamp(spout.transform.localPosition.x, -0.6f, 0.6f);
+        spoutPos.z = Mathf.Clamp(spout.transform.localPosition.z, -0.6f, 0.6f);
         spout.transform.localPosition = spoutPos;
-        // spout.GetComponent<Rigidbody>().AddForce(-Vector3.up);
+        */
     }
 
 
