@@ -74,8 +74,8 @@ public class CupScript : MonoBehaviour
             _alcoholByVolume += ((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
         }
 
-        print("Alcohol by Volume: " + _alcoholByVolume);
-        print(ingredient + ": " + _ingredientsInCup[ingredient]);
+        //print("Alcohol by Volume: " + _alcoholByVolume);
+        //print(ingredient + ": " + _ingredientsInCup[ingredient]);
     }
 
     public List<IngredientType> GetIngredientList()

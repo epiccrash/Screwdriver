@@ -148,6 +148,8 @@ MonoBehaviour:
   _desiredFillAmount: 30
   _tipAmount: 0.75
   _progressRing: {fileID: 1727730668424832089}
+  _cupSpawnEffect: {fileID: 3823612740604605347, guid: bd9b304392b97405da544d74278b673f,
+    type: 3}
 --- !u!1001 &7054864338124012321
 PrefabInstance:
   m_ObjectHideFlags: 0
