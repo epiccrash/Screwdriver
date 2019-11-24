@@ -21,7 +21,7 @@ public class SodaJet : MonoBehaviour
     [SerializeField] private float deadZone = 0.5f;
 
     public Transform spoutLocation;
-    private bool snapping= false;
+    private bool snapping = false;
 
     private GameObject spout;
 
@@ -33,8 +33,17 @@ public class SodaJet : MonoBehaviour
         spout = transform.GetChild(0).gameObject;
         StartCoroutine(Squirt());
 
-        leftHand = GameObject.Find("LeftHand").transform;
-        rightHand = GameObject.Find("RightHand").transform;
+        GameObject leftHandObj = GameObject.Find("LeftHand");
+        if (leftHandObj != null)
+        {
+            leftHand = leftHandObj.transform;
+        }
+
+        GameObject rightHandObj = GameObject.Find("RightHand");
+        if (rightHandObj != null)
+        {
+            rightHand = GameObject.Find("RightHand")?.transform;
+        }
     }
 
     // Update is called once per frame
@@ -42,28 +51,36 @@ public class SodaJet : MonoBehaviour
     {
         joystickL = SteamVR_Actions._default.Joystick.GetAxis(inputSource);
         joystickR = SteamVR_Actions._default.Joystick.GetAxis(inputSource2);
-        if (snapping) {
+        if (snapping)
+        {
             GetComponent<Rigidbody>().isKinematic = true;
             transform.position = spoutLocation.position;
             transform.rotation = spoutLocation.rotation;
             snapping = false;
         }
-        if (transform.position == spoutLocation.position) {
+        if (transform.position == spoutLocation.position)
+        {
             snapping = false;
             GetComponent<Rigidbody>().isKinematic = false;
         }
         //joystickL = new Vector2(Input.GetAxis("JoystickLeftH"), Input.GetAxis("JoystickLeftV"));
         //joystickR = new Vector2(Input.GetAxis("JoystickLeftH"), Input.GetAxis("JoystickLeftV"));
 
-        if (transform.parent == leftHand) {
+        if (transform.parent == leftHand)
+        {
             currentJoystick = joystickL;
-        } else if (transform.parent == rightHand) {
+        }
+        else if (transform.parent == rightHand)
+        {
             currentJoystick = joystickR;
-        } else {
+        }
+        else
+        {
             currentJoystick = Vector2.zero;
         }
 
-        if (currentJoystick == joystickL || currentJoystick == joystickR) {
+        if (currentJoystick == joystickL || currentJoystick == joystickR)
+        {
             // joystickObj.RotateAround(rotationPoint, Vector3.forward, Time.deltaTime);
             transform.eulerAngles = new Vector3(currentJoystick.x * 30, 0.0f, currentJoystick.y * 30);
         }
@@ -94,13 +111,15 @@ public class SodaJet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "SodaSnap") {
+        if (other.tag == "SodaSnap")
+        {
             snapping = true;
         }
     }
 
-    private void CreateDrop(GameObject liquid) {
-        
+    private void CreateDrop(GameObject liquid)
+    {
+
         Vector3 direction = spout.transform.up + new Vector3(0, 0.5f, 0);
         direction.Normalize();
 
