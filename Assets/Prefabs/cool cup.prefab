@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7468654542384296402}
   - component: {fileID: 2890438426939502150}
   - component: {fileID: 2559328295501359582}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 268613021255135634}
   - component: {fileID: 968130817160067479}
   - component: {fileID: 1452138406930276447}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plastic Cup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,9 +212,9 @@ GameObject:
   m_Component:
   - component: {fileID: 650804004587200401}
   - component: {fileID: 6010904664241253400}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cup Interior
-  m_TagString: Untagged
+  m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 3426024793065688672}
   - component: {fileID: 8512884472166956468}
   - component: {fileID: 1750576162537899392}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,8 +350,8 @@ GameObject:
   - component: {fileID: 5549594358702304737}
   - component: {fileID: 5549594358702304736}
   - component: {fileID: 5549594358702304739}
-  m_Layer: 0
-  m_Name: Cube (5)
+  m_Layer: 12
+  m_Name: Front
   m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,8 +428,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.87, z: 1}
+  m_Center: {x: 0, y: -0.06, z: 0}
 --- !u!1 &5549594360142533368
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,8 +442,8 @@ GameObject:
   - component: {fileID: 5549594360142533367}
   - component: {fileID: 5549594360142533366}
   - component: {fileID: 5549594360142533369}
-  m_Layer: 0
-  m_Name: Cube (4)
+  m_Layer: 12
+  m_Name: Right Side
   m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,8 +520,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.87, z: 1}
+  m_Center: {x: 0, y: -0.06, z: 0}
 --- !u!1 &5549594360365482970
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,8 +534,8 @@ GameObject:
   - component: {fileID: 5549594360365482969}
   - component: {fileID: 5549594360365482968}
   - component: {fileID: 5549594360365482971}
-  m_Layer: 0
-  m_Name: Cube (1)
+  m_Layer: 12
+  m_Name: Left Side
   m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,8 +612,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.87, z: 1}
+  m_Center: {x: 0, y: -0.06, z: 0}
 --- !u!1 &5549594360429167049
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,8 +626,8 @@ GameObject:
   - component: {fileID: 5549594360429167044}
   - component: {fileID: 5549594360429167047}
   - component: {fileID: 5549594360429167046}
-  m_Layer: 0
-  m_Name: Cube (3)
+  m_Layer: 12
+  m_Name: Back
   m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,8 +704,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.87, z: 1}
+  m_Center: {x: 0, y: -0.06, z: 0}
 --- !u!1 &5549594360450223701
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 849619291233071112}
   - component: {fileID: 5755200765198678587}
   - component: {fileID: 1330772033}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: cool cup
   m_TagString: Container
   m_Icon: {fileID: 0}
@@ -1139,8 +1139,8 @@ GameObject:
   - component: {fileID: 5549594360589883578}
   - component: {fileID: 5549594360589883581}
   - component: {fileID: 5549594360589883580}
-  m_Layer: 0
-  m_Name: Cube (6)
+  m_Layer: 12
+  m_Name: Bottom
   m_TagString: Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1229,7 +1229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 871431565914280094}
   - component: {fileID: 8451206597379072008}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 8060872554433305921}
   - component: {fileID: 8060872554433305927}
   - component: {fileID: 8060872554433305923}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fill
   m_TagString: Fill
   m_Icon: {fileID: 0}
@@ -1388,7 +1388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8060872555398499202}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fill Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5385713917819057648}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlasticCup2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

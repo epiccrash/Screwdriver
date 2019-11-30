@@ -16,6 +16,7 @@ TagManager:
   - SodaSnap
   - Alcohol
   - Knife
+  - Spout
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - Pourer
   - WineBox
   - StaticFurniture
-  - 
-  - 
+  - Cups
+  - PlacementTriggers
   - 
   - 
   - 

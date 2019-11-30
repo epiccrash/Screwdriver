@@ -5,6 +5,8 @@ using Valve.VR;
 
 public class SodaJet : MonoBehaviour
 {
+    private const float DropletSize = 0.02f;
+
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.LeftHand;
     public SteamVR_Input_Sources inputSource2 = SteamVR_Input_Sources.RightHand;
 
@@ -94,12 +96,14 @@ public class SodaJet : MonoBehaviour
             {
                 print(transform.parent == rightHand);
                 if ((transform.parent == leftHand && joystickL.y >= 0.1f) ||
-                    (transform.parent == rightHand && joystickR.y >= 0.1f))
+                    (transform.parent == rightHand && joystickR.y >= 0.1f) ||
+                    Input.GetKey(KeyCode.K))
                 {
                     CreateDrop(liquidPrefab);
                 }
                 else if ((transform.parent == leftHand && joystickL.y <= -0.1f) ||
-                         (transform.parent == rightHand && joystickR.y <= -0.1f))
+                         (transform.parent == rightHand && joystickR.y <= -0.1f) ||
+                         Input.GetKey(KeyCode.L))
                 {
                     CreateDrop(liquidPrefab2);
                 }
@@ -125,6 +129,9 @@ public class SodaJet : MonoBehaviour
 
         GameObject newDrop = Instantiate(liquid);
         newDrop.transform.position = spout.transform.position;
+        newDrop.transform.localScale = new Vector3(DropletSize, DropletSize, DropletSize);
+        newDrop.GetComponent<MeshRenderer>().enabled = false;
         newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
+        newDrop.GetComponent<TrailRenderer>().enabled = true;
     }
 }
