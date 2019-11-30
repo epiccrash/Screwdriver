@@ -94,7 +94,6 @@ public class SodaJet : MonoBehaviour
         {
             if (transform.parent != null)
             {
-                print(transform.parent == rightHand);
                 if ((transform.parent == leftHand && joystickL.y >= 0.1f) ||
                     (transform.parent == rightHand && joystickR.y >= 0.1f) ||
                     Input.GetKey(KeyCode.K))
