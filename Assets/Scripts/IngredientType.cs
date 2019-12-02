@@ -27,10 +27,15 @@ public enum IngredientType
     Cola = 101,
     OrangeJuice = 102,
     ClubSoda = 103,
+    // LemonJuice = 104,
+    // LimeJuice = 105,
 
     ////////////////////////////////////////
     // Garnishes/Other
     ////////////////////////////////////////
     Ice = 104,
-    OrangeWedge = 105
+    OrangeWedge = 105,
+    LemonPeel = 106,
+    LimePeel = 107,
+    Cherry = 108
 }

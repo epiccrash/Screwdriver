@@ -44,8 +44,11 @@ public class PourFromCup : MonoBehaviour
         {
             Vector3 direction = spout.transform.position - transform.position;
             direction.Normalize();
-            
-            if (spout.transform.position.y < transform.position.y && pourable)
+
+            // print(transform.position.y + ", " + (spout.transform.position.y-spout.GetComponent<Collider>().bounds.extents.y));
+
+            //if (spout.transform.position.y < transform.position.y && pourable)
+            if ((spout.transform.position.y - spout.GetComponent<Collider>().bounds.extents.y) < transform.position.y && pourable)
             {
                 cone.DecreaseFill();
                 //baseLiquid.GetComponent<TrailRenderer>().materials[0] = liquidColor;

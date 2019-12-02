@@ -30,6 +30,8 @@ public class SodaJet : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<Rigidbody>().isKinematic = true;
+
         spout = transform.GetChild(0).gameObject;
         StartCoroutine(Squirt());
 
@@ -61,6 +63,10 @@ public class SodaJet : MonoBehaviour
         if (transform.position == spoutLocation.position)
         {
             snapping = false;
+            // GetComponent<Rigidbody>().isKinematic = false;
+            // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        } else if (transform.parent == leftHand || transform.parent == rightHand)
+        {
             GetComponent<Rigidbody>().isKinematic = false;
         }
         //joystickL = new Vector2(Input.GetAxis("JoystickLeftH"), Input.GetAxis("JoystickLeftV"));
@@ -82,7 +88,7 @@ public class SodaJet : MonoBehaviour
         if (currentJoystick == joystickL || currentJoystick == joystickR)
         {
             // joystickObj.RotateAround(rotationPoint, Vector3.forward, Time.deltaTime);
-            transform.eulerAngles = new Vector3(currentJoystick.x * 30, 0.0f, currentJoystick.y * 30);
+            // transform.eulerAngles = new Vector3(currentJoystick.x * 30, 0.0f, currentJoystick.y * 30);
         }
     }
 

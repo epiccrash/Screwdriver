@@ -6,6 +6,7 @@ public class FillTray : MonoBehaviour
 {
     public GameObject IceCube;
     public int fillNum = 150;
+    public float offset;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class FillTray : MonoBehaviour
         float xMin = transform.position.x - GetComponent<Collider>().bounds.extents.x;
         float zMax = transform.position.z + GetComponent<Collider>().bounds.extents.z;
         float zMin = transform.position.z - GetComponent<Collider>().bounds.extents.z;
+        print(xMax + ", " + xMin + ", " + zMax + ", " + zMin);
 
         float x;
         float z;
@@ -33,7 +35,7 @@ public class FillTray : MonoBehaviour
             x = Random.Range(xMin, xMax);
             z = Random.Range(zMin, zMax);
             cube = GameObject.Instantiate(IceCube);
-            cube.transform.position = new Vector3(x, transform.position.y, z);
+            cube.transform.position = new Vector3(x, transform.position.y + offset, z);
             cube.transform.rotation = Random.rotation;
         }
     }

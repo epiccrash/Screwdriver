@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class FixRotationOnGrab : MonoBehaviour
 {
-    bool check;
-
     Transform target;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        check = false;
-    }
 
     // Update is called once per frame
     void Update()
