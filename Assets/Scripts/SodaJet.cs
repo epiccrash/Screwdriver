@@ -5,6 +5,7 @@ using Valve.VR;
 
 public class SodaJet : MonoBehaviour
 {
+    private const float DropletSize = 0.02f;
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.LeftHand;
     public SteamVR_Input_Sources inputSource2 = SteamVR_Input_Sources.RightHand;
 
@@ -44,7 +45,7 @@ public class SodaJet : MonoBehaviour
         GameObject rightHandObj = GameObject.Find("RightHand");
         if (rightHandObj != null)
         {
-            rightHand = GameObject.Find("RightHand")?.transform;
+            rightHand = rightHandObj.transform;
         }
     }
 
@@ -75,12 +76,10 @@ public class SodaJet : MonoBehaviour
         if (transform.parent == leftHand)
         {
             currentJoystick = joystickL;
-        }
-        else if (transform.parent == rightHand)
+        } else if (transform.parent == rightHand)
         {
             currentJoystick = joystickR;
-        }
-        else
+        } else
         {
             currentJoystick = Vector2.zero;
         }
@@ -98,14 +97,13 @@ public class SodaJet : MonoBehaviour
         {
             if (transform.parent != null)
             {
-                print(transform.parent == rightHand);
                 if ((transform.parent == leftHand && joystickL.y >= 0.1f) ||
-                    (transform.parent == rightHand && joystickR.y >= 0.1f))
+                    (transform.parent == rightHand && joystickR.y >= 0.1f) || Input.GetKey(KeyCode.K))
                 {
                     CreateDrop(liquidPrefab);
                 }
                 else if ((transform.parent == leftHand && joystickL.y <= -0.1f) ||
-                         (transform.parent == rightHand && joystickR.y <= -0.1f))
+                         (transform.parent == rightHand && joystickR.y <= -0.1f) || Input.GetKey(KeyCode.L))
                 {
                     CreateDrop(liquidPrefab2);
                 }
@@ -125,11 +123,17 @@ public class SodaJet : MonoBehaviour
 
     private void CreateDrop(GameObject liquid)
     {
-
+        
         Vector3 direction = spout.transform.up + new Vector3(0, 0.5f, 0);
         direction.Normalize();
 
         GameObject newDrop = Instantiate(liquid);
+
+        newDrop.transform.localScale = new Vector3(DropletSize, DropletSize, DropletSize);
+        newDrop.GetComponent<MeshRenderer>().enabled = false;
+
+        newDrop.GetComponent<TrailRenderer>().enabled = true;
+
         newDrop.transform.position = spout.transform.position;
         newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
     }

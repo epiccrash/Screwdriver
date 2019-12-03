@@ -33,6 +33,7 @@ public class TipScript : Singleton<TipScript>
         {
             source.Play();
         }
+
     }
 
     public void AddTip(float tip)

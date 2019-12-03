@@ -58,5 +58,5 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _regularGameLength: 150
+  _regularGameLength: 0
   _lightningRoundLength: 30
