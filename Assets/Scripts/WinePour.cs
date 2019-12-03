@@ -6,6 +6,10 @@ public class WinePour : MonoBehaviour
 {
     public GameObject spout;
     public GameObject wine;
+
+    [SerializeField]
+    private ParticleSystem _particleSystem;
+
     private bool pour;
     // Start is called before the first frame update
     void Start()
@@ -41,17 +45,31 @@ public class WinePour : MonoBehaviour
             {
                 GameObject newDrop = Instantiate(wine);
                 newDrop.transform.position = spout.transform.position;
+
+                if (_particleSystem != null && !_particleSystem.isPlaying)
+                {
+                    _particleSystem.Play();
+                }
+            }
+            else
+            {
+                if (_particleSystem != null && _particleSystem.isPlaying)
+                {
+                    _particleSystem.Stop();
+                }
             }
             yield return new WaitForSeconds(0.005f);
         }
     }
 
-    public void StartPour() {
+    public void StartPour()
+    {
         pour = true;
         GetComponent<AudioSource>().Play();
     }
 
-    public void StopPour() {
+    public void StopPour()
+    {
         pour = false;
         GetComponent<AudioSource>().Stop();
     }

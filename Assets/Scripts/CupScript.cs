@@ -74,8 +74,8 @@ public class CupScript : MonoBehaviour
             _alcoholByVolume += ((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
         }
 
-        print("Alcohol by Volume: " + _alcoholByVolume);
-        print(ingredient + ": " + _ingredientsInCup[ingredient]);
+        //print("Alcohol by Volume: " + _alcoholByVolume);
+        //print(ingredient + ": " + _ingredientsInCup[ingredient]);
     }
 
     public List<IngredientType> GetIngredientList()
@@ -86,6 +86,26 @@ public class CupScript : MonoBehaviour
     public float GetABV()
     {
         return _alcoholByVolume;
+    }
+
+    public float GetTotalAlcohol()
+    {
+        if (_ingredientsInCup != null && _ingredientsInCup.Count > 0)
+        {
+            float totalAlc = 0;
+
+            foreach (IngredientType ingredient in _ingredientsInCup.Keys)
+            {
+                if ((int)ingredient < 100)
+                {
+                    totalAlc += _ingredientsInCup[ingredient];
+                }
+            }
+
+            return totalAlc;
+        }
+
+        return 0;
     }
 
     public bool IsEmpty()

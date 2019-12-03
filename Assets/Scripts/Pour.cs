@@ -9,6 +9,10 @@ public class Pour : MonoBehaviour
 
     public GameObject water;
     public int force;
+
+    [SerializeField]
+    private ParticleSystem _pourParticleEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +27,10 @@ public class Pour : MonoBehaviour
         
     }
 
-    IEnumerator pour() {
-        while (true) {
+    IEnumerator pour()
+    {
+        while (true)
+        {
             Vector3 direction = spout.transform.position - transform.position;
             direction.Normalize();
             
@@ -34,9 +40,20 @@ public class Pour : MonoBehaviour
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
                 AudioManager.S.PlaySound(pouringSource);
-            } else
+                if (_pourParticleEffect != null && !_pourParticleEffect.isPlaying)
+                {
+                    _pourParticleEffect.Play();
+                }
+
+            }
+            else
             {
                 AudioManager.S.StopSound(pouringSource);
+
+                if (_pourParticleEffect != null && _pourParticleEffect.isPlaying)
+                {
+                    _pourParticleEffect.Stop();
+                }
             }
 
             yield return new WaitForSeconds(0.005f);
