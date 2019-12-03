@@ -12,7 +12,8 @@ public class Juiceable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnpoint = GetComponentInParent<SpawnerScript>(); 
+        spawnpoint = GetComponentInParent<SpawnerScript>();
+        Debug.Log(spawnpoint);
     }
 
     // Update is called once per frame
@@ -22,6 +23,7 @@ public class Juiceable : MonoBehaviour
     }
 
     public void LoadFruit() {
+        
         if (spawnpoint != null) {
             spawnpoint.needSpawn = true;
         }

@@ -6,10 +6,11 @@ public class CutMe : MonoBehaviour
 {
     public GameObject cutPieces;
     public int numPieces = 5;
+    private SpawnerScript spawnpoint;
     // Start is called before the first frame update
     void Start()
     {
-        
+         spawnpoint = GetComponentInParent<SpawnerScript>();
     }
 
     // Update is called once per frame
@@ -22,7 +23,12 @@ public class CutMe : MonoBehaviour
     {
         if (collision.transform.tag=="Knife") {
 
-            print("weee");
+            
+            
+            if (spawnpoint != null)
+            {
+                spawnpoint.needSpawn = true;
+            }
 
             KnifeScript knife = collision.transform.GetComponent<KnifeScript>();
 
