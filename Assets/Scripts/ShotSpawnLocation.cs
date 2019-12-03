@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ShotSpawnLocation : MonoBehaviour
 {
-    private const float CupFallStep = 0.05f;
-    private const float FallEpsilon = 0.001f;
-    private const float FullCupPercentageEpsilon = 0.02f;
-    private const float CupFallAdjustment = 0.04f;
-
     [SerializeField]
     private GameObject _shotGlassPrefab;
 
@@ -21,21 +16,16 @@ public class ShotSpawnLocation : MonoBehaviour
     [SerializeField]
     private RadialProgressBar _progressRing;
 
-    [SerializeField]
-    private ParticleSystem _cupSpawnEffect;
-
     private CupScript _currentCup;
 
     private bool _isWaitingForShot = true;
     public bool isWaitingForShot => _isWaitingForShot;
 
     private bool _isGameOver = false;
-    private LayerMask _counterLayerMask;
 
     private void Awake()
     {
         GameManager.Instance.OnGameOver.AddListener(OnGameOver);
-        _counterLayerMask = LayerMask.GetMask("StaticFurniture");
     }
 
     private void OnGameOver()
@@ -45,16 +35,16 @@ public class ShotSpawnLocation : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         if (!_isGameOver && _currentCup != null)
         {
-            float amt = _currentCup.GetTotalAlcohol();
+            float amt = _currentCup.GetIngredientAmount(IngredientType.Vodka);
             float percentage = amt / _desiredFillAmount;
 
             _progressRing.SetIngredientAmount(Mathf.Min(1, percentage));
 
-            if (percentage >= 1 || 1 - percentage <= FullCupPercentageEpsilon)
+            if (percentage >= 1 || 1 - percentage <= 0.02)
             {
                 TipScript.Instance.AddTip(_tipAmount);
 
@@ -71,50 +61,18 @@ public class ShotSpawnLocation : MonoBehaviour
         if (_currentCup == null)
         {
             GameObject newCup = Instantiate(_shotGlassPrefab, this.transform);
-            newCup.transform.localPosition = new Vector3(0, _progressRing.transform.localPosition.y, 0);
+
+            Rigidbody rb = newCup.GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ
+                | RigidbodyConstraints.FreezeRotation;
+
+            newCup.transform.localPosition = new Vector3(0, 0.1f, 0);
 
             _currentCup = newCup.GetComponent<CupScript>();
+            _isWaitingForShot = false;
 
-            RaycastHit counterHit;
-
-            if (Physics.Raycast(_currentCup.transform.position, Vector3.down, out counterHit, Mathf.Infinity, _counterLayerMask))
-            {
-                if (counterHit.rigidbody != null)
-                {
-                    Vector3 fallPosition = counterHit.point;
-                    fallPosition.y += CupFallAdjustment;
-                    _ = StartCoroutine(DropCup(fallPosition));
-
-                    _isWaitingForShot = false;
-
-                    PlaySpawnEffect();
-
-                    _progressRing.gameObject.SetActive(true);
-                    _progressRing.InitializeForNewIngredient(IngredientType.Vodka);
-                }
-            }
-            else
-            {
-                Debug.LogError("Shot glass could not find the bar counter to fall onto. Bar/counter might not be on the 'StaticFurniture' layer.");
-                Destroy(_currentCup.gameObject);
-                _currentCup = null;
-            }
-        }
-    }
-
-    private void PlaySpawnEffect()
-    {
-        ParticleSystem effect = Instantiate(_cupSpawnEffect, _progressRing.transform);
-        Destroy(effect, effect.main.duration);
-    }
-
-    IEnumerator DropCup(Vector3 targetPos)
-    {
-        // While we haven't fallen to the counter...
-        while (_currentCup != null && Vector3.Distance(_currentCup.transform.position, targetPos) > FallEpsilon)
-        {
-            _currentCup.transform.position = Vector3.MoveTowards(_currentCup.transform.position, targetPos, CupFallStep);
-            yield return null;
+            _progressRing.gameObject.SetActive(true);
+            _progressRing.InitializeForNewIngredient(IngredientType.Vodka);
         }
     }
 }

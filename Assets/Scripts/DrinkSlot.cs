@@ -65,7 +65,6 @@ public class DrinkSlot : MonoBehaviour
         if (currentDrink != null && !currentDrink.IsEmpty())
         {
             onDrinkServed?.Invoke(_drinkInSlot);
-            BarManager.Instance.OnCupServed(_drinkInSlot);
         }
     }
 }

@@ -10,7 +10,7 @@ public class Juicer : MonoBehaviour
     public GameObject spout;
     public GameObject squisher;
 
-    private bool movedDown = false;
+    private bool movedDown=false;
     private bool full;
     private float juiceLeft;
     private GameObject juiceableObject;
@@ -33,7 +33,7 @@ public class Juicer : MonoBehaviour
     {
         if (handle.outAngle < SaveAngle && full)
         {
-
+            
             GameObject newDrop = Instantiate(juiceDrop);
             newDrop.transform.position = spout.transform.position;
             SaveAngle -= 90.0f / juiceableObject.GetComponent<Juiceable>().jucieUnits;
@@ -46,24 +46,21 @@ public class Juicer : MonoBehaviour
 
         squisher.transform.localScale = new Vector3(squisher.transform.localScale.x, .16f + scaleMove, squisher.transform.localScale.z);
 
-        if (-0.074f - scaleMove / 4 < transform.localPosition.x || scaleMove == 0)
-        {
+        if (-0.074f - scaleMove/4 < transform.localPosition.x || scaleMove==0) {
 
-            // Debug.Log("new location: " + -0.074f + scaleMove / 4);
-            // Debug.Log("old location: " + transform.localPosition.x);
-            // Debug.Log("Movement: " + scaleMove);
-            if (scaleMove > 0)
-            {
+            Debug.Log("new location: " + -0.074f + scaleMove / 4);
+            Debug.Log("old location: " + transform.localPosition.x);
+            Debug.Log("Movement: " + scaleMove);
+            if ( scaleMove > 0) {
                 movedDown = true;
             }
-            if (movedDown == true && scaleMove == 0)
-            {
+            if (movedDown == true && scaleMove == 0) {
                 movedDown = false;
                 unloadJuicer();
             }
             transform.localPosition = new Vector3(-0.074f - scaleMove / 4, transform.localPosition.y, transform.localPosition.z);
         }
-
+        
 
         if (juiceLeft <= 0)
         {
@@ -85,8 +82,8 @@ public class Juicer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Juiceable")
-        {
-
+        {   
+            
 
             if (juiceableObject != null)
             {
@@ -104,7 +101,7 @@ public class Juicer : MonoBehaviour
     {
         if (other.tag == "Juiceable")
         {
-
+            
             juiceableObject = null;
             unloadJuicer();
 

@@ -59,7 +59,7 @@ public class DrinkRecipe : ScriptableObject
 
     public List<IngredientType> GetIngredientList()
     {
-        if (_ingredientList == null || _ingredientList.Count == 0)
+        if (_ingredientList.Count == 0)
         {
             _ingredientList = new List<IngredientType>();
 

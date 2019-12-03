@@ -21,7 +21,7 @@ public class RecipeDisplayScript : MonoBehaviour
     private Color _originalTextColor;
     private DrinkRecipe _currentDrink;
 
-    private void Awake()
+    private void Start()
     {
         _originalTextColor = _drinkNameDisplay.color;
         _drinkNameDisplay.enabled = false;
@@ -30,15 +30,12 @@ public class RecipeDisplayScript : MonoBehaviour
 
     private void DestroyIngredientRings()
     {
-        if (_ingredientRings != null && _ingredientRings.Count > 0)
+        foreach (RadialProgressBar child in _ingredientRings.Values)
         {
-            foreach (RadialProgressBar child in _ingredientRings.Values)
-            {
-                Destroy(child.gameObject);
-            }
-
-            _ingredientRings.Clear();
+            Destroy(child.gameObject);
         }
+
+        _ingredientRings.Clear();
     }
 
     public void InitializeForNewDrink(DrinkRecipe newDrink)

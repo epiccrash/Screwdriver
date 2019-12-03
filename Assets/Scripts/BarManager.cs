@@ -165,21 +165,6 @@ public class BarManager : Singleton<BarManager>
         }
     }
 
-    public void OnCupServed(GameObject servedCupObj)
-    {
-        CupScript servedCup = servedCupObj.GetComponent<CupScript>();
-
-        if (_currentTrackedCup == servedCup)
-        {
-            _currentTrackedCup = null;
-
-            foreach (RecipeDisplayScript display in _recipeDisplays)
-            {
-                display.ResetIngredientDisplayForNewCup();
-            }
-        }
-    }
-
     public float GetCurrentCupIngredientCorrectness(IngredientType type, int amount)
     {
         if (_currentTrackedCup != null)
