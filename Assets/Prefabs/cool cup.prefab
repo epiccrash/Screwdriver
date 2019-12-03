@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 7468654542384296402}
   - component: {fileID: 2890438426939502150}
   - component: {fileID: 2559328295501359582}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1307,6 +1307,7 @@ GameObject:
   - component: {fileID: 442038939684714563}
   - component: {fileID: 849619291233071112}
   - component: {fileID: 5755200765198678587}
+  - component: {fileID: 1330772033}
   m_Layer: 0
   m_Name: cool cup
   m_TagString: Container
