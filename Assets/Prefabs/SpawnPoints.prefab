@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 276021917}
   m_Layer: 0
   m_Name: SpawnPoint 8
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4815894510365554834}
   m_Layer: 0
   m_Name: SpawnPoint 9
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 5071712230384227240}
   m_Layer: 0
   m_Name: SpawnPoint 7
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 5071712230463091037}
   m_Layer: 0
   m_Name: SpawnPoint 1
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 5071712230788207363}
   m_Layer: 0
   m_Name: SpawnPoint 5
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 5071712230864358783}
   m_Layer: 0
   m_Name: SpawnPoint 3
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 5071712231317515899}
   m_Layer: 0
   m_Name: SpawnPoint 2
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 5071712231750637511}
   m_Layer: 0
   m_Name: SpawnPoint 4
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 5071712231867504972}
   m_Layer: 0
   m_Name: SpawnPoint 6
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 2178938159417023586}
   m_Layer: 0
   m_Name: SpawnPoint 10
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 4428846106364459410}
   m_Layer: 0
   m_Name: SpawnPoint 12
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 2345275813574753601}
   m_Layer: 0
   m_Name: SpawnPoint 11
-  m_TagString: Untagged
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1145,12 +1145,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Knife
       objectReference: {fileID: 0}
-    - target: {fileID: 8831078233536602867, guid: 62ce0edd599c7ec4181f2ce9b2b2cb12,
+    - target: {fileID: 1831994064264802287, guid: 62ce0edd599c7ec4181f2ce9b2b2cb12,
         type: 3}
       propertyPath: m_TagString
       value: Knife
       objectReference: {fileID: 0}
-    - target: {fileID: 1831994064264802287, guid: 62ce0edd599c7ec4181f2ce9b2b2cb12,
+    - target: {fileID: 8831078233536602867, guid: 62ce0edd599c7ec4181f2ce9b2b2cb12,
         type: 3}
       propertyPath: m_TagString
       value: Knife

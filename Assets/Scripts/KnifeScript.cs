@@ -10,7 +10,7 @@ public class KnifeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ResetCut());
+        //StartCoroutine(ResetCut());
     }
 
     // Update is called once per frame
@@ -24,16 +24,16 @@ public class KnifeScript : MonoBehaviour
         
     }
 
-    private IEnumerator ResetCut() {
+    //private IEnumerator ResetCut() {
 
-        while (true) {
-            canCut = true;
-            yield return new WaitForSeconds(1);
+    //    while (true) {
+    //        canCut = true;
+    //        yield return new WaitForSeconds(1);
 
-        }
+    //    }
 
         
-    }
+    //}
 
     
 

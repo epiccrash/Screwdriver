@@ -7,6 +7,8 @@ public class CutMe : MonoBehaviour
     public GameObject cutPieces;
     public int numPieces = 5;
     private SpawnerScript spawnpoint;
+
+    private bool canCut;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +18,12 @@ public class CutMe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        print("Can Cut " + gameObject.name + ": " + canCut);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.transform.tag=="Knife") {
 
             
@@ -32,8 +35,8 @@ public class CutMe : MonoBehaviour
 
             KnifeScript knife = collision.transform.GetComponent<KnifeScript>();
 
-            if (knife != null && knife.canCut) {
-                knife.canCut = false;
+            if (knife != null && canCut) {
+                //knife.canCut = false;
                 /*for (int i = 0; i < numPieces; i++)
                 {
                     GameObject piece = Instantiate(cutPieces);
@@ -56,6 +59,22 @@ public class CutMe : MonoBehaviour
 
             
 
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag.Equals("SpawnPoint"))
+        {
+            canCut = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag.Equals("SpawnPoint"))
+        {
+            canCut = true;
         }
     }
 }
