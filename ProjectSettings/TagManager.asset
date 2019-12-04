@@ -17,6 +17,7 @@ TagManager:
   - Alcohol
   - Knife
   - Spout
+  - SnapSpot
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - StaticFurniture
   - Cups
   - PlacementTriggers
-  - 
+  - TipperLayer
   - 
   - 
   - 
