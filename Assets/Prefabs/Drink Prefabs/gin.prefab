@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037489272}
   m_LocalRotation: {x: -0.00015909225, y: -0.000071659684, z: -0.10155985, w: 0.9948294}
-  m_LocalPosition: {x: 0.0005, y: -0.0001, z: 0.215}
+  m_LocalPosition: {x: 0.0005, y: -0.0001, z: 0.2451}
   m_LocalScale: {x: 0.06410263, y: 0.0641026, z: 0.0758162}
   m_Children: []
   m_Father: {fileID: 645293481495389228}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645293481495885836}
-  m_LocalRotation: {x: -0.6978672, y: -0.11316726, z: -0.113206774, w: 0.6981109}
+  m_LocalRotation: {x: -0.20332827, y: 0.67736715, z: 0.6771204, w: 0.20332089}
   m_LocalPosition: {x: 3.87, y: 4.199, z: 5.984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -133,7 +133,7 @@ Transform:
   - {fileID: 6691709744953496427}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: -18.422}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 165, z: -18.422}
 --- !u!33 &645293481494586378
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645293481495885836}
-  m_Mesh: {fileID: 4300028, guid: 12fbbb6dcef984656b5b4123774ee9b0, type: 3}
+  m_Mesh: {fileID: -4377851833233676455, guid: a4e572e0dd638494687b40ac48b03c8c, type: 3}
 --- !u!23 &645293481493620426
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 185d1d4dab04c444199a5f207f89853f, type: 2}
+  - {fileID: 2100000, guid: f5d631be4a516e74ab53b9736ea86576, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -209,7 +209,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
-  m_Mesh: {fileID: 4300028, guid: 12fbbb6dcef984656b5b4123774ee9b0, type: 3}
+  m_Mesh: {fileID: -4377851833233676455, guid: a4e572e0dd638494687b40ac48b03c8c, type: 3}
 --- !u!82 &1914170067
 AudioSource:
   m_ObjectHideFlags: 0
