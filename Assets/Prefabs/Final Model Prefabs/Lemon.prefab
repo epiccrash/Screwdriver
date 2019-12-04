@@ -92,7 +92,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
-  m_Mesh: {fileID: -2810666631066437292, guid: 6602f220f51a71d4f8c8b2432caee075, type: 3}
+  m_Mesh: {fileID: -2810666631066437292, guid: 0d79ab4ce401f464f8ed85c930745d26, type: 3}
 --- !u!1 &3259021296595405441
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 3088418509690906514}
   - component: {fileID: 8187115015853935995}
   - component: {fileID: 543535554720121697}
+  - component: {fileID: 8465346779698589100}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Juiceable
@@ -395,6 +396,19 @@ MonoBehaviour:
   cutPieces: {fileID: 5644881520690195338, guid: 66c849c90c12f68499cf1508d782c1e7,
     type: 3}
   numPieces: 5
+--- !u!135 &8465346779698589100
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285771140952372744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 35
+  m_Center: {x: 0, y: 55, z: 0}
 --- !u!1 &8285059725205278971
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,8 +64,10 @@ public class CutMe : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        
         if (other.gameObject.tag.Equals("SpawnPoint"))
         {
+            
             canCut = false;
         }
     }
