@@ -42,11 +42,7 @@ public class DestroyOnTouch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_isLiquid && other.transform.tag == "Fill")
-        {
-            other.GetComponent<ConeModify>().ChangeFill(this.gameObject);
-        }
-        else if (other.transform.tag == "floor"
+        if (other.transform.tag == "floor"
             || (_isLiquid && !(other.transform.CompareTag("Container") || other.transform.CompareTag("Spout") || other.transform.CompareTag("SnapSpot"))))
         {
             Destroy(this.gameObject);

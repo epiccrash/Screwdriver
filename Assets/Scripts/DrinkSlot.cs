@@ -59,13 +59,16 @@ public class DrinkSlot : MonoBehaviour
 
     private void OnDrinkPutDown()
     {
-        CupScript currentDrink = _drinkInSlot.GetComponentInChildren<CupScript>();
-
-        // Don't try to serve an empty drink!
-        if (currentDrink != null && !currentDrink.IsEmpty())
+        if (_drinkInSlot != null)
         {
-            onDrinkServed?.Invoke(_drinkInSlot);
-            BarManager.Instance.OnCupServed(_drinkInSlot);
+            CupScript currentDrink = _drinkInSlot.GetComponentInChildren<CupScript>();
+
+            // Don't try to serve an empty drink!
+            if (currentDrink != null && !currentDrink.IsEmpty())
+            {
+                onDrinkServed?.Invoke(_drinkInSlot);
+                BarManager.Instance.OnCupServed(_drinkInSlot);
+            }
         }
     }
 }

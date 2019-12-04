@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -487977915411097174}
   - component: {fileID: -5693026953190452304}
   - component: {fileID: 4169895230894159128}
+  - component: {fileID: 3873598194274492124}
   m_Layer: 0
   m_Name: Lime
   m_TagString: Untagged
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutPieces: {fileID: 5644881520690195338, guid: cd7b91dd53a6ef4439ebe5bcb3c86782,
     type: 3}
+  numPieces: 5
 --- !u!64 &4169895230894159128
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -283,3 +285,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 6723580601522748004, guid: 11bd180d0b2833f49a16d9e19da9af3b, type: 3}
+--- !u!135 &3873598194274492124
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153968832269713433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06197916
+  m_Center: {x: -0.0018347446, y: 0.06047427, z: -0.00019896962}

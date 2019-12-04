@@ -5,16 +5,25 @@ using UnityEngine.Events;
 
 public class CupScript : MonoBehaviour
 {
+    [SerializeField]
+    private ConeModify _cupConeModify;
+
     private List<GameObject> _solidIngredientsInCup;
     private IDictionary<IngredientType, int> _ingredientsInCup;
-    private float _alcoholByVolume;
 
+    private float _alcoholByVolume;
+    private int _totalDropsInCup;
     private bool _hasBeenShaken;
+
+    private float _maxPossibleDrops;
 
     private void Start()
     {
         _ingredientsInCup = new Dictionary<IngredientType, int>();
         _solidIngredientsInCup = new List<GameObject>();
+
+        _totalDropsInCup = 0;
+        _maxPossibleDrops = GameConstants.RecipeToCupConversion * GameConstants.RecipeDropsToACup;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +40,18 @@ public class CupScript : MonoBehaviour
         else if (other.gameObject.layer == 4) // Water Layer
         {
             IngredientScript ingredient = other.gameObject.GetComponent<IngredientScript>();
-            AddOrIncreaseIngredient(ingredient.IngredientType);
+
+            // If this is a liquid, let's increase the cup fill.
+            if (_cupConeModify != null && (other.transform.CompareTag("Alcohol") || other.transform.CompareTag("Water")))
+            {
+                _cupConeModify.ChangeFill(other.gameObject);
+            }
+
+            if (_totalDropsInCup < _maxPossibleDrops)
+            {
+                _totalDropsInCup++;
+                AddOrIncreaseIngredient(ingredient.IngredientType);
+            }
         }
     }
 
@@ -73,9 +93,6 @@ public class CupScript : MonoBehaviour
         {
             _alcoholByVolume += ((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
         }
-
-        //print("Alcohol by Volume: " + _alcoholByVolume);
-        //print(ingredient + ": " + _ingredientsInCup[ingredient]);
     }
 
     public List<IngredientType> GetIngredientList()
