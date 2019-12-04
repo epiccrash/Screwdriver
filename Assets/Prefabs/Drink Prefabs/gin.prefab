@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1914170071}
   - component: {fileID: 7037709248342921402}
   - component: {fileID: 7706678735002736709}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: gin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4218,7 +4218,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 3879
+      m_Bits: 3367
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

@@ -3851,7 +3851,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 3879
+      m_Bits: 3367
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4891,7 +4891,7 @@ GameObject:
   - component: {fileID: 1805527505}
   - component: {fileID: 4033473087203012169}
   - component: {fileID: 4451910744895105039}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: curacao
   m_TagString: Untagged
   m_Icon: {fileID: 0}

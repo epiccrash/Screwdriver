@@ -3851,7 +3851,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 3879
+      m_Bits: 3367
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4891,7 +4891,7 @@ GameObject:
   - component: {fileID: 1402706072}
   - component: {fileID: 8229396306780580253}
   - component: {fileID: -6237455652180125368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tequila
   m_TagString: Untagged
   m_Icon: {fileID: 0}
