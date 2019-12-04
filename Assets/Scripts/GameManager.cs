@@ -74,9 +74,12 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.StartMenu:
                 print("Moved to start menu");
+                StartMenuController.Instance.Show();
+                StartMenuController.Instance.SetPlayButtonCallback(StartTutorial);
                 break;
             case GameState.NormalRound:
                 print("Playing game!");
+                StartMenuController.Instance.Hide();
                 OnGameStart.Invoke();
                 _currentPhaseTime = 0;
                 break;
@@ -94,5 +97,11 @@ public class GameManager : Singleton<GameManager>
         }
 
         _state = newState;
+    }
+
+    private void StartTutorial()
+    {
+        // TODO inf: NEEDS TO BE UPDATED WHEN TUTORIAL IS IMPLEMENTED.
+        ChangeState(GameState.NormalRound);
     }
 }

@@ -34,6 +34,11 @@ public class LiquidFillButton : MonoBehaviour
         }
     }
 
+    public void SetOnButtonFilled(Delegates.onButtonPressedDel del)
+    {
+        _onButtonFilled = del;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         IngredientScript otherIngredient = other.gameObject.GetComponent<IngredientScript>();
