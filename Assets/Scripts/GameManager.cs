@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public enum GameState
 {
     StartMenu,
+    Tutorial,
     NormalRound,
     LightningRound,
     GameOver

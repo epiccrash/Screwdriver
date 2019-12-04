@@ -6,4 +6,5 @@ namespace Delegates
 {
     public delegate void onDrinkServedDel(GameObject drink);
     public delegate void onArrivedAtDestDel();
+    public delegate void onButtonPressedDel();
 }
