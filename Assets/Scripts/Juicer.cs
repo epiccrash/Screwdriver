@@ -69,6 +69,7 @@ public class Juicer : MonoBehaviour
             juiceLeft = 0;
             if (juiceableObject != null)
             {
+                juiceableObject.GetComponent<Juiceable>().LoadFruit();
                 Destroy(juiceableObject);
                 juiceableObject = null;
 
@@ -87,7 +88,7 @@ public class Juicer : MonoBehaviour
 
             if (juiceableObject != null)
             {
-
+                juiceableObject.GetComponent<Juiceable>().LoadFruit();
                 Destroy(juiceableObject);
                 juiceableObject = null;
             }
@@ -117,6 +118,7 @@ public class Juicer : MonoBehaviour
         full = true;
         juiceLeft = juiceableObject.GetComponent<Juiceable>().jucieUnits;
         juiceDrop = juiceableObject.GetComponent<Juiceable>().juiceDrop;
+        //juiceableObject.GetComponent<Juiceable>().LoadFruit();
     }
 
     public void unloadJuicer()
