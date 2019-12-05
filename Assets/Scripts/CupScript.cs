@@ -151,4 +151,8 @@ public class CupScript : MonoBehaviour
     {
         BarManager.Instance.OnCupPickedUp(this);
     }
+
+    public void shakeIt() {
+        _hasBeenShaken = true;
+    }
 }

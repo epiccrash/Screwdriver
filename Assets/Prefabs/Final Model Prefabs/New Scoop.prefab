@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5113270669632149203}
   - component: {fileID: 5113270669633476337}
   - component: {fileID: 5113270669634442289}
+  - component: {fileID: 647924754522812327}
   m_Layer: 0
   m_Name: pCube2
   m_TagString: Untagged
@@ -110,6 +111,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &647924754522812327
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5113270669632506611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.05
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.005, z: -0.015}
 --- !u!1 &5113270669632506613
 GameObject:
   m_ObjectHideFlags: 0

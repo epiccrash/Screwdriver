@@ -17,6 +17,7 @@ public enum GameState
 [Singleton(SingletonAttribute.Type.LoadedFromResources, true, "GameManager")]
 public class GameManager : Singleton<GameManager>
 {
+    public UnityEvent OnTutorialStart;
     public UnityEvent OnGameStart;
     public UnityEvent OnGameOver;
     public UnityEvent OnLightningRoundStart;
@@ -29,7 +30,7 @@ public class GameManager : Singleton<GameManager>
 
     private GameState _state;
     private float _currentPhaseTime;
-    
+
     // When to play sounds; these need to be numbers less than 1 to get an actual duration
     [SerializeField]
     float[] roundSoundIntervals = new float[3] { 0.2f, 0.5f, 0.8f };
@@ -59,8 +60,11 @@ public class GameManager : Singleton<GameManager>
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
-                // ChangeState(GameState.NormalRound);
                 ChangeState(GameState.PreNormalRound);
+            }
+            else if (Input.GetKeyDown(KeyCode.T))
+            {
+                ChangeState(GameState.Tutorial);
             }
         }
         else if (_state == GameState.PreNormalRound)
@@ -127,8 +131,14 @@ public class GameManager : Singleton<GameManager>
                 StartMenuController.Instance.Show();
                 StartMenuController.Instance.SetPlayButtonCallback(StartTutorial);
                 break;
+            case GameState.Tutorial:
+                print("Starting tutorial.");
+                StartMenuController.Instance.Hide();
+                OnTutorialStart.Invoke();
+                break;
             case GameState.PreNormalRound:
                 print("Moved to pre-normal round");
+                StartMenuController.Instance.Hide();
                 AudioManager.S.PlayGetPartyStarted();
                 break;
             case GameState.NormalRound:
@@ -162,7 +172,11 @@ public class GameManager : Singleton<GameManager>
 
     private void StartTutorial()
     {
-        // TODO inf: NEEDS TO BE UPDATED WHEN TUTORIAL IS IMPLEMENTED.
-        ChangeState(GameState.NormalRound);
+        ChangeState(GameState.Tutorial);
+    }
+
+    public void OnTutorialDrinkServed()
+    {
+        ChangeState(GameState.PreNormalRound);
     }
 }

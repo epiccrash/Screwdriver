@@ -459,6 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spout: {fileID: 5550589220522172709}
   wine: {fileID: 9045062954078341875, guid: be41b55e4ea823f4b96c3d49fdfce169, type: 3}
+  _particleSystem: {fileID: 0}
 --- !u!82 &5550589220522172711
 AudioSource:
   m_ObjectHideFlags: 0
@@ -645,7 +646,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: c135416d7fcfd41bb87cc6f77847be98, type: 3}
 --- !u!1 &5550589220715171586
@@ -738,7 +739,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300006, guid: c135416d7fcfd41bb87cc6f77847be98, type: 3}
 --- !u!1 &5550589220715171588
@@ -829,7 +830,7 @@ MeshCollider:
   m_GameObject: {fileID: 5550589220715171588}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -1052,7 +1053,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300010, guid: c135416d7fcfd41bb87cc6f77847be98, type: 3}
 --- !u!1 &5550589220715171596
@@ -1178,6 +1179,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300008, guid: c135416d7fcfd41bb87cc6f77847be98, type: 3}
