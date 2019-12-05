@@ -7,12 +7,14 @@ public class MixerScript : MonoBehaviour
 {
     private Vector3 velocity=Vector3.zero, lastVelocity= Vector3.zero;
     private int shakes = 0, stillCount=0;
-
-    public GameObject fillCone;
+    private CupScript liquid;
+    private bool mixable = false;
+    //public GameObject fillCone;
 
     // Start is called before the first frame update
     void Start()
     {
+        liquid = GetComponent<CupScript>();
         StartCoroutine(ShakeTest());
     }
 
@@ -30,7 +32,7 @@ public class MixerScript : MonoBehaviour
                 velocity = GetComponent<VelocityEstimator>().GetVelocityEstimate();
 
             //if the velocity changes directions
-            if (Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x) || Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x) || Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x))
+            if ((Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x) || Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x) || Mathf.Sign(velocity.x) != Mathf.Sign(lastVelocity.x))&&mixable)
                 Mix();
             
 
@@ -45,29 +47,17 @@ public class MixerScript : MonoBehaviour
         shakes = 0;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "IceCube") {
-            if (other.transform.parent == null)
-                other.transform.parent = this.gameObject.transform;
-            else
-                other.transform.parent = null;
-            // other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-            // other.gameObject.GetComponent<Interactable>().enabled = false;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "IceCube")
-        {
-            if (other.transform.parent == this.gameObject.transform)
-                other.transform.parent = null;
-        }
-    }
-
     //the method that is run when the mixer is shaken
     private void Mix() {
 
 
+        if(shakes>10)
+            liquid.shakeIt();
+
+        shakes++;
+    }
+
+    public void canMix(bool canIt) {
+        mixable = canIt;
     }
 }
