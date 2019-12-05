@@ -4,15 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - floor
   - Water
+  - Scoop
+  - IceCube
+  - CustomerSlot
   - Container
   - Fill
-  - Spout
-  - Knife
+  - Coin
   - Juiceable
+  - SodaSnap
   - Alcohol
+  - Knife
+  - Spout
+  - SnapSpot
   - SpawnPoint
   - Scoop
+  - SodaGun
   layers:
   - Default
   - TransparentFX
@@ -23,13 +31,13 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing
+  - Pourer
+  - WineBox
+  - StaticFurniture
+  - Cups
+  - PlacementTriggers
+  - TipperLayer
   - 
   - 
   - 

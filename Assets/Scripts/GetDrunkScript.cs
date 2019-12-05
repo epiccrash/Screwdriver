@@ -43,8 +43,8 @@ public class GetDrunkScript : MonoBehaviour
         //_vortex.angle = (_alcoholByVolume * 20) - Mathf.PingPong(Time.time, _alcoholByVolume * 10); 
         //if (_alcoholByVolume > 0.01f)
         //{
-        float vortexMin = _alcoholByVolume * -50;
-        float vortexMax = _alcoholByVolume * 50;
+        float vortexMin = _alcoholByVolume * -15;
+        float vortexMax = _alcoholByVolume * 15;
         float speed = _alcoholByVolume * 5;
         // float vortexMin = -20.0f;
         // float vortexMax = 20.0f;

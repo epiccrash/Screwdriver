@@ -60,3 +60,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   _regularGameLength: 150
   _lightningRoundLength: 30
+  roundSoundIntervals:
+  - 0.2
+  - 0.5
+  - 0.8
+  lightningSoundInterval: 0.5

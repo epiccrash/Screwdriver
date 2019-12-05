@@ -8,7 +8,7 @@ public class NewLineConnector : MonoBehaviour
     private LineRenderer line;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         other = GetComponent<SpringJoint>().connectedBody.transform;
 

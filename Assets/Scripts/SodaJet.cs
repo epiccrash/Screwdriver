@@ -24,6 +24,7 @@ public class SodaJet : MonoBehaviour
     public Transform spoutLocation;
     private bool snapping = false;
 
+    [SerializeField]
     private GameObject spout;
 
     [SerializeField] Transform joystickObj;
@@ -31,9 +32,9 @@ public class SodaJet : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
+        // GetComponent<Rigidbody>().isKinematic = true;
 
-        spout = transform.GetChild(0).gameObject;
+        // spout = transform.GetChild(0).gameObject;
         StartCoroutine(Squirt());
 
         GameObject leftHandObj = GameObject.Find("LeftHand");
@@ -58,7 +59,7 @@ public class SodaJet : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = true;
             transform.position = spoutLocation.position;
-            transform.rotation = spoutLocation.rotation;
+            transform.rotation = Quaternion.identity;
             snapping = false;
         }
         if (transform.position == spoutLocation.position)
@@ -118,6 +119,14 @@ public class SodaJet : MonoBehaviour
         if (other.tag == "SodaSnap")
         {
             snapping = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "SodaSnap")
+        {
+            snapping = false;
         }
     }
 
