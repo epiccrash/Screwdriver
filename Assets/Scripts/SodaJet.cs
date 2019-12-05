@@ -118,6 +118,7 @@ public class SodaJet : MonoBehaviour
         if (other.tag == "SodaSnap")
         {
             snapping = true;
+            GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
@@ -126,6 +127,7 @@ public class SodaJet : MonoBehaviour
         if (other.tag == "SodaSnap")
         {
             snapping = false;
+            GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
