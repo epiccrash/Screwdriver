@@ -20,6 +20,7 @@ public enum IngredientType
     RedWhite = 12,
     Curacao = 42,
     Beer = 6,
+    Whiskey = 35,
 
     ////////////////////////////////////////
     // Mixers
