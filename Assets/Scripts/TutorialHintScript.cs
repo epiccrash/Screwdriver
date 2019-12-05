@@ -69,4 +69,21 @@ public class TutorialHintScript : MonoBehaviour
         _hintText.color = Color.Lerp(_startColor, _endColor, Mathf.PingPong(Time.time, 1));
         _downArrowImg.color = Color.Lerp(_startColor, _endColor, Mathf.PingPong(Time.time, 1));
     }
+
+    public void Show()
+    {
+        _hintText.enabled = true;
+        _downArrow.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        _hintText.enabled = false;
+        _downArrow.SetActive(false);
+    }
+
+    public void SetText(string hintText)
+    {
+        _hintText.text = hintText;
+    }
 }

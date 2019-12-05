@@ -194,6 +194,8 @@ public class CustomerScript : MonoBehaviour
         {
             if (_isTutorial && _currentDrinkOrder != null)
             {
+                GameManager.Instance.OnTutorialCustomerArrived();
+
                 _currentSlot.InitializeRecipeDisplay(_currentDrinkOrder);
 
                 ChangeState(CustomerState.WaitingForDrink);
