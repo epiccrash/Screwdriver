@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _customerWanderZLimit: 3.5
+  _tutorialDrink: {fileID: 11400000, guid: b85186f50563f49d4ac12250bb1fd3ea, type: 2}
