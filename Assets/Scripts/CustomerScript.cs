@@ -65,6 +65,8 @@ public class CustomerScript : MonoBehaviour
     [SerializeField] private int soundUpperBound = 2500;
     private AudioSource noise;
 
+    private bool _isTutorial;
+
     private void Awake()
     {
         noise = GetComponent<AudioSource>();
@@ -75,6 +77,8 @@ public class CustomerScript : MonoBehaviour
         _alcoholLevel = 0;
         _isNormalRound = false;
         _isLightningRound = false;
+        _currentDrinkOrder = null;
+        _isTutorial = false;
 
         _movementController = GetComponent<CustomerMovementController>();
         _agent = GetComponent<NavMeshAgent>();
@@ -110,9 +114,9 @@ public class CustomerScript : MonoBehaviour
         {
             AudioManager.S?.PlaySound(noise, frequency, soundUpperBound);
 
-            if (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle
+            if (!_isTutorial && (Vector3.Angle(transform.up, Vector3.up) >= MinFallAngle
                 || Vector3.SqrMagnitude(transform.position - _currentSlot.StandLocation.position) > SlotDistanceTolerance
-                || _fallTimer < FallTimerMax)
+                || _fallTimer < FallTimerMax))
             {
                 if (_fallTimer <= 0)
                 {
@@ -164,14 +168,18 @@ public class CustomerScript : MonoBehaviour
                 _collider.enabled = false;
                 _currentSlot?.Unlock();
                 _currentSlot = null;
+                _currentDrinkOrder = null;
                 RandomizeDrinkTimer();
                 _movementController.StartRandomWanderBehavior();
                 break;
             case CustomerState.WaitingForDrink:
-                _agent.enabled = false;
-                _rigidBody.isKinematic = false;
-                _collider.enabled = true;
-                _fallTimer = FallTimerMax;
+                if (!_isTutorial)
+                {
+                    _agent.enabled = false;
+                    _rigidBody.isKinematic = false;
+                    _collider.enabled = true;
+                    _fallTimer = FallTimerMax;
+                }
                 break;
             default:
                 break;
@@ -182,11 +190,18 @@ public class CustomerScript : MonoBehaviour
 
     public void OnArrivedAtDest()
     {
-
-
         if (_state == CustomerState.WalkingToSlot)
         {
-            if (_orderableDrinks.Count > 0)
+            if (_isTutorial && _currentDrinkOrder != null)
+            {
+                _currentSlot.InitializeRecipeDisplay(_currentDrinkOrder);
+
+                ChangeState(CustomerState.WaitingForDrink);
+
+                // Play customer grunt.
+                AudioManager.S?.PlaySound(noise);
+            }
+            else if (_orderableDrinks.Count > 0)
             {
                 int idx = UnityEngine.Random.Range(0, _orderableDrinks.Count);
                 _currentDrinkOrder = _orderableDrinks[idx];
@@ -213,6 +228,13 @@ public class CustomerScript : MonoBehaviour
 
         _movementController.MoveTo(slot.StandLocation, OnArrivedAtDest);
         ChangeState(CustomerState.WalkingToSlot);
+    }
+
+    public void AssignTutorialSlot(CustomerSlot slot, DrinkRecipe drinkOrder)
+    {
+        _currentDrinkOrder = drinkOrder;
+        _isTutorial = true;
+        this.AssignSlot(slot);
     }
 
     public void OnDrinkReceived(GameObject drinkObj)
@@ -288,13 +310,19 @@ public class CustomerScript : MonoBehaviour
         TipScript.Instance.AddTip(tip);
 
         // Are we drunk?
-        //_alcoholLevel += _currentDrinkOrder.alcoholContent;
         _alcoholLevel += drink.GetABV();
 
         if (_alcoholLevel >= _drunkThreshhold)
         {
             // If we're drunk, we won't be as good at avoiding obstacles.
             _agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+        }
+
+        _currentDrinkOrder = null;
+
+        if (_isTutorial)
+        {
+            _isTutorial = false;
         }
 
         // Go back to partying before our next drink.
