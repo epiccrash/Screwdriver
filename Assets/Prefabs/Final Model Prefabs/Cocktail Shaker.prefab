@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1053039868793157809
 Transform:
   m_ObjectHideFlags: 0
@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 7234565596920437298}
   - component: {fileID: 3607612425755054725}
   - component: {fileID: 8724108840481631776}
+  - component: {fileID: 3117097575917646011}
   m_Layer: 0
   m_Name: Cocktail Shaker
   m_TagString: Untagged
@@ -213,15 +214,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053039868792988823}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7277, y: 1.184, z: 1.8358}
-  m_LocalScale: {x: 1.7844601, y: 1.7844601, z: 1.7844601}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0.7277, y: 1.485, z: 1.8358}
+  m_LocalScale: {x: 4, y: 2.6000001, z: 4}
   m_Children:
   - {fileID: 1053039868793157811}
   - {fileID: 1053039868793157809}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &5986320919296645340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +305,7 @@ MonoBehaviour:
   attachmentFlags: 44
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
-  releaseVelocityStyle: 1
+  releaseVelocityStyle: 3
   releaseVelocityTimeOffset: -0.011
   scaleReleaseVelocity: 1.1
   scaleReleaseVelocityThreshold: -1
@@ -335,7 +336,18 @@ MonoBehaviour:
   restoreOriginalParent: 0
   onPickUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3117097575917646011}
+        m_MethodName: unSnap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onDetachFromHand:
@@ -364,3 +376,15 @@ MonoBehaviour:
   velocityAverageFrames: 5
   angularVelocityAverageFrames: 11
   estimateOnAwake: 0
+--- !u!114 &3117097575917646011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053039868792988823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335003f33dcd6ec40b4e7bd51664626a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

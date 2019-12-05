@@ -8,13 +8,20 @@ public class BarManager : Singleton<BarManager>
     [SerializeField]
     private float _customerWanderZLimit;
 
+    [SerializeField]
+    private DrinkRecipe _tutorialDrink;
+
     private List<CustomerSlot> _customerSlots;
     private List<RecipeDisplayScript> _recipeDisplays;
     private Queue<CustomerScript> _customerQueue;
     private CupScript _currentTrackedCup;
 
+    private CustomerScript _tutorialCustomer;
+    private CustomerSlot _centerSlot;
+
     private bool _isRegularGame;
     private bool _isLightningRound;
+    private bool _isTutorial;
 
     public float CustomerZWanderLimit { get { return _customerWanderZLimit; } }
 
@@ -31,6 +38,40 @@ public class BarManager : Singleton<BarManager>
         _isRegularGame = false;
         _isLightningRound = false;
 
+        // Find the bride to lead the tutorial.
+        GameObject brideObj = GameObject.Find("Bride");
+
+        if (brideObj != null)
+        {
+            _tutorialCustomer = brideObj.GetComponent<CustomerScript>();
+
+            if (_tutorialCustomer == null)
+            {
+                Debug.LogError("Bride game object has no CustomerScript component.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Could not find customer named 'Bride' for tutorial.");
+        }
+
+        // Find the center seat to lead the tutorial from.
+        GameObject centerSeatObj = GameObject.Find("Center Seat");
+
+        if (centerSeatObj != null)
+        {
+            _centerSlot = centerSeatObj.GetComponent<CustomerSlot>();
+
+            if (_centerSlot == null)
+            {
+                Debug.LogError("Center seat object has no CustomerSlot script component.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Could not find seat named 'Center Seat' for tutorial.");
+        }
+
         // Find all slots in the scene.
         GameObject[] slotObjs = GameObject.FindGameObjectsWithTag("CustomerSlot");
 
@@ -43,6 +84,7 @@ public class BarManager : Singleton<BarManager>
         _recipeDisplays = new List<RecipeDisplayScript>(displayArray);
 
         // Add listeners for game events.
+        GameManager.Instance.OnTutorialStart.AddListener(this.OnTutorialStart);
         GameManager.Instance.OnGameStart.AddListener(this.OnGameStart);
         GameManager.Instance.OnLightningRoundStart.AddListener(this.OnLightningRoundStart);
         GameManager.Instance.OnGameOver.AddListener(this.OnGameOver);
@@ -65,6 +107,20 @@ public class BarManager : Singleton<BarManager>
                     nextCustomer.AssignSlot(freeSlot);
                 }
             }
+        }
+    }
+
+    private void OnTutorialStart()
+    {
+        _isTutorial = true;
+
+        if (_tutorialDrink == null)
+        {
+            Debug.LogError("No tutorial drink assigned to BarManager prefab.");
+        }
+        else
+        {
+            _tutorialCustomer.AssignTutorialSlot(_centerSlot, _tutorialDrink);
         }
     }
 
@@ -177,6 +233,12 @@ public class BarManager : Singleton<BarManager>
             {
                 display.ResetIngredientDisplayForNewCup();
             }
+        }
+
+        if (_isTutorial)
+        {
+            GameManager.Instance.OnTutorialDrinkServed();
+            _isTutorial = false;
         }
     }
 
