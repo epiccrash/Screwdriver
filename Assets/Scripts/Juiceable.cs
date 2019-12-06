@@ -13,7 +13,7 @@ public class Juiceable : MonoBehaviour
     void Start()
     {
         spawnpoint = GetComponentInParent<SpawnerScript>();
-        Debug.Log(spawnpoint);
+        
     }
 
     // Update is called once per frame
