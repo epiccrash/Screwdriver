@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4362283397645169366}
   m_Layer: 0
   m_Name: Orange Slice
-  m_TagString: Juiceable
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -264,7 +264,6 @@ GameObject:
   - component: {fileID: 8886135925302336633}
   - component: {fileID: 3911507197252833068}
   - component: {fileID: 2234295239026082189}
-  - component: {fileID: 6223558222192861980}
   - component: {fileID: -1855918287108947340}
   m_Layer: 9
   m_Name: wine_bottle
@@ -542,18 +541,6 @@ MonoBehaviour:
   water: {fileID: 9091402819211779215, guid: 71193567549ad364ba4218bc2def9d03, type: 3}
   force: 40
   _pourParticleEffect: {fileID: 5784155413637699647}
---- !u!114 &6223558222192861980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4287831247621639914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1515ef8e74238a34fb46a7c8735521f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1855918287108947340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4328,7 +4315,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 3367
+      m_Bits: 7207
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -5304,7 +5291,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d47b9947c5cc904cbce58c860dfcd53, type: 2}
+  - {fileID: 2100000, guid: 99be67ba892a1984c86a66634afc2415, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

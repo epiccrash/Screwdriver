@@ -17,13 +17,19 @@ public class CupScript : MonoBehaviour
 
     private float _maxPossibleDrops;
 
+    private bool _isTutorial;
+
     private void Start()
     {
+        _isTutorial = false;
         _ingredientsInCup = new Dictionary<IngredientType, int>();
         _solidIngredientsInCup = new List<GameObject>();
 
         _totalDropsInCup = 0;
         _maxPossibleDrops = GameConstants.RecipeToCupConversion * GameConstants.RecipeDropsToACup;
+
+        GameManager.Instance.OnTutorialStart.AddListener(OnTutorialStart);
+        GameManager.Instance.OnGameStart.AddListener(OnGameStart);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -93,6 +99,27 @@ public class CupScript : MonoBehaviour
         {
             _alcoholByVolume += ((int)ingredient / 100.0f); // Value of the enum is the % alc of the drink
         }
+
+        if (_isTutorial)
+        {
+            switch (ingredient)
+            {
+                case IngredientType.Ice:
+                    GameManager.Instance.OnIceAdded();
+                    break;
+                case IngredientType.OrangeJuice:
+                    GameManager.Instance.OnOjAdded();
+                    break;
+                case IngredientType.Vodka:
+                    GameManager.Instance.OnVodkaAdded();
+                    break;
+                case IngredientType.OrangeWedge:
+                    GameManager.Instance.OnWedgeAdded();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public List<IngredientType> GetIngredientList()
@@ -152,7 +179,18 @@ public class CupScript : MonoBehaviour
         BarManager.Instance.OnCupPickedUp(this);
     }
 
-    public void shakeIt() {
+    public void shakeIt()
+    {
         _hasBeenShaken = true;
+    }
+
+    private void OnTutorialStart()
+    {
+        _isTutorial = true;
+    }
+
+    private void OnGameStart()
+    {
+        _isTutorial = false;
     }
 }

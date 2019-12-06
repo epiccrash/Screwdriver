@@ -23,6 +23,10 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent OnLightningRoundStart;
 
     [SerializeField]
+    private GameData _gameData;
+    public GameData gameData => _gameData;
+
+    [SerializeField]
     private float _regularGameLength;
 
     [SerializeField]
@@ -43,6 +47,13 @@ public class GameManager : Singleton<GameManager>
     private bool thirdIntervalElapsed;
     private bool lightningRoundIntervalElapsed;
 
+    // Tutorial Hint References.
+    private GameObject _tutorialHintIce;
+    private GameObject _tutorialHintOj;
+    private GameObject _tutorialHintVodka;
+    private GameObject _tutorialHintKnife;
+    private GameObject _tutorialHintServe;
+
     protected override void Awake()
     {
         Initialize();
@@ -50,6 +61,66 @@ public class GameManager : Singleton<GameManager>
 
     public override void Initialize()
     {
+        // Get ice tutorial hint.
+        _tutorialHintIce = GameObject.Find("TutorialHintIce");
+
+        if (_tutorialHintIce == null)
+        {
+            Debug.LogError("Could not find game object called 'TutorialHintIce' in scene.");
+        }
+        else
+        {
+            _tutorialHintIce.SetActive(false);
+        }
+
+        // Get OJ tutorial hint.
+        _tutorialHintOj = GameObject.Find("TutorialHintOj");
+
+        if (_tutorialHintOj == null)
+        {
+            Debug.LogError("Could not find game object called 'TutorialHintOj' in scene.");
+        }
+        else
+        {
+            _tutorialHintOj.SetActive(false);
+        }
+
+        // Get vodka tutorial hint.
+        _tutorialHintVodka = GameObject.Find("TutorialHintVodka");
+
+        if (_tutorialHintVodka == null)
+        {
+            Debug.LogError("Could not find game object called 'TutorialHintVodka' in scene.");
+        }
+        else
+        {
+            _tutorialHintVodka.SetActive(false);
+        }
+
+        // Get knife tutorial hint.
+        _tutorialHintKnife = GameObject.Find("TutorialHintKnife");
+
+        if (_tutorialHintKnife == null)
+        {
+            Debug.LogError("Could not find game object called 'TutorialHintKnife' in scene.");
+        }
+        else
+        {
+            _tutorialHintKnife.SetActive(false);
+        }
+
+        // Get serve tutorial hint.
+        _tutorialHintServe = GameObject.Find("TutorialHintServe");
+
+        if (_tutorialHintServe == null)
+        {
+            Debug.LogError("Could not find game object called 'TutorialHintServe' in scene.");
+        }
+        else
+        {
+            _tutorialHintServe.SetActive(false);
+        }
+
         ChangeState(GameState.StartMenu);
         return;
     }
@@ -128,21 +199,28 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.StartMenu:
                 print("Moved to start menu");
+                GameOverMenuController.Instance.Hide();
+                _gameData.Reset();
                 StartMenuController.Instance.Show();
                 StartMenuController.Instance.SetPlayButtonCallback(StartTutorial);
                 break;
             case GameState.Tutorial:
                 print("Starting tutorial.");
                 StartMenuController.Instance.Hide();
+                GameOverMenuController.Instance.Hide();
                 OnTutorialStart.Invoke();
+                _gameData.Reset();
                 break;
             case GameState.PreNormalRound:
                 print("Moved to pre-normal round");
                 StartMenuController.Instance.Hide();
+                _gameData.Reset();
+                GameOverMenuController.Instance.Hide();
                 AudioManager.S.PlayGetPartyStarted();
                 break;
             case GameState.NormalRound:
                 print("Playing game!");
+                HideAllTutorialHints();
                 StartMenuController.Instance.Hide();
                 OnGameStart.Invoke();
                 _currentPhaseTime = 0;
@@ -161,6 +239,8 @@ public class GameManager : Singleton<GameManager>
             case GameState.GameOver:
                 OnGameOver.Invoke();
                 print("Game Over");
+                GameOverMenuController.Instance.SetReplayButtonCallback(Replay);
+                GameOverMenuController.Instance.ConfigureAndShow();
                 AudioManager.S.PlayMashup();
                 break;
             default:
@@ -170,6 +250,14 @@ public class GameManager : Singleton<GameManager>
         _state = newState;
     }
 
+    private void Replay()
+    {
+        print("Replaying game");
+        ChangeState(GameState.PreLightningRound);
+    }
+
+    // Functions to manage the tutorial.
+
     private void StartTutorial()
     {
         ChangeState(GameState.Tutorial);
@@ -177,6 +265,58 @@ public class GameManager : Singleton<GameManager>
 
     public void OnTutorialDrinkServed()
     {
+        HideAllTutorialHints();
+
         ChangeState(GameState.PreNormalRound);
+    }
+
+    private void HideAllTutorialHints()
+    {
+        _tutorialHintIce?.SetActive(false);
+        _tutorialHintOj?.SetActive(false);
+        _tutorialHintKnife?.SetActive(false);
+        _tutorialHintVodka?.SetActive(false);
+        _tutorialHintServe?.SetActive(false);
+    }
+
+    public void OnTutorialCustomerArrived()
+    {
+        _tutorialHintIce.SetActive(true);
+    }
+
+    public void OnIceAdded()
+    {
+        if (_state == GameState.Tutorial && _tutorialHintIce.activeInHierarchy)
+        {
+            _tutorialHintIce.SetActive(false);
+            _tutorialHintOj.SetActive(true);
+        }
+    }
+
+    public void OnOjAdded()
+    {
+        if (_state == GameState.Tutorial && _tutorialHintOj.activeInHierarchy)
+        {
+            _tutorialHintOj.SetActive(false);
+            _tutorialHintVodka.SetActive(true);
+        }
+    }
+
+    public void OnVodkaAdded()
+    {
+        if (_state == GameState.Tutorial && _tutorialHintVodka.activeInHierarchy)
+        {
+            _tutorialHintVodka.SetActive(false);
+            _tutorialHintKnife.SetActive(true);
+        }
+    }
+
+    public void OnWedgeAdded()
+    {
+        if (_state == GameState.Tutorial && _tutorialHintKnife.activeInHierarchy)
+        {
+            _tutorialHintKnife.SetActive(false);
+            _tutorialHintServe.SetActive(true);
+        }
     }
 }
