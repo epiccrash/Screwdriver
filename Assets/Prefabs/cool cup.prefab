@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8017249553636860671}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: LimeSnap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3566726162597433969}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: LemonSnap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1308,7 +1308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7966621101254939123}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: OrangeSnap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1488,7 @@ GameObject:
   - component: {fileID: 5809293507948868014}
   - component: {fileID: 3491833650901784405}
   - component: {fileID: 195197643980620700}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: CherrySnap
   m_TagString: Fruit
   m_Icon: {fileID: 0}

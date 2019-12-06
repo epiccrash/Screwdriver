@@ -83,6 +83,7 @@ public class CupScript : MonoBehaviour
                     case (IngredientType.OrangeWedge):
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
                         other.gameObject.transform.SetParent(_orangeWedgeSpot);
                         other.gameObject.transform.localPosition = Vector3.zero;
                         other.gameObject.transform.localRotation = Quaternion.identity;
@@ -92,6 +93,7 @@ public class CupScript : MonoBehaviour
                     case IngredientType.LemonSlice:
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
                         other.gameObject.transform.SetParent(_lemonSliceSpot);
                         other.gameObject.transform.localPosition = Vector3.zero;
                         other.gameObject.transform.localRotation = Quaternion.identity;
@@ -101,6 +103,7 @@ public class CupScript : MonoBehaviour
                     case IngredientType.LimeSlice:
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
                         other.gameObject.transform.SetParent(_limeSliceSpot);
                         other.gameObject.transform.localPosition = Vector3.zero;
                         other.gameObject.transform.localRotation = Quaternion.identity;
@@ -110,6 +113,7 @@ public class CupScript : MonoBehaviour
                     case IngredientType.Cherry:
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
                         other.gameObject.transform.SetParent(_cherrySpot);
                         other.gameObject.transform.localPosition = Vector3.zero;
                         other.gameObject.transform.localRotation = Quaternion.identity;
