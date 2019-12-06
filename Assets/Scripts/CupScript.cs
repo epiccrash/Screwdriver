@@ -26,6 +26,7 @@ public class CupScript : MonoBehaviour
     private float _alcoholByVolume;
     private int _totalDropsInCup;
     private bool _hasBeenShaken;
+    public bool HasBeenShaken => _hasBeenShaken;
 
     private float _maxPossibleDrops;
 
@@ -82,29 +83,41 @@ public class CupScript : MonoBehaviour
                     case (IngredientType.OrangeWedge):
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        other.gameObject.transform.position = _orangeWedgeSpot.position;
-                        other.gameObject.transform.rotation = _orangeWedgeSpot.rotation;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
+                        other.gameObject.transform.SetParent(_orangeWedgeSpot);
+                        other.gameObject.transform.localPosition = Vector3.zero;
+                        other.gameObject.transform.localRotation = Quaternion.identity;
+                        _solidIngredientsInCup.Add(other.gameObject);
                         AddOrIncreaseIngredient(IngredientType.OrangeWedge);
                         break;
                     case IngredientType.LemonSlice:
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        other.gameObject.transform.position = _lemonSliceSpot.position;
-                        other.gameObject.transform.rotation = _lemonSliceSpot.rotation;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
+                        other.gameObject.transform.SetParent(_lemonSliceSpot);
+                        other.gameObject.transform.localPosition = Vector3.zero;
+                        other.gameObject.transform.localRotation = Quaternion.identity;
+                        _solidIngredientsInCup.Add(other.gameObject);
                         AddOrIncreaseIngredient(IngredientType.LemonSlice);
                         break;
                     case IngredientType.LimeSlice:
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        other.gameObject.transform.position = _limeSliceSpot.position;
-                        other.gameObject.transform.rotation = _limeSliceSpot.rotation;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
+                        other.gameObject.transform.SetParent(_limeSliceSpot);
+                        other.gameObject.transform.localPosition = Vector3.zero;
+                        other.gameObject.transform.localRotation = Quaternion.identity;
+                        _solidIngredientsInCup.Add(other.gameObject);
                         AddOrIncreaseIngredient(IngredientType.LimeSlice);
                         break;
                     case IngredientType.Cherry:
                         _solidIngredientsInCup.Add(other.gameObject);
                         other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                        other.gameObject.transform.position = _cherrySpot.position;
-                        other.gameObject.transform.rotation = _cherrySpot.rotation;
+                        other.gameObject.GetComponent<IngredientScript>().enabled = false;
+                        other.gameObject.transform.SetParent(_cherrySpot);
+                        other.gameObject.transform.localPosition = Vector3.zero;
+                        other.gameObject.transform.localRotation = Quaternion.identity;
+                        _solidIngredientsInCup.Add(other.gameObject);
                         AddOrIncreaseIngredient(IngredientType.Cherry);
                         break;
                     default:
@@ -236,6 +249,7 @@ public class CupScript : MonoBehaviour
     public void shakeIt()
     {
         _hasBeenShaken = true;
+        BarManager.Instance.UpdateShakeValue(true, this);
     }
 
     private void OnTutorialStart()
