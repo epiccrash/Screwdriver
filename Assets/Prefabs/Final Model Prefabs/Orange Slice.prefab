@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1976627269586552658}
   - component: {fileID: 3091401941991266404}
   - component: {fileID: 4362283397645169366}
+  - component: {fileID: 7303027334164121788}
   m_Layer: 0
   m_Name: Orange Slice
   m_TagString: Fruit
@@ -268,3 +269,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4864056309639282896, guid: b2e27de26154aad4db7cc304537b3b50, type: 3}
+--- !u!114 &7303027334164121788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380816063833046299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2194cd2c6c142a298f5c87cf4b41c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ingredientType: 105
