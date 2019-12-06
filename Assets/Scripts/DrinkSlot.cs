@@ -13,10 +13,25 @@ public class DrinkSlot : MonoBehaviour
     private GameObject _drinkInSlot;
     private CustomerSlot _parentSlot;
 
+    private bool _isTutorial;
+
     private void Start()
     {
         _onDrinkDetachedFromHand += OnDrinkPutDown;
         _parentSlot = transform.GetComponentInParent<CustomerSlot>();
+
+        GameManager.Instance.OnTutorialStart.AddListener(OnTutorialStart);
+        GameManager.Instance.OnGameStart.AddListener(OnGameStart);
+    }
+
+    private void OnTutorialStart()
+    {
+        _isTutorial = true;
+    }
+
+    private void OnGameStart()
+    {
+        _isTutorial = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,8 +81,11 @@ public class DrinkSlot : MonoBehaviour
             // Don't try to serve an empty drink!
             if (currentDrink != null && !currentDrink.IsEmpty())
             {
-                onDrinkServed?.Invoke(_drinkInSlot);
-                BarManager.Instance.OnCupServed(_drinkInSlot);
+                if (_isTutorial && this.gameObject.name == "Center Seat")
+                {
+                    onDrinkServed?.Invoke(_drinkInSlot);
+                    BarManager.Instance.OnCupServed(_drinkInSlot);
+                }
             }
         }
     }
