@@ -41,7 +41,7 @@ public class Juicer : MonoBehaviour
             newDrop.transform.position = spout.transform.position;
             SaveAngle += 90.0f / juiceableObject.GetComponent<Juiceable>().jucieUnits;
             juiceLeft--;
-           // AudioManager.S.PlaySound(juiceSound);
+            AudioManager.S.PlaySound(juiceSound);
         }
 
 
@@ -52,7 +52,7 @@ public class Juicer : MonoBehaviour
         
         if ((SQUISHSTART + scaleMove < .17 && transform.localScale.y>1-SQUISHPERC)) {
 
-            float snapMove = (handle.outAngle / -90) * (SNAPSTART * .1f);
+            float snapMove = (handle.outAngle / -90) * (SNAPSTART * .2f);
             float snapScale = (handle.outAngle / -90) * SQUISHPERC;
 
 

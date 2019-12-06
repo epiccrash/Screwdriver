@@ -33,9 +33,11 @@ public class Pour : MonoBehaviour
         {
             Vector3 direction = spout.transform.position - transform.position;
             direction.Normalize();
-            
+            Debug.Log("spout: "+spout.transform.position.y);
+            Debug.Log("bottle: " + transform.position.y);
             if (spout.transform.position.y < transform.position.y)
             {
+                
                 GameObject newDrop = Instantiate(water);
                 newDrop.transform.position = spout.transform.position;
                 newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
