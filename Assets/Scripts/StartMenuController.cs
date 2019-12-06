@@ -11,7 +11,6 @@ public class StartMenuController : Singleton<StartMenuController>
     public override void Initialize()
     {
         Hide();
-        return;
     }
 
     public void Show()

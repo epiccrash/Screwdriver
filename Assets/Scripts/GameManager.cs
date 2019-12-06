@@ -23,6 +23,10 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent OnLightningRoundStart;
 
     [SerializeField]
+    private GameData _gameData;
+    public GameData gameData => _gameData;
+
+    [SerializeField]
     private float _regularGameLength;
 
     [SerializeField]
@@ -195,17 +199,23 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.StartMenu:
                 print("Moved to start menu");
+                GameOverMenuController.Instance.Hide();
+                _gameData.Reset();
                 StartMenuController.Instance.Show();
                 StartMenuController.Instance.SetPlayButtonCallback(StartTutorial);
                 break;
             case GameState.Tutorial:
                 print("Starting tutorial.");
                 StartMenuController.Instance.Hide();
+                GameOverMenuController.Instance.Hide();
                 OnTutorialStart.Invoke();
+                _gameData.Reset();
                 break;
             case GameState.PreNormalRound:
                 print("Moved to pre-normal round");
                 StartMenuController.Instance.Hide();
+                _gameData.Reset();
+                GameOverMenuController.Instance.Hide();
                 AudioManager.S.PlayGetPartyStarted();
                 break;
             case GameState.NormalRound:
@@ -229,6 +239,8 @@ public class GameManager : Singleton<GameManager>
             case GameState.GameOver:
                 OnGameOver.Invoke();
                 print("Game Over");
+                GameOverMenuController.Instance.SetReplayButtonCallback(Replay);
+                GameOverMenuController.Instance.ConfigureAndShow();
                 AudioManager.S.PlayMashup();
                 break;
             default:
@@ -236,6 +248,12 @@ public class GameManager : Singleton<GameManager>
         }
 
         _state = newState;
+    }
+
+    private void Replay()
+    {
+        print("Replaying game");
+        ChangeState(GameState.PreLightningRound);
     }
 
     // Functions to manage the tutorial.
@@ -254,11 +272,11 @@ public class GameManager : Singleton<GameManager>
 
     private void HideAllTutorialHints()
     {
-        _tutorialHintIce.SetActive(false);
-        _tutorialHintOj.SetActive(false);
-        _tutorialHintKnife.SetActive(false);
-        _tutorialHintVodka.SetActive(false);
-        _tutorialHintServe.SetActive(false);
+        _tutorialHintIce?.SetActive(false);
+        _tutorialHintOj?.SetActive(false);
+        _tutorialHintKnife?.SetActive(false);
+        _tutorialHintVodka?.SetActive(false);
+        _tutorialHintServe?.SetActive(false);
     }
 
     public void OnTutorialCustomerArrived()

@@ -62,6 +62,8 @@ public class ShotSpawnLocation : MonoBehaviour
                 _currentCup = null;
                 _isWaitingForShot = true;
                 _progressRing.gameObject.SetActive(false);
+
+                GameManager.Instance.gameData.totalShots++;
             }
         }
     }
