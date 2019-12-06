@@ -26,6 +26,7 @@ public class CupScript : MonoBehaviour
     private float _alcoholByVolume;
     private int _totalDropsInCup;
     private bool _hasBeenShaken;
+    public bool HasBeenShaken => _hasBeenShaken;
 
     private float _maxPossibleDrops;
 
@@ -244,6 +245,7 @@ public class CupScript : MonoBehaviour
     public void shakeIt()
     {
         _hasBeenShaken = true;
+        BarManager.Instance.UpdateShakeValue(true, this);
     }
 
     private void OnTutorialStart()
