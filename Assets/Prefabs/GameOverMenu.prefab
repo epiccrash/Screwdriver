@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1177241353384525103}
   - component: {fileID: 1136039260146873118}
   - component: {fileID: 933764622555216116}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 7239523872384426170}
   - component: {fileID: 2262403667747848788}
   - component: {fileID: 3338081931202479999}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 7930260799521399908}
   - component: {fileID: 3434582973129216631}
   - component: {fileID: 5901341436003866136}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Total Shots Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 2484258907217581205}
   - component: {fileID: 4544473548550440555}
   - component: {fileID: 933878411899488512}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Total Drinks Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 701427912525774974}
   - component: {fileID: 4504074869060946370}
   - component: {fileID: 184110501198086361}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Perfect Drinks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 8732039213416741609}
   - component: {fileID: 6602811684580717237}
   - component: {fileID: 8675189400286847004}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tips Earned Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 4146722453188570717}
   - component: {fileID: 1704700511168551972}
   - component: {fileID: 1839015657787914644}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Total Drinks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1108,7 +1108,7 @@ GameObject:
   - component: {fileID: 1099018818984087452}
   - component: {fileID: 6833332666056951212}
   - component: {fileID: 8995731678631348901}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tips Earned
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 4802628097572660580}
   - component: {fileID: 4243957162118302592}
   - component: {fileID: 2144898971396807794}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Task Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1424,7 @@ GameObject:
   - component: {fileID: 6913663297148651336}
   - component: {fileID: 62699433028253448}
   - component: {fileID: 1466752219951148891}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Perfect Drinks Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1581,7 +1581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8274223632640647553}
   - component: {fileID: 2384623090339940492}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1631,7 +1631,7 @@ GameObject:
   - component: {fileID: 884144539369375977}
   - component: {fileID: 7439764365632077050}
   - component: {fileID: 5052035287999764153}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Total Shots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,6 +1789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Liquid Fill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860730548335549236, guid: fbe3e54186fac45e3aacd47fa4458fa2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2280759033104515480, guid: fbe3e54186fac45e3aacd47fa4458fa2,
         type: 3}
@@ -1974,6 +1979,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980949104724753485, guid: fbe3e54186fac45e3aacd47fa4458fa2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7705354227293446722, guid: fbe3e54186fac45e3aacd47fa4458fa2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbe3e54186fac45e3aacd47fa4458fa2, type: 3}
