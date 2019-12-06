@@ -882,6 +882,7 @@ MonoBehaviour:
   force: 500
   deadZone: 0.5
   spoutLocation: {fileID: 0}
+  spout: {fileID: 0}
   joystickObj: {fileID: 0}
   rotationPoint: {fileID: 0}
 --- !u!1 &3313882706247800753
