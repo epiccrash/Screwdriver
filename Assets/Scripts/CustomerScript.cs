@@ -315,14 +315,6 @@ public class CustomerScript : MonoBehaviour
             GameManager.Instance.gameData.perfectDrinks++;
             tip += _tipBonusOnPerfect;
         }
-        else if (_isTutorial)
-        {
-            // A really dumb way to try to make sure that tutorial drinks are perfect.
-            if (!hasIncorrectIngredients)
-            {
-                return;
-            }
-        }
 
         GameManager.Instance.gameData.totalDrinks++;
 

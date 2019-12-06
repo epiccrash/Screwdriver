@@ -24,7 +24,3 @@ MonoBehaviour:
     amountMatters: 1
     amount: 480
     amountDescription: 
-  - ingredient: 107
-    amountMatters: 0
-    amount: 0
-    amountDescription: 
