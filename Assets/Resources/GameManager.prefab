@@ -64,7 +64,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _gameData: {fileID: 11400000, guid: 9556a5dbe48fd464c9c250ec4b62d11d, type: 2}
-  _regularGameLength: 0
+  _regularGameLength: 150
   _lightningRoundLength: 30
   roundSoundIntervals:
   - 0.2
