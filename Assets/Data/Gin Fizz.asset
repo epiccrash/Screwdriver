@@ -28,10 +28,6 @@ MonoBehaviour:
     amountMatters: 1
     amount: 400
     amountDescription: 
-  - ingredient: 106
-    amountMatters: 0
-    amount: 0
-    amountDescription: 
   - ingredient: 104
     amountMatters: 0
     amount: 0
