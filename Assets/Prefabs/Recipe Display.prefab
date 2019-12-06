@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3338203294616304904}
   - component: {fileID: 3338203294616304906}
   - component: {fileID: 3338203294616304907}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Drink Name Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3338203295237219442}
   - component: {fileID: 3338203295237219445}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredient Rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 3338203295265351415}
   - component: {fileID: 3338203295265351412}
   - component: {fileID: 3338203295265351371}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Recipe Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
