@@ -81,11 +81,17 @@ public class DrinkSlot : MonoBehaviour
             // Don't try to serve an empty drink!
             if (currentDrink != null && !currentDrink.IsEmpty())
             {
-                if (_isTutorial && this.gameObject.name == "Center Seat")
+                if (!_isTutorial)
                 {
                     onDrinkServed?.Invoke(_drinkInSlot);
                     BarManager.Instance.OnCupServed(_drinkInSlot);
                 }
+                else if (this.gameObject.name == "Center Seat")
+                {
+                    onDrinkServed?.Invoke(_drinkInSlot);
+                    BarManager.Instance.OnCupServed(_drinkInSlot);
+                }
+
             }
         }
     }

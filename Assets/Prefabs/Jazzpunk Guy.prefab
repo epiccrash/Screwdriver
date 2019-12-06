@@ -116,8 +116,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _orderableDrinks:
-  - {fileID: 11400000, guid: b85186f50563f49d4ac12250bb1fd3ea, type: 2}
+  - {fileID: 11400000, guid: effe5f66f9e9dc34ab5d4a41132a2097, type: 2}
+  - {fileID: 11400000, guid: 6245426ff6f2c5546ab626a15ed641b9, type: 2}
+  - {fileID: 11400000, guid: f3d23778775cfaf4c8739a4921d42b4a, type: 2}
+  - {fileID: 11400000, guid: 08ed21452172a96438f1f25e71d2c8b6, type: 2}
   - {fileID: 11400000, guid: b4ac06dead3fe420abb2d5feafdcbe51, type: 2}
+  - {fileID: 11400000, guid: 910cc476464976d44a97a57338413d9a, type: 2}
+  - {fileID: 11400000, guid: b505d65657068f34e939e25b7645e914, type: 2}
+  - {fileID: 11400000, guid: 45e5d0c83a612654d8766b12bb4d2649, type: 2}
+  - {fileID: 11400000, guid: b85186f50563f49d4ac12250bb1fd3ea, type: 2}
+  - {fileID: 11400000, guid: 048cc96b36c11954aa2f997b49607afd, type: 2}
+  - {fileID: 11400000, guid: 0e3b88bbe767ef4468ed1a4a421e77ab, type: 2}
   - {fileID: 11400000, guid: 400e2752b173d49648560d2f00223503, type: 2}
   _drunkThreshhold: 0
   _minTimeBetweenDrinks: 1
