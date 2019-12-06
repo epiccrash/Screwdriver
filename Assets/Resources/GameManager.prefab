@@ -43,6 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a42a2be4d9b444e9bd2f63dbaa67439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnTutorialStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
@@ -58,6 +63,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  _gameData: {fileID: 11400000, guid: 9556a5dbe48fd464c9c250ec4b62d11d, type: 2}
   _regularGameLength: 150
   _lightningRoundLength: 30
   roundSoundIntervals:

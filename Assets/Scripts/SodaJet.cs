@@ -64,7 +64,7 @@ public class SodaJet : MonoBehaviour
         if (transform.position == spoutLocation.position)
         {
             snapping = false;
-            // GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<Rigidbody>().isKinematic = false;
             // GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         } else if (transform.parent == leftHand || transform.parent == rightHand)
         {
@@ -118,7 +118,17 @@ public class SodaJet : MonoBehaviour
         if (other.tag == "SodaSnap")
         {
             snapping = true;
-            GetComponent<Rigidbody>().isKinematic = true;
+            // GetComponent<Rigidbody>().isKinematic = true;
+            // transform.eulerAngles = new Vector3(0f, 90f, 0f);
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.tag == "SodaSnap")
+        {
+            // transform.eulerAngles = new Vector3(0f, 90f, 0f);
+            //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
@@ -127,14 +137,14 @@ public class SodaJet : MonoBehaviour
         if (other.tag == "SodaSnap")
         {
             snapping = false;
-            GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
     }
 
     private void CreateDrop(GameObject liquid)
     {
         
-        Vector3 direction = spout.transform.up + new Vector3(0, 0.5f, 0);
+        Vector3 direction = spout.transform.right + new Vector3(0, 0.5f, 0);
         direction.Normalize();
 
         GameObject newDrop = Instantiate(liquid);
@@ -145,6 +155,8 @@ public class SodaJet : MonoBehaviour
         newDrop.GetComponent<TrailRenderer>().enabled = true;
 
         newDrop.transform.position = spout.transform.position;
+        
+        //newDrop.transform.position = transform.position;
         newDrop.GetComponent<Rigidbody>().AddForce(direction * force);
     }
 }

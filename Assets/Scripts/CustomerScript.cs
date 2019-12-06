@@ -299,8 +299,11 @@ public class CustomerScript : MonoBehaviour
 
         if (isPerfectDrink)
         {
+            GameManager.Instance.gameData.perfectDrinks++;
             tip += _tipBonusOnPerfect;
         }
+
+        GameManager.Instance.gameData.totalDrinks++;
 
         // Destroy the drink.
         Destroy(drinkObj);
