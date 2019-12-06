@@ -31,17 +31,28 @@ public class DestroyOnTouch : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         if (collision.transform.tag == "floor"
             || (_isLiquid && !(collision.transform.CompareTag("Container") || collision.transform.CompareTag("Spout") || collision.transform.CompareTag("SnapSpot"))))
         {
-            if (spawnScript != null)
-                spawnScript.needSpawn = true;
-            Destroy(this.gameObject);
+            //print(gameObject.name);
+            if (spawnScript != null) { spawnScript.needSpawn = true; }
+
+            SmashOnCollision smashOnCollision = GetComponent<SmashOnCollision>();
+            if (smashOnCollision != null)
+            {
+                smashOnCollision.Smash();
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+       
         if (other.transform.tag == "floor"
             || (_isLiquid && !(other.transform.CompareTag("Container") || other.transform.CompareTag("Spout") || other.transform.CompareTag("SnapSpot"))))
         {

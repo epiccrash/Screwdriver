@@ -4891,6 +4891,7 @@ GameObject:
   - component: {fileID: 1897626775}
   - component: {fileID: 1897626772}
   - component: {fileID: -4101102380487887542}
+  - component: {fileID: 490808894947713097}
   m_Layer: 9
   m_Name: absolut
   m_TagString: Untagged
@@ -5239,3 +5240,15 @@ MonoBehaviour:
   velocityAverageFrames: 5
   angularVelocityAverageFrames: 11
   estimateOnAwake: 0
+--- !u!114 &490808894947713097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314130788268087898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07962dfb6ff934db68b1fe5e94fe90e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
