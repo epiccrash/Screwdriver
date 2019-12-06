@@ -8,6 +8,18 @@ public class CupScript : MonoBehaviour
     [SerializeField]
     private ConeModify _cupConeModify;
 
+    [SerializeField]
+    private Transform _orangeWedgeSpot;
+
+    [SerializeField]
+    private Transform _lemonSliceSpot;
+
+    [SerializeField]
+    private Transform _limeSliceSpot;
+
+    [SerializeField]
+    private Transform _cherrySpot;
+
     private List<GameObject> _solidIngredientsInCup;
     private IDictionary<IngredientType, int> _ingredientsInCup;
 
@@ -57,6 +69,48 @@ public class CupScript : MonoBehaviour
             {
                 _totalDropsInCup++;
                 AddOrIncreaseIngredient(ingredient.IngredientType);
+            }
+        }
+        else
+        {
+            IngredientScript ingredient = other.gameObject.GetComponent<IngredientScript>();
+
+            if (ingredient != null && !_solidIngredientsInCup.Contains(other.gameObject))
+            {
+                switch (ingredient.IngredientType)
+                {
+                    case (IngredientType.OrangeWedge):
+                        _solidIngredientsInCup.Add(other.gameObject);
+                        other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.transform.position = _orangeWedgeSpot.position;
+                        other.gameObject.transform.rotation = _orangeWedgeSpot.rotation;
+                        AddOrIncreaseIngredient(IngredientType.OrangeWedge);
+                        break;
+                    case IngredientType.LemonSlice:
+                        _solidIngredientsInCup.Add(other.gameObject);
+                        other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.transform.position = _lemonSliceSpot.position;
+                        other.gameObject.transform.rotation = _lemonSliceSpot.rotation;
+                        AddOrIncreaseIngredient(IngredientType.LemonSlice);
+                        break;
+                    case IngredientType.LimeSlice:
+                        _solidIngredientsInCup.Add(other.gameObject);
+                        other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.transform.position = _limeSliceSpot.position;
+                        other.gameObject.transform.rotation = _limeSliceSpot.rotation;
+                        AddOrIncreaseIngredient(IngredientType.LimeSlice);
+                        break;
+                    case IngredientType.Cherry:
+                        _solidIngredientsInCup.Add(other.gameObject);
+                        other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.transform.position = _cherrySpot.position;
+                        other.gameObject.transform.rotation = _cherrySpot.rotation;
+                        AddOrIncreaseIngredient(IngredientType.Cherry);
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
     }
