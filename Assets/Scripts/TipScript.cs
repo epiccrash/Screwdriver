@@ -38,6 +38,8 @@ public class TipScript : Singleton<TipScript>
 
     public void AddTip(float tip)
     {
+        GameManager.Instance.gameData.totalTips += tip;
+
         GameObject tt = Instantiate(tipText, canvas.transform);
         //tt.transform.SetParent(transform);
         //tt.transform.position = transform.position + new Vector3(0, 0.5f, 0);

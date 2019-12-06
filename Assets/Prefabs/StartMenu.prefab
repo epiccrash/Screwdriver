@@ -333,7 +333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.023}
+  m_AnchoredPosition: {x: 0, y: -0.027}
   m_SizeDelta: {x: 0.9, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4044256681510499144
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4289554452
+  m_fontColor: {r: 0.078431375, g: 0.40784314, b: 0.6784314, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -514,6 +514,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Liquid Fill Button
       objectReference: {fileID: 0}
+    - target: {fileID: 2280759033104515480, guid: fbe3e54186fac45e3aacd47fa4458fa2,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4369981574591655454, guid: fbe3e54186fac45e3aacd47fa4458fa2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -629,6 +634,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6492634844705705566, guid: fbe3e54186fac45e3aacd47fa4458fa2,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492634844705705566, guid: fbe3e54186fac45e3aacd47fa4458fa2,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 2599880683591562945, guid: fbe3e54186fac45e3aacd47fa4458fa2,
         type: 3}
       propertyPath: m_Color.r
@@ -658,21 +673,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280759033104515480, guid: fbe3e54186fac45e3aacd47fa4458fa2,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6492634844705705566, guid: fbe3e54186fac45e3aacd47fa4458fa2,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 6492634844705705566, guid: fbe3e54186fac45e3aacd47fa4458fa2,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbe3e54186fac45e3aacd47fa4458fa2, type: 3}
