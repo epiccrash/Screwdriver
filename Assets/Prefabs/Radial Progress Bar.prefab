@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8064704323068707218}
   - component: {fileID: 5422812168999062581}
   - component: {fileID: 841288785450763911}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Error Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5799943175332076332}
   - component: {fileID: 5799943175332076334}
   - component: {fileID: 5799943175332076335}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 5799943175386113145}
   - component: {fileID: 5799943175386113147}
   - component: {fileID: 5799943175386113144}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Center Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5799943176450112218}
   - component: {fileID: 8511179181876404088}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Radial Progress Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,6 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f413d2bd70a554c5fbcd43dcadf76499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IncorrectAmtColor:
+    serializedVersion: 2
+    rgba: 4281638635
+  CorrectAmtColor:
+    serializedVersion: 2
+    rgba: 4280072220
   _ingredientText: {fileID: 5799943176732435245}
   _tooMuchText: {fileID: 841288785450763911}
   _progressBar: {fileID: 5799943176647551816}
@@ -375,7 +381,7 @@ GameObject:
   - component: {fileID: 5799943176647551817}
   - component: {fileID: 5799943176647551819}
   - component: {fileID: 5799943176647551816}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Progress Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +456,7 @@ GameObject:
   - component: {fileID: 5799943176732435242}
   - component: {fileID: 5799943176732435244}
   - component: {fileID: 5799943176732435245}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredient Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
