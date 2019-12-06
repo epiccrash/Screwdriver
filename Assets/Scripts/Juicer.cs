@@ -20,6 +20,9 @@ public class Juicer : MonoBehaviour
 
     private AudioSource juiceSound;
 
+    private float SQUISHSTART = .145f, SQUISHSTOP = .178f, SQUISHPERC=.8f, SNAPSTART=.95f;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,34 +34,43 @@ public class Juicer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (handle.outAngle < SaveAngle && full)
+        if (handle.outAngle > SaveAngle && full)
         {
             
             GameObject newDrop = Instantiate(juiceDrop);
             newDrop.transform.position = spout.transform.position;
-            SaveAngle -= 90.0f / juiceableObject.GetComponent<Juiceable>().jucieUnits;
+            SaveAngle += 90.0f / juiceableObject.GetComponent<Juiceable>().jucieUnits;
             juiceLeft--;
-            AudioManager.S.PlaySound(juiceSound);
+           // AudioManager.S.PlaySound(juiceSound);
         }
 
-        float scaleMove = ((handle.outAngle / -90) * .84f);
+
+        float scaleMove = ((handle.outAngle / -90) * (SQUISHSTOP-SQUISHSTART));
+
+        
+        squisher.transform.localPosition = new Vector3(squisher.transform.localPosition.x, SQUISHSTART + scaleMove, squisher.transform.localPosition.z);
+        
+        if ((SQUISHSTART + scaleMove < .17 && transform.localScale.y>1-SQUISHPERC)) {
+
+            float snapMove = (handle.outAngle / -90) * (SNAPSTART * .1f);
+            float snapScale = (handle.outAngle / -90) * SQUISHPERC;
 
 
-        squisher.transform.localScale = new Vector3(squisher.transform.localScale.x, .16f + scaleMove, squisher.transform.localScale.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, SNAPSTART+snapMove, transform.localPosition.z);
+            transform.localScale = new Vector3(transform.localScale.x, snapScale, transform.localScale.z);
 
-        if (-0.074f - scaleMove/4 < transform.localPosition.x || scaleMove==0) {
-
-            Debug.Log("new location: " + -0.074f + scaleMove / 4);
-            Debug.Log("old location: " + transform.localPosition.x);
-            Debug.Log("Movement: " + scaleMove);
             if ( scaleMove > 0) {
                 movedDown = true;
             }
+            
             if (movedDown == true && scaleMove == 0) {
                 movedDown = false;
                 unloadJuicer();
             }
-            transform.localPosition = new Vector3(-0.074f - scaleMove / 4, transform.localPosition.y, transform.localPosition.z);
+
+            
+            transform.localPosition = new Vector3(transform.localPosition.x, .077f + scaleMove, transform.localPosition.z);
+            
         }
         
 
@@ -112,9 +124,9 @@ public class Juicer : MonoBehaviour
 
     public void LoadJuicer()
     {
-        handle.outAngle = 0f;
+        handle.outAngle = -90f;
         handleObj.transform.localEulerAngles = Vector3.zero;
-        SaveAngle = 0;
+        SaveAngle = -90;
         full = true;
         juiceLeft = juiceableObject.GetComponent<Juiceable>().jucieUnits;
         juiceDrop = juiceableObject.GetComponent<Juiceable>().juiceDrop;
