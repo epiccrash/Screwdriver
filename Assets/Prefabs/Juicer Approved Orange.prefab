@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juiceDrop: {fileID: 3233767304553549719, guid: 9b787eb9d9a1b7e438b19ed5a74aae8b,
     type: 3}
-  jucieUnits: 100
+  jucieUnits: 150
 --- !u!114 &6505897964947220325
 MonoBehaviour:
   m_ObjectHideFlags: 0
