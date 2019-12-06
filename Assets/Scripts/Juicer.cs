@@ -49,8 +49,9 @@ public class Juicer : MonoBehaviour
 
         
         squisher.transform.localPosition = new Vector3(squisher.transform.localPosition.x, SQUISHSTART + scaleMove, squisher.transform.localPosition.z);
-        
-        if ((SQUISHSTART + scaleMove < .17 && transform.localScale.y>1-SQUISHPERC)) {
+        Debug.Log(scaleMove);
+        if ((SQUISHSTART + scaleMove < .17 && transform.localScale.y>1-SQUISHPERC)|| scaleMove==(SQUISHSTOP - SQUISHSTART))
+        {
 
             float snapMove = (handle.outAngle / -90) * (SNAPSTART * .2f);
             float snapScale = (handle.outAngle / -90) * SQUISHPERC;
@@ -59,11 +60,13 @@ public class Juicer : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, SNAPSTART+snapMove, transform.localPosition.z);
             transform.localScale = new Vector3(transform.localScale.x, snapScale, transform.localScale.z);
 
-            if ( scaleMove > 0) {
+            if ( scaleMove < (SQUISHSTOP - SQUISHSTART)) {
                 movedDown = true;
+                Debug.Log("im true");
             }
             
-            if (movedDown == true && scaleMove == 0) {
+            if (movedDown == true && scaleMove == (SQUISHSTOP - SQUISHSTART)) {
+                Debug.Log("im scaling");
                 movedDown = false;
                 unloadJuicer();
             }
@@ -139,6 +142,8 @@ public class Juicer : MonoBehaviour
         full = false;
         juiceLeft = 0;
         juiceDrop = null;
+        transform.localPosition = new Vector3(0,SNAPSTART,0);
+        transform.localScale = new Vector3(1, 1, 1);
     }
 
     public bool IsFull()
