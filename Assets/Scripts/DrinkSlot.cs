@@ -86,7 +86,7 @@ public class DrinkSlot : MonoBehaviour
                     onDrinkServed?.Invoke(_drinkInSlot);
                     BarManager.Instance.OnCupServed(_drinkInSlot);
                 }
-                else if (this.gameObject.name == "Center Seat")
+                else if (this.gameObject.transform.parent.name == "Center Seat")
                 {
                     onDrinkServed?.Invoke(_drinkInSlot);
                     BarManager.Instance.OnCupServed(_drinkInSlot);
