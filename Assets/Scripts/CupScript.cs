@@ -54,6 +54,7 @@ public class CupScript : MonoBehaviour
             {
                 AddOrIncreaseIngredient(IngredientType.Ice);
                 _solidIngredientsInCup.Add(other.gameObject);
+                other.gameObject.transform.SetParent(transform);
             }
         }
         else if (other.gameObject.layer == 4) // Water Layer
@@ -143,6 +144,8 @@ public class CupScript : MonoBehaviour
 
                 BarManager.Instance.UpdateIngredientDisplays(IngredientType.Ice, this);
             }
+
+            other.gameObject.transform.SetParent(null);
 
             // print("Ice: " + _ingredientsInCup[IngredientType.Ice]);
         }
