@@ -207,6 +207,29 @@ public class BarManager : Singleton<BarManager>
         }
     }
 
+    public void UpdateShakeValue(bool isShaken, CupScript updatedCup)
+    {
+        bool changedTrackedCup = false;
+
+        if (_currentTrackedCup != updatedCup)
+        {
+            changedTrackedCup = true;
+            _currentTrackedCup = updatedCup;
+        }
+
+        foreach (RecipeDisplayScript display in _recipeDisplays)
+        {
+            if (changedTrackedCup)
+            {
+                display.ResetIngredientDisplayForNewCup();
+            }
+            else
+            {
+                display.UpdateShakerDisplay();
+            }
+        }
+    }
+
     public void OnCupPickedUp(CupScript pickedUpCup)
     {
 
@@ -260,5 +283,15 @@ public class BarManager : Singleton<BarManager>
         }
 
         return 0;
+    }
+
+    public bool GetCupIsShaken()
+    {
+        if (_currentTrackedCup != null)
+        {
+            return _currentTrackedCup.HasBeenShaken;
+        }
+
+        return false;
     }
 }

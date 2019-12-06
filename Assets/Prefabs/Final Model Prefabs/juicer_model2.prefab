@@ -229,8 +229,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4509418794286006527}
+  m_Children: []
   m_Father: {fileID: 7205091732326195710}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1086,93 +1085,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1001 &7268030497588963220
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2606470424078850908}
-    m_Modifications:
-    - target: {fileID: 6505897964947220328, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_Name
-      value: Juicer Approved Orange
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.9385272
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.34520522
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.033333335
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.033333335
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.033333335
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 90aa83da25c99534d8b98b3bb76e03c6, type: 3}
---- !u!4 &4509418794286006527 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6505897964947220331, guid: 90aa83da25c99534d8b98b3bb76e03c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 7268030497588963220}
-  m_PrefabAsset: {fileID: 0}

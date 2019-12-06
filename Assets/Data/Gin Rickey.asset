@@ -10,25 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f310fffd8f6d84da3ab4493edcf7136c, type: 3}
-  m_Name: Screwdriver
+  m_Name: Gin Rickey
   m_EditorClassIdentifier: 
-  drinkName: Screwdriver
-  alcoholContent: 5
+  drinkName: Gin Rickey
+  alcoholContent: 0
   needsShaker: 0
   recipe:
+  - ingredient: 103
+    amountMatters: 1
+    amount: 400
+    amountDescription: 
   - ingredient: 104
     amountMatters: 0
     amount: 0
     amountDescription: 
-  - ingredient: 102
+  - ingredient: 110
     amountMatters: 1
-    amount: 600
-    amountDescription: 1/2 Cup
-  - ingredient: 39
+    amount: 100
+    amountDescription: 
+  - ingredient: 107
+    amountMatters: 0
+    amount: 0
+    amountDescription: 
+  - ingredient: 41
     amountMatters: 1
-    amount: 150
-    amountDescription: 1/2 Cup
-  - ingredient: 105
-    amountMatters: 1
-    amount: 1
-    amountDescription: 1 Wedge
+    amount: 200
+    amountDescription: 

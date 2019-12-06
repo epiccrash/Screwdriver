@@ -286,6 +286,16 @@ public class CustomerScript : MonoBehaviour
         // Now lets calculate the tip.
         bool isPerfectDrink = true;
 
+        if (_currentDrinkOrder.needsShaker != drink.HasBeenShaken)
+        {
+            isPerfectDrink = false;
+            tip -= _tipPenaltyPerWrongIngredient;
+        }
+        else
+        {
+            tip += _tipPerCorrectIngredient;
+        }
+
         foreach (IngredientType ingredient in ingredientsAndCorrectness.Keys)
         {
             if (Mathf.Abs(ingredientsAndCorrectness[ingredient] - 1) > GameConstants.DrinkPerfectionPercentageEpsilon)
