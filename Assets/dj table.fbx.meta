@@ -1,0 +1,425 @@
+fileFormatVersion: 2
+guid: 605e2a05be43d4ee1be2892a96e23ec4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: BezierCurve.000
+    100002: BezierCurve.003
+    100004: column wire 2 lp
+    100006: column wire.001
+    100008: Cube.000
+    100010: Cube.001
+    100012: Cube.002
+    100014: Cube.003
+    100016: Cube.004
+    100018: Cube.005
+    100020: Cube.006
+    100022: Cube.008
+    100024: Cube.009
+    100026: Cube.010
+    100028: Cube.011
+    100030: Cube.012
+    100032: Cube.013
+    100034: Cube.014
+    100036: Cube.015
+    100038: Cube.016
+    100040: Cube.017
+    100042: Cylinder.000
+    100044: Cylinder.001
+    100046: Cylinder.002
+    100048: Cylinder.003
+    100050: Cylinder.004
+    100052: Cylinder.005
+    100054: Cylinder.006
+    100056: Cylinder.007
+    100058: Cylinder.008
+    100060: Cylinder.009
+    100062: Cylinder.014
+    100064: Cylinder.022
+    100066: Cylinder.023
+    100068: Cylinder.024
+    100070: Cylinder.041
+    100072: Cylinder.042
+    100074: Cylinder.043
+    100076: Cylinder.044
+    100078: Cylinder.045
+    100080: Cylinder.046
+    100082: Cylinder.047
+    100084: Cylinder.048
+    100086: Cylinder.049
+    100088: Cylinder.050
+    100090: Cylinder.051
+    100092: Cylinder.052
+    100094: Cylinder.053
+    100096: Cylinder.054
+    100098: DISK.002
+    100100: DISK.003
+    100102: dj panel 1.001
+    100104: dj panel 2.001
+    100106: dj panel 3.001
+    100108: //RootNode
+    100110: dj table wire lp
+    100112: FLASH INPUT 1 lp
+    100114: FLASH INPUT 2.001
+    100116: golovka.002
+    100118: golovka.003
+    100120: headphones holder.001
+    100122: "headphones lp \u0434\u0437"
+    100124: headphones wire lp
+    100126: kolonka left.001
+    100128: kolonka right.001
+    100130: laptop holder lp
+    100132: laptop lp
+    100134: laptop wire flash lp
+    100136: laptop wire power lp
+    100138: small piano lp lp
+    100140: sound card.001
+    100142: table down lp
+    100144: table mid lp
+    100146: table up lp
+    100148: tarelka1.002
+    100150: tarelka1.003
+    400000: BezierCurve.000
+    400002: BezierCurve.003
+    400004: column wire 2 lp
+    400006: column wire.001
+    400008: Cube.000
+    400010: Cube.001
+    400012: Cube.002
+    400014: Cube.003
+    400016: Cube.004
+    400018: Cube.005
+    400020: Cube.006
+    400022: Cube.008
+    400024: Cube.009
+    400026: Cube.010
+    400028: Cube.011
+    400030: Cube.012
+    400032: Cube.013
+    400034: Cube.014
+    400036: Cube.015
+    400038: Cube.016
+    400040: Cube.017
+    400042: Cylinder.000
+    400044: Cylinder.001
+    400046: Cylinder.002
+    400048: Cylinder.003
+    400050: Cylinder.004
+    400052: Cylinder.005
+    400054: Cylinder.006
+    400056: Cylinder.007
+    400058: Cylinder.008
+    400060: Cylinder.009
+    400062: Cylinder.014
+    400064: Cylinder.022
+    400066: Cylinder.023
+    400068: Cylinder.024
+    400070: Cylinder.041
+    400072: Cylinder.042
+    400074: Cylinder.043
+    400076: Cylinder.044
+    400078: Cylinder.045
+    400080: Cylinder.046
+    400082: Cylinder.047
+    400084: Cylinder.048
+    400086: Cylinder.049
+    400088: Cylinder.050
+    400090: Cylinder.051
+    400092: Cylinder.052
+    400094: Cylinder.053
+    400096: Cylinder.054
+    400098: DISK.002
+    400100: DISK.003
+    400102: dj panel 1.001
+    400104: dj panel 2.001
+    400106: dj panel 3.001
+    400108: //RootNode
+    400110: dj table wire lp
+    400112: FLASH INPUT 1 lp
+    400114: FLASH INPUT 2.001
+    400116: golovka.002
+    400118: golovka.003
+    400120: headphones holder.001
+    400122: "headphones lp \u0434\u0437"
+    400124: headphones wire lp
+    400126: kolonka left.001
+    400128: kolonka right.001
+    400130: laptop holder lp
+    400132: laptop lp
+    400134: laptop wire flash lp
+    400136: laptop wire power lp
+    400138: small piano lp lp
+    400140: sound card.001
+    400142: table down lp
+    400144: table mid lp
+    400146: table up lp
+    400148: tarelka1.002
+    400150: tarelka1.003
+    2100000: No Name
+    2300000: BezierCurve.000
+    2300002: BezierCurve.003
+    2300004: column wire 2 lp
+    2300006: column wire.001
+    2300008: Cube.000
+    2300010: Cube.001
+    2300012: Cube.002
+    2300014: Cube.003
+    2300016: Cube.004
+    2300018: Cube.005
+    2300020: Cube.006
+    2300022: Cube.008
+    2300024: Cube.009
+    2300026: Cube.010
+    2300028: Cube.011
+    2300030: Cube.012
+    2300032: Cube.013
+    2300034: Cube.014
+    2300036: Cube.015
+    2300038: Cube.016
+    2300040: Cube.017
+    2300042: Cylinder.000
+    2300044: Cylinder.001
+    2300046: Cylinder.002
+    2300048: Cylinder.003
+    2300050: Cylinder.004
+    2300052: Cylinder.005
+    2300054: Cylinder.006
+    2300056: Cylinder.007
+    2300058: Cylinder.008
+    2300060: Cylinder.009
+    2300062: Cylinder.014
+    2300064: Cylinder.022
+    2300066: Cylinder.023
+    2300068: Cylinder.024
+    2300070: Cylinder.041
+    2300072: Cylinder.042
+    2300074: Cylinder.043
+    2300076: Cylinder.044
+    2300078: Cylinder.045
+    2300080: Cylinder.046
+    2300082: Cylinder.047
+    2300084: Cylinder.048
+    2300086: Cylinder.049
+    2300088: Cylinder.050
+    2300090: Cylinder.051
+    2300092: Cylinder.052
+    2300094: Cylinder.053
+    2300096: Cylinder.054
+    2300098: DISK.002
+    2300100: DISK.003
+    2300102: dj table wire lp
+    2300104: FLASH INPUT 1 lp
+    2300106: FLASH INPUT 2.001
+    2300108: headphones holder.001
+    2300110: "headphones lp \u0434\u0437"
+    2300112: headphones wire lp
+    2300114: laptop holder lp
+    2300116: laptop lp
+    2300118: laptop wire flash lp
+    2300120: laptop wire power lp
+    2300122: small piano lp lp
+    2300124: sound card.001
+    2300126: table down lp
+    2300128: table mid lp
+    2300130: table up lp
+    2300132: tarelka1.002
+    2300134: tarelka1.003
+    3300000: BezierCurve.000
+    3300002: BezierCurve.003
+    3300004: column wire 2 lp
+    3300006: column wire.001
+    3300008: Cube.000
+    3300010: Cube.001
+    3300012: Cube.002
+    3300014: Cube.003
+    3300016: Cube.004
+    3300018: Cube.005
+    3300020: Cube.006
+    3300022: Cube.008
+    3300024: Cube.009
+    3300026: Cube.010
+    3300028: Cube.011
+    3300030: Cube.012
+    3300032: Cube.013
+    3300034: Cube.014
+    3300036: Cube.015
+    3300038: Cube.016
+    3300040: Cube.017
+    3300042: Cylinder.000
+    3300044: Cylinder.001
+    3300046: Cylinder.002
+    3300048: Cylinder.003
+    3300050: Cylinder.004
+    3300052: Cylinder.005
+    3300054: Cylinder.006
+    3300056: Cylinder.007
+    3300058: Cylinder.008
+    3300060: Cylinder.009
+    3300062: Cylinder.014
+    3300064: Cylinder.022
+    3300066: Cylinder.023
+    3300068: Cylinder.024
+    3300070: Cylinder.041
+    3300072: Cylinder.042
+    3300074: Cylinder.043
+    3300076: Cylinder.044
+    3300078: Cylinder.045
+    3300080: Cylinder.046
+    3300082: Cylinder.047
+    3300084: Cylinder.048
+    3300086: Cylinder.049
+    3300088: Cylinder.050
+    3300090: Cylinder.051
+    3300092: Cylinder.052
+    3300094: Cylinder.053
+    3300096: Cylinder.054
+    3300098: DISK.002
+    3300100: DISK.003
+    3300102: dj table wire lp
+    3300104: FLASH INPUT 1 lp
+    3300106: FLASH INPUT 2.001
+    3300108: headphones holder.001
+    3300110: "headphones lp \u0434\u0437"
+    3300112: headphones wire lp
+    3300114: laptop holder lp
+    3300116: laptop lp
+    3300118: laptop wire flash lp
+    3300120: laptop wire power lp
+    3300122: small piano lp lp
+    3300124: sound card.001
+    3300126: table down lp
+    3300128: table mid lp
+    3300130: table up lp
+    3300132: tarelka1.002
+    3300134: tarelka1.003
+    4300000: Cylinder.009
+    4300002: Cube.014
+    4300004: Cylinder.054
+    4300006: Cylinder.052
+    4300008: Cylinder.051
+    4300010: tarelka1.003
+    4300012: Cylinder.008
+    4300014: Cube.006
+    4300016: Cylinder.007
+    4300018: Cylinder.006
+    4300020: Cylinder.005
+    4300022: Cube.005
+    4300024: DISK.003
+    4300026: Cube.017
+    4300028: Cube.016
+    4300030: Cube.013
+    4300032: Cylinder.044
+    4300034: Cube.011
+    4300036: Cube.010
+    4300038: Cube.009
+    4300040: Cylinder.014
+    4300042: Cube.008
+    4300044: table down lp
+    4300046: table mid lp
+    4300048: Cube.002
+    4300050: BezierCurve.003
+    4300052: Cube.003
+    4300054: BezierCurve.000
+    4300056: Cube.001
+    4300058: Cube.000
+    4300060: headphones holder.001
+    4300062: laptop lp
+    4300064: laptop holder lp
+    4300066: small piano lp lp
+    4300068: "headphones lp \u0434\u0437"
+    4300070: sound card.001
+    4300072: headphones wire lp
+    4300074: FLASH INPUT 2.001
+    4300076: FLASH INPUT 1 lp
+    4300078: table up lp
+    4300080: laptop wire power lp
+    4300082: laptop wire flash lp
+    4300084: column wire.001
+    4300086: column wire 2 lp
+    4300088: dj table wire lp
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

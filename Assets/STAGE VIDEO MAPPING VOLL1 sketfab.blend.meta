@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: a917a1d2955874898916e939f5bdd320
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cube.002
+    100002: Cube.003
+    100004: Cube.004
+    100006: Cube.005
+    100008: JCM 800
+    100010: LED PAR
+    100012: LED PAR.001
+    100014: MainStage
+    100016: MARSHALL COMBO
+    100018: media mapping backdrop
+    100020: MOVING BEAM
+    100022: MOVING BEAM.001
+    100024: MOVING BEAM.002
+    100026: MOVING BEAM.003
+    100028: Plane
+    100030: PROJECTOR
+    100032: rcf
+    100034: rcf.001
+    100036: riging 25cm4
+    100038: riging 25cm4.001
+    100040: riging 40cm2
+    100042: riging 40cm2.001
+    100044: riging 40cm2.002
+    100046: //RootNode
+    100048: sub stage
+    100050: sub stage2
+    100052: Text
+    100054: Text.001
+    400000: Cube.002
+    400002: Cube.003
+    400004: Cube.004
+    400006: Cube.005
+    400008: JCM 800
+    400010: LED PAR
+    400012: LED PAR.001
+    400014: MainStage
+    400016: MARSHALL COMBO
+    400018: media mapping backdrop
+    400020: MOVING BEAM
+    400022: MOVING BEAM.001
+    400024: MOVING BEAM.002
+    400026: MOVING BEAM.003
+    400028: Plane
+    400030: PROJECTOR
+    400032: rcf
+    400034: rcf.001
+    400036: riging 25cm4
+    400038: riging 25cm4.001
+    400040: riging 40cm2
+    400042: riging 40cm2.001
+    400044: riging 40cm2.002
+    400046: //RootNode
+    400048: sub stage
+    400050: sub stage2
+    400052: Text
+    400054: Text.001
+    2100000: alumunium.001
+    2100002: Material.003
+    2100004: alumunium
+    2100006: LIGHT
+    2100008: black
+    2100010: Floor
+    2100012: purple
+    2100014: orange
+    2100016: Blues
+    2300000: Cube.002
+    2300002: Cube.003
+    2300004: Cube.004
+    2300006: Cube.005
+    2300008: JCM 800
+    2300010: LED PAR
+    2300012: LED PAR.001
+    2300014: MainStage
+    2300016: MARSHALL COMBO
+    2300018: media mapping backdrop
+    2300020: MOVING BEAM
+    2300022: MOVING BEAM.001
+    2300024: MOVING BEAM.002
+    2300026: MOVING BEAM.003
+    2300028: Plane
+    2300030: PROJECTOR
+    2300032: rcf
+    2300034: rcf.001
+    2300036: riging 25cm4
+    2300038: riging 25cm4.001
+    2300040: riging 40cm2
+    2300042: riging 40cm2.001
+    2300044: riging 40cm2.002
+    2300046: sub stage
+    2300048: sub stage2
+    2300050: Text
+    2300052: Text.001
+    3300000: Cube.002
+    3300002: Cube.003
+    3300004: Cube.004
+    3300006: Cube.005
+    3300008: JCM 800
+    3300010: LED PAR
+    3300012: LED PAR.001
+    3300014: MainStage
+    3300016: MARSHALL COMBO
+    3300018: media mapping backdrop
+    3300020: MOVING BEAM
+    3300022: MOVING BEAM.001
+    3300024: MOVING BEAM.002
+    3300026: MOVING BEAM.003
+    3300028: Plane
+    3300030: PROJECTOR
+    3300032: rcf
+    3300034: rcf.001
+    3300036: riging 25cm4
+    3300038: riging 25cm4.001
+    3300040: riging 40cm2
+    3300042: riging 40cm2.001
+    3300044: riging 40cm2.002
+    3300046: sub stage
+    3300048: sub stage2
+    3300050: Text
+    3300052: Text.001
+    4300000: PROJECTOR
+    4300002: riging 40cm2.002
+    4300004: riging 25cm4.001
+    4300006: riging 40cm2.001
+    4300008: Text.001
+    4300010: MOVING BEAM.003
+    4300012: LED PAR.001
+    4300014: sub stage2
+    4300016: Cube.005
+    4300018: Cube.004
+    4300020: Cube.003
+    4300022: Cube.002
+    4300024: rcf.001
+    4300026: Text
+    4300028: sub stage
+    4300030: Plane
+    4300032: MainStage
+    4300034: media mapping backdrop
+    4300036: JCM 800
+    4300038: LED PAR
+    4300040: MARSHALL COMBO
+    4300042: MOVING BEAM.001
+    4300044: MOVING BEAM.002
+    4300046: MOVING BEAM
+    4300048: rcf
+    4300050: riging 40cm2
+    4300052: riging 25cm4
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
