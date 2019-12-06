@@ -255,6 +255,7 @@ public class CustomerScript : MonoBehaviour
 
         // Lets check everything in the cup and test how close it is to the drink we ordered.
         float tip = 0;
+        bool hasIncorrectIngredients = false;
 
         foreach (IngredientType ingredientType in drink.GetIngredientList())
         {
@@ -277,6 +278,8 @@ public class CustomerScript : MonoBehaviour
             {
                 // Subtract some amount from the tip
                 tip -= _tipPenaltyPerWrongIngredient;
+
+                hasIncorrectIngredients = true;
             }
         }
 
@@ -301,6 +304,14 @@ public class CustomerScript : MonoBehaviour
         {
             GameManager.Instance.gameData.perfectDrinks++;
             tip += _tipBonusOnPerfect;
+        }
+        else if (_isTutorial)
+        {
+            // A really dumb way to try to make sure that tutorial drinks are perfect.
+            if (!hasIncorrectIngredients)
+            {
+                return;
+            }
         }
 
         GameManager.Instance.gameData.totalDrinks++;
