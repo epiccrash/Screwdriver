@@ -15,7 +15,16 @@ public class RecipeDisplayScript : MonoBehaviour
     private GameObject _radialProgressBarPrefab;
 
     [SerializeField]
+    private TextMeshProUGUI _needsShakerDisplay;
+
+    [SerializeField]
     private Color _highlightColor;
+
+    [SerializeField]
+    private Color32 IncorrectAmtColor = new Color32(235, 158, 52, 255);
+
+    [SerializeField]
+    private Color32 CorrectAmtColor = new Color32(28, 184, 28, 255);
 
     private Dictionary<IngredientType, RadialProgressBar> _ingredientRings;
     private Color _originalTextColor;
@@ -25,6 +34,7 @@ public class RecipeDisplayScript : MonoBehaviour
     {
         _originalTextColor = _drinkNameDisplay.color;
         _drinkNameDisplay.enabled = false;
+        _needsShakerDisplay.enabled = false;
         _ingredientRings = new Dictionary<IngredientType, RadialProgressBar>();
     }
 
@@ -47,6 +57,12 @@ public class RecipeDisplayScript : MonoBehaviour
         _drinkNameDisplay.text = newDrink.drinkName;
         _drinkNameDisplay.enabled = true;
         UnhighlightDrinkName();
+
+        if (_currentDrink.needsShaker)
+        {
+            _needsShakerDisplay.color = IncorrectAmtColor;
+            _needsShakerDisplay.enabled = true;
+        }
 
         foreach (IngredientType ingredient in newDrink.GetIngredientList())
         {
@@ -101,6 +117,15 @@ public class RecipeDisplayScript : MonoBehaviour
         {
             UpdateIngredientRing(ingredient);
         }
+
+        if (BarManager.Instance.GetCupIsShaken())
+        {
+            _needsShakerDisplay.color = CorrectAmtColor;
+        }
+        else
+        {
+            _needsShakerDisplay.color = IncorrectAmtColor;
+        }
     }
 
     public void HighlightDrinkName()
@@ -111,5 +136,17 @@ public class RecipeDisplayScript : MonoBehaviour
     public void UnhighlightDrinkName()
     {
         _drinkNameDisplay.color = _originalTextColor;
+    }
+
+    public void UpdateShakerDisplay()
+    {
+        if (BarManager.Instance.GetCupIsShaken())
+        {
+            _needsShakerDisplay.color = CorrectAmtColor;
+        }
+        else
+        {
+            _needsShakerDisplay.color = IncorrectAmtColor;
+        }
     }
 }
