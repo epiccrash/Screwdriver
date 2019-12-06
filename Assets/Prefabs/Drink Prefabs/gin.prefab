@@ -485,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7684158674310629739}
   m_LocalRotation: {x: 0.00017002225, y: 0.000039488077, z: -0.0932204, w: -0.99564546}
-  m_LocalPosition: {x: 0.0005, y: -0.0001029, z: 0.215}
+  m_LocalPosition: {x: 0.001, y: -0, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 645293481495389228}
@@ -4218,7 +4218,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 3367
+      m_Bits: 7175
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -5194,7 +5194,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d47b9947c5cc904cbce58c860dfcd53, type: 2}
+  - {fileID: 2100000, guid: 668eadb9fa35341f1824b9ec55303775, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

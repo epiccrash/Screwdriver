@@ -17,6 +17,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Alcohol
       objectReference: {fileID: 0}
+    - target: {fileID: 7563135684652501739, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 213205ea2f3de47df98e46391e87026d, type: 2}
+    - target: {fileID: 7563135684652501743, guid: e37f0d264de6ba645bf5a6650829aa9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 213205ea2f3de47df98e46391e87026d, type: 2}
     - target: {fileID: 7563135684652501741, guid: e37f0d264de6ba645bf5a6650829aa9a,
         type: 3}
       propertyPath: m_LocalPosition.x
