@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juiceDrop: {fileID: 3233767304553549719, guid: 9b787eb9d9a1b7e438b19ed5a74aae8b,
     type: 3}
-  jucieUnits: 150
+  jucieUnits: 50
 --- !u!114 &6505897964947220325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +291,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6505897964947220331}
     m_Modifications:
+    - target: {fileID: 2368449809147577324, guid: a093bed2f689b534bbcc752db024ab9f,
+        type: 3}
+      propertyPath: m_Name
+      value: Orange
+      objectReference: {fileID: 0}
     - target: {fileID: 1622761881687273983, guid: a093bed2f689b534bbcc752db024ab9f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -360,11 +365,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 8.695652
-      objectReference: {fileID: 0}
-    - target: {fileID: 2368449809147577324, guid: a093bed2f689b534bbcc752db024ab9f,
-        type: 3}
-      propertyPath: m_Name
-      value: Orange
       objectReference: {fileID: 0}
     - target: {fileID: 6052698930831563514, guid: a093bed2f689b534bbcc752db024ab9f,
         type: 3}

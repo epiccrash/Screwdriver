@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 1339894025039478611}
   m_Layer: 0
   m_Name: Juicer approved Lemon
-  m_TagString: Untagged
+  m_TagString: Juiceable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,9 +33,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2155885907648063255}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.21422072, y: 1.4353, z: 2.289721}
-  m_LocalScale: {x: 0.08, y: 0.1, z: 0.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1726390657294164196}
   m_Father: {fileID: 0}
@@ -366,18 +366,13 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.0125
       objectReference: {fileID: 0}
-    - target: {fileID: 8465346779698589100, guid: 282b48ab2e3b739469bd3a1d9685a020,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6976222080422086534, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
-    - {fileID: 1968264841923325225, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
-    - {fileID: 3176405290121781125, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
-    - {fileID: 3088418509690906514, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
+    - {fileID: 8465346779698589100, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
     - {fileID: 8187115015853935995, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
-    - {fileID: 543535554720121697, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
+    - {fileID: 3088418509690906514, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
+    - {fileID: 3176405290121781125, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
+    - {fileID: 1968264841923325225, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
+    - {fileID: 6976222080422086534, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 282b48ab2e3b739469bd3a1d9685a020, type: 3}
 --- !u!4 &1726390657294164196 stripped
 Transform:
